@@ -12,7 +12,7 @@ const Table = ({ columns, data }) => {
   return (
     <table className="table-auto w-full" {...getTableProps()}>
       <thead>
-        {headerGroups.map((headerGroup, idx) => (
+        {headerGroups?.map((headerGroup, idx) => (
           <tr key={idx} {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
               <th key={idx} className="px-4 py-2" {...column.getHeaderProps()}>
@@ -24,7 +24,7 @@ const Table = ({ columns, data }) => {
         ))}
       </thead>
       <tbody {...getTableBodyProps()}>
-        {rows.map((row, rowIdx) => {
+        {rows?.map((row, rowIdx) => {
           prepareRow(row);
           return (
             <tr key={rowIdx} {...row.getRowProps()}>

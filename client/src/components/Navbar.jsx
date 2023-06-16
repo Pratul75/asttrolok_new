@@ -14,12 +14,13 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const isExpanded = useSelector((x) => x.appConfig.sidebarOpen);
   const darkMode = useSelector((x) => x.appConfig.darkMode);
+
   // toggle app drawer
   const toggleDrawer = () => {
     dispatch(toggleSidebar());
   };
 
-  // toggle darkmode
+  // toggle dark mode
   const handleDarkMode = () => {
     dispatch(toggleDarkMode());
     console.log("CLICKED ON DARK MODE", darkMode);
@@ -27,12 +28,12 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className=" p-4">
+      <nav className="p-4">
         <div className="flex justify-between items-center">
-          {/* left side */}
+          {/* Left side */}
           <div className="flex gap-4">
             <button
-              className=" text-gray-500 focus:outline-none"
+              className="text-gray-500 focus:outline-none"
               onClick={toggleDrawer}
             >
               {isExpanded ? (
@@ -40,12 +41,6 @@ const Navbar = () => {
               ) : (
                 <HiMenu className="w-8" />
               )}
-            </button>
-            <button
-              className="tooltip tooltip-info tooltip-bottom"
-              data-tip="search"
-            >
-              <GoSearch className="w-8 cursor-pointer" />
             </button>
 
             {navbarMapping?.map((item) => {
@@ -65,7 +60,7 @@ const Navbar = () => {
                   >
                     <Link
                       to={item.link}
-                      className="btn btn-ghost text-black  font-light lowercase"
+                      className="btn btn-ghost text-black font-light lowercase"
                     >
                       {item.label}
                     </Link>
@@ -74,11 +69,9 @@ const Navbar = () => {
               }
             })}
           </div>
-          {/* right side */}
-          <div
-            className=" flex gap-4 justify-center
-          "
-          >
+
+          {/* Right side */}
+          <div className="flex gap-4 justify-center">
             <button
               className="tooltip tooltip-info tooltip-bottom"
               data-tip="darkmode"
@@ -89,6 +82,7 @@ const Navbar = () => {
                 <FiSun onClick={handleDarkMode} />
               )}
             </button>
+
             <button
               data-tip="cart"
               className="tooltip tooltip-info tooltip-bottom"
@@ -102,6 +96,13 @@ const Navbar = () => {
             >
               <BsBell />
               <div className="badge badge-primary badge-xs badge-info absolute top-0 left-2"></div>
+            </button>
+
+            <button
+              className="tooltip tooltip-info tooltip-bottom"
+              data-tip="search"
+            >
+              <GoSearch className="w-8 cursor-pointer" />
             </button>
 
             <div className="avatar placeholder cursor-pointer">
