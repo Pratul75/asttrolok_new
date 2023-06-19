@@ -27,8 +27,7 @@ const LoginPage = () => {
        localStorage.setItem("user", JSON.stringify({ role: "USER" }));
 
        if(res?.data?.data?.token){
-           console.log("iamworking");
-       localStorage.setItem("token", JSON.stringify({ role: res?.data?.data?.token }));
+       localStorage.setItem("token", JSON.stringify({ token: res?.data?.data?.token }));
        }
     }
     navigate(PATHS.userDashboard);

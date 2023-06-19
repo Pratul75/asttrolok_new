@@ -3,6 +3,7 @@ import AppLayout from "./layouts/AppLayout";
 import { UserDashboard, UserProfile, LoginPage } from "./pages";
 import { PATHS } from "./router/paths";
 import { useSelector } from "react-redux";
+import { ProtectedRoute } from "./router/ProtectedRoute";
 
 const App = () => {
   const darkMode = useSelector((x) => x.appConfig.darkMode);
@@ -17,9 +18,11 @@ const App = () => {
         <Route
           path={PATHS.userDashboard}
           element={
-            <AppLayout>
-              <UserDashboard />
-            </AppLayout>
+            <ProtectedRoute>
+              <AppLayout>
+                <UserDashboard />
+              </AppLayout>
+            </ProtectedRoute>
           }
         />
         <Route

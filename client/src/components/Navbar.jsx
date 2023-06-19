@@ -31,9 +31,11 @@ const Navbar = () => {
   };
 
   const handleAvatarClick = () => {
-    // Redirect to login page
-    // Replace '/login' with your desired login page route
-    window.location.href = "/login";
+    const token = localStorage.getItem("token");
+    localStorage.clear();
+    window.location.href = "/login"; 
+
+   
   };
 
   React.useEffect(() => {
