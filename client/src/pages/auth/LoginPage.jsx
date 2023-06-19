@@ -20,10 +20,16 @@ const LoginPage = () => {
 
   const onSubmit = async (data) => {
     console.log("LOGIN DATA: ", data);
+
     const res = await API_WRAPPER.post("/api/login", { ...data, role: "user" });
-    console.log("RESPONSE: ", res.data);
+    console.log("RESPONSE: ", res?.data?.data);
     if (res?.data) {
-      localStorage.setItem("user", JSON.stringify({ role: "USER" }));
+       localStorage.setItem("user", JSON.stringify({ role: "USER" }));
+
+       if(res?.data?.data?.token){
+           console.log("iamworking");
+       localStorage.setItem("token", JSON.stringify({ role: res?.data?.data?.token }));
+       }
     }
     navigate(PATHS.userDashboard);
   };
