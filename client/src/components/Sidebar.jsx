@@ -58,6 +58,21 @@ const Sidebar = () => {
                 />
               </li>
             ))}
+            {/* <li className="bg-[#E8F7FF] rounded-lg flex mt-[50%] py-4 px-8">
+              <div className="w-full flex gap-2">
+                <div>
+                  <div className="avatar placeholder">
+                    <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
+                      <span>VB</span>
+                    </div>
+                  </div>{" "}
+                </div>
+                <div className="text-blue-400">
+                  <p>Vishesh Bajpayee</p>
+                  <p>User</p>
+                </div>
+              </div>
+            </li> */}
           </ul>
         </div>
       </nav>

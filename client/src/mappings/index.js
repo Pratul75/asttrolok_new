@@ -1,5 +1,3 @@
-import { BsTelephone, BsViewList } from "react-icons/bs";
-// import { UserDashboardIcon } from "../icons";
 import {
   DashboardIcon,
   BirthDetailsIcon,

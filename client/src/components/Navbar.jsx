@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSidebar, toggleDarkMode } from "../features/appConfig/AppSlice";
 import { HiMenu, HiX } from "react-icons/hi";
@@ -9,14 +10,14 @@ import { MdOutlineDarkMode } from "react-icons/md";
 import { FiSun } from "react-icons/fi";
 import { Dropdown } from "../components";
 import { navbarMapping } from "../mappings";
-import { Link, Navigate } from "react-router-dom";
+import { PATHS } from "../router/paths";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const isExpanded = useSelector((x) => x.appConfig.sidebarOpen);
   const darkMode = useSelector((x) => x.appConfig.darkMode);
   const navbarHeight = 64; // Adjust the height according to your navbar's height
-  const [isFixed, setIsFixed] = useState(false);
+  const [isFixed, setIsFixed] = React.useState(false);
 
   // toggle app drawer
   const toggleDrawer = () => {
@@ -29,7 +30,13 @@ const Navbar = () => {
     console.log("CLICKED ON DARK MODE", darkMode);
   };
 
-  useEffect(() => {
+  const handleAvatarClick = () => {
+    // Redirect to login page
+    // Replace '/login' with your desired login page route
+    window.location.href = "/login";
+  };
+
+  React.useEffect(() => {
     const handleScroll = () => {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
@@ -62,7 +69,7 @@ const Navbar = () => {
               )}
             </button>
 
-            {navbarMapping?.map((item) => {
+            {navbarMapping.map((item) => {
               if (item.type === "dropdown") {
                 return (
                   <Dropdown
@@ -124,14 +131,13 @@ const Navbar = () => {
               <GoSearch className="w-8 cursor-pointer" />
             </button>
 
-            <div
-              onClick={() => <Navigate to="/login" />}
-              className="avatar placeholder cursor-pointer"
-            >
-              <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
-                <span>VB</span>
+            <Link onClick={handleAvatarClick}>
+              <div className="avatar placeholder cursor-pointer">
+                <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+                  <span>VB</span>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </nav>
