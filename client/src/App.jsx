@@ -1,10 +1,6 @@
-// import { Navigate, Route, Routes } from "react-router-dom";
-// import { LoginPage, ForgetPasswordPage, SignupPage } from "./pages";
-// import { PATHS } from "./router/paths";
-
 import { Navigate, Route, Routes } from "react-router-dom";
-import AppLayout from "./layouts/AppLAyout";
-import { UserDashboard, UserProfile } from "./pages";
+import AppLayout from "./layouts/AppLayout";
+import { UserDashboard, UserProfile, LoginPage } from "./pages";
 import { PATHS } from "./router/paths";
 import { useSelector } from "react-redux";
 
@@ -15,23 +11,26 @@ const App = () => {
       data-theme={`${darkMode ? "dark" : "light"}`}
       className="font-plus-jakarta-sans"
     >
-      <AppLayout>
-        <Routes>
-          <Route
-            path={PATHS.root}
-            element={<Navigate to={PATHS.userDashboard} />}
-          />
-          <Route path={PATHS.userDashboard} element={<UserDashboard />} />
-          <Route path={PATHS.userProfile} element={<UserProfile />} />
-        </Routes>
-      </AppLayout>
-
-      {/* <Routes>
+      <Routes>
         <Route path={PATHS.root} element={<Navigate to={PATHS.login} />} />
-        <Route element={<LoginPage />} path={PATHS.login} />
-        <Route element={<SignupPage />} path={PATHS.signupPage} />
-        <Route element={<ForgetPasswordPage />} path={PATHS.forgetPassword} />
-      </Routes> */}
+        <Route path={PATHS.login} element={<LoginPage />} />
+        <Route
+          path={PATHS.userDashboard}
+          element={
+            <AppLayout>
+              <UserDashboard />
+            </AppLayout>
+          }
+        />
+        <Route
+          path={PATHS.userProfile}
+          element={
+            <AppLayout>
+              <UserProfile />
+            </AppLayout>
+          }
+        />
+      </Routes>
     </div>
   );
 };

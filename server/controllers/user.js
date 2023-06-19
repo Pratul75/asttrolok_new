@@ -139,9 +139,7 @@ class UserController {
 
         if (consultations?.error) {
           return res.status(consultations?.errorCode).json(consultations);
-        } 
-        
-        else {
+        } else {
           for (let i = 0; i < consultations?.data?.length; i++) {
             if (consultations?.data[i].bookingdate === date) {
               arr.push(consultations?.data[i].bookingtime);
@@ -198,19 +196,18 @@ class UserController {
               slotsOFOrginalAstrologerTiming?.data,
               slotsOFBreak1_OfAstrologer?.data
             );
-              
-              if(filterArray?.error){
-                return res.status(filterArray?.errorCode).json({ filterArray });
-              }
+
+            if (filterArray?.error) {
+              return res.status(filterArray?.errorCode).json({ filterArray });
+            }
 
             filterArray = await this.astrologerServiceInstance.filterArray(
               filterArray?.data,
               slotsOFBreak2_OfAstrologer?.data
             );
-            if(filterArray?.error){
+            if (filterArray?.error) {
               return res.status(filterArray?.errorCode).json({ filterArray });
             }
-
 
             filterArray = await this.astrologerServiceInstance.filterArray(
               filterArray?.data,
@@ -228,71 +225,67 @@ class UserController {
         message: error.message,
       });
     }
+  };
 
-  }
-
-
-  getWallet = async (req,res)=>{
+  getWallet = async (req, res) => {
     try {
-       
-  
-      const walletData = await this.userServiceInstance.getWalletData(req.user._id);
+      const walletData = await this.userServiceInstance.getWalletData(
+        req.user._id
+      );
 
-     return res.status(walletData?.errorCode).json({walletData})
+      return res.status(walletData?.errorCode).json({ walletData });
     } catch (error) {
       console.log(error);
       return res.status(500).json({
-        success:false,
-        message:error.message,
-        error:true,
-        errorCode:500,
-      })
+        success: false,
+        message: error.message,
+        error: true,
+        errorCode: 500,
+      });
     }
+  };
 
-    
-  }
-
-  createWallet = async(req,res)=>{
+  createWallet = async (req, res) => {
     try {
-      const newWallet = await this.userServiceInstance.createNewWallet(req.user._id)
+      const newWallet = await this.userServiceInstance.createNewWallet(
+        req.user._id
+      );
 
-      return res.status(newWallet.errorCode).json({newWallet})
+      return res.status(newWallet.errorCode).json({ newWallet });
     } catch (error) {
       return res.status(500).json({
-        success:false,
-        error:true,
-        message:error.message,
-        data:""
-      })
+        success: false,
+        error: true,
+        message: error.message,
+        data: "",
+      });
     }
-  }
+  };
 
-  addMoneyTowallet = async(req,res)=>{
-   try {
-    const {amount} = req.body;
-    if(!amount){
-      return res.status(404).json({
-        success:false,
-        message:"please provide the amount",
-        error:false,
-      })
+  addMoneyTowallet = async (req, res) => {
+    try {
+      const { amount } = req.body;
+      if (!amount) {
+        return res.status(404).json({
+          success: false,
+          message: "please provide the amount",
+          error: false,
+        });
+      } else {
+        const newAmount = await this.userServiceInstance.addMoneyToWallet(
+          req.user._id,
+          amount
+        );
+
+        return res.status(newAmount.errorCode).json({ newAmount });
+      }
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: error.message,
+      });
     }
-    else{
-      const newAmount = await this.userServiceInstance.addMoneyToWallet(req.user._id,amount)
-
-      return res.status(newAmount.errorCode).json({newAmount})
-    }
-   } catch (error) {
-    return res.status(500).json({
-      success:false,
-      message:error.message
-    })
-   }
-  }
-
-  
- 
-
+  };
 }
 
 module.exports = UserController;

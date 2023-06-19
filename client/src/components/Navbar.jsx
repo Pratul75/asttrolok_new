@@ -9,7 +9,7 @@ import { MdOutlineDarkMode } from "react-icons/md";
 import { FiSun } from "react-icons/fi";
 import { Dropdown } from "../components";
 import { navbarMapping } from "../mappings";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -44,7 +44,10 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`p-4 ${isFixed ? "p-8 bg-white fixed " : ""}`}>
+      <nav
+        className={`p-4 ${isFixed ? "p-8 bg-white fixed " : ""}`}
+        style={{ filter: isFixed ? "blur(5px)" : "none" }}
+      >
         <div className="flex justify-between items-center">
           {/* Left side */}
           <div className="flex gap-4">
@@ -121,7 +124,10 @@ const Navbar = () => {
               <GoSearch className="w-8 cursor-pointer" />
             </button>
 
-            <div className="avatar placeholder cursor-pointer">
+            <div
+              onClick={() => <Navigate to="/login" />}
+              className="avatar placeholder cursor-pointer"
+            >
               <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
                 <span>VB</span>
               </div>

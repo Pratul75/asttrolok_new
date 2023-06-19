@@ -17,7 +17,8 @@ const Sidebar = () => {
 
   const handleMouseLeave = () => {
     if (isExpanded) {
-      dispatch(toggleSidebar());
+      // SHOULD BE WORKING FINE WITHOUT IT¯
+      // dispatch(toggleSidebar());
     }
   };
 
@@ -25,14 +26,14 @@ const Sidebar = () => {
     <aside
       className={`w-full text-white py-4 h-screen ${
         isExpanded ? "" : "-w-[20vw] "
-      } transition-all duration-300 ease-in-out border-r-[1px] border-gray-200`}
+      } transition-all ease-in-out duration-300 border-r-[1px] border-gray-200`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {/* Logo */}
       <div className="flex items-center justify-center px-8 py-4">
         <img
-          className={`w-${isExpanded ? "48" : "12"}`}
+          className={`w-${isExpanded ? "48" : "12"} mt-auto`}
           src={isExpanded ? AstrolokLogo : AsttrolokSmallLogo}
           alt="Astrolok logo"
         />

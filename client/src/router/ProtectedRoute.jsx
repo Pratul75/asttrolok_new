@@ -25,9 +25,9 @@ const useAuth = () => {
 };
 
 // protected routes
-const ProtectedRoute = ({ roleRequired }) => {
+export const ProtectedRoute = ({ roleRequired }) => {
   const { auth, role } = useAuth();
-
+  console.log("AUTH: ", auth, "ROLE: ", role);
   // if the role required is there or not
   if (roleRequired) {
     console.log("ROLE REQUIRED: ", roleRequired, role);
@@ -50,4 +50,18 @@ ProtectedRoute.propTypes = {
   roleRequired: PropTypes.string,
 };
 
-export default ProtectedRoute;
+// // export default ProtectedRoute;
+// import { decodeToken } from "react-jwt";
+// import { Outlet, Navigate } from "react-router-dom";
+// import { PATHS } from "../router/paths";
+
+// const PrivateRoute = () => {
+//   const token = localStorage.getItem("token");
+//   let auth = { token };
+//   const decodedToken = auth.token && decodeToken(auth.token);
+//   console.log(decodedToken);
+
+//   return auth.token ? <Outlet /> : <Navigate to={PATHS.login} />;
+// };
+
+// export default PrivateRoute;
