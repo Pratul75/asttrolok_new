@@ -22,6 +22,7 @@ const LoginPage = () => {
     console.log("LOGIN DATA: ", data);
     const res = await API_WRAPPER.post("/api/login", { ...data, role: "user" });
     console.log("RESPONSE: ", res.data);
+
     if (res?.data) {
       localStorage.setItem("user", JSON.stringify({ role: "USER" }));
     }

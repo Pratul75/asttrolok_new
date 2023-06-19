@@ -1,40 +1,42 @@
-import {
-  HiHome,
-  HiBriefcase,
-  HiUserCircle,
-  HiOutlineDocumentReport,
-} from "react-icons/hi";
 import { BsTelephone, BsViewList } from "react-icons/bs";
-
+// import { UserDashboardIcon } from "../icons";
+import {
+  DashboardIcon,
+  BirthDetailsIcon,
+  ConsultationIcon,
+  CourseListIcon,
+  UserProfileIcon,
+  UserReportsIcon,
+} from "../icons";
 // maps the sidebar
 export const sidebarMapping = [
   {
-    Icon: HiHome,
+    Icon: DashboardIcon,
     text: "Dashboard",
     navlink: "/user-dashboard",
   },
   {
-    Icon: HiBriefcase,
+    Icon: BirthDetailsIcon,
     text: "Birth Details",
     navlink: "/birth-details",
   },
   {
-    Icon: HiUserCircle,
+    Icon: ConsultationIcon,
     text: "Consultation",
     navlink: "/consultation-list",
   },
   {
-    Icon: HiOutlineDocumentReport,
+    Icon: CourseListIcon,
     text: "Course List",
     navlink: "/course-list",
   },
   {
-    Icon: BsTelephone,
+    Icon: UserProfileIcon,
     text: "User Profile",
     navlink: "/user-profile",
   },
   {
-    Icon: BsViewList,
+    Icon: UserReportsIcon,
     text: "User Reports",
     navlink: "/user reports",
   },
