@@ -25,7 +25,7 @@ const Sidebar = () => {
     <aside
       className={`w-full text-white py-4 h-screen ${
         isExpanded ? "" : "-w-[20vw] "
-      } transition-all duration-300 ease-in-out border-[1px] border-gray-200`}
+      } transition-all duration-300 ease-in-out border-r-[1px] border-gray-200`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
