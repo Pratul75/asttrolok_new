@@ -11,7 +11,7 @@ export const sidebarMapping = [
   {
     Icon: HiHome,
     text: "Dashboard",
-    navLink: "/user-dashboard",
+    navlink: "/user-dashboard",
   },
   {
     Icon: HiBriefcase,
@@ -21,22 +21,22 @@ export const sidebarMapping = [
   {
     Icon: HiUserCircle,
     text: "Consultation",
-    navlink: "consultation-list",
+    navlink: "/consultation-list",
   },
   {
     Icon: HiOutlineDocumentReport,
     text: "Course List",
-    navlink: "course-list",
+    navlink: "/course-list",
   },
   {
     Icon: BsTelephone,
     text: "User Profile",
-    navlink: "user-profile",
+    navlink: "/user-profile",
   },
   {
     Icon: BsViewList,
     text: "User Reports",
-    navlink: "user reports",
+    navlink: "/user reports",
   },
 ];
 

@@ -8,8 +8,8 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={` text-white bg-teal-400 py-4 ${
-        isExpanded ? "" : "w-0 md:w-16"
+      className={` bg-purple-700  text-white py-4 ${
+        isExpanded ? "" : "w-43 "
       } transition-all duration-300 ease-in-out`}
     >
       {/* Logo */}
@@ -21,12 +21,13 @@ const Sidebar = () => {
         />
       </div>
 
+
       {/* Sidebar content */}
       <nav>
         <div className="flex flex-col gap-4 px-8 h-full">
           <ul className="py-2 flex flex-col gap-4 w-full overflow-y-auto">
-            {sidebarMapping?.map(({ Icon, text, navlink }) => (
-              <li key={text} className="pl-2">
+            {sidebarMapping.map(({ Icon, text, navlink }) => (
+              <li key={text} className="flex justify-ceneter">
                 <SidebarItem
                   Icon={Icon}
                   text={text}
