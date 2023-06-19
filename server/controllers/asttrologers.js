@@ -6,6 +6,7 @@ const AvailableTiming = require("../models/Astrologers/AvailableTiming");
 const AstrologerBookingModel = require("../models/Astrologers/AstrologerConsultation");
 const Usermodel = require("../models/users/Usermodel");
 const AstrologerService = require("../services/astrologer.service");
+const GlobalService = require("../services/global.servie");
 
 
 
@@ -13,7 +14,7 @@ const AstrologerService = require("../services/astrologer.service");
 // register
 class AstrologerController {
   astrologerServiceInstance = new AstrologerService();
- 
+  globalServiceInstance = new GlobalService();
 
   getcharges = async (req, res) => {
     // console.log(astrologerServiceInstance);
@@ -48,7 +49,6 @@ class AstrologerController {
           req.user._id,
           req.body
         );
-      console.log(resp);
       if (resp?.success === true) {
         return res.status(200).json({
           success: true,
@@ -74,7 +74,6 @@ class AstrologerController {
       const resp = await this.astrologerServiceInstance.findAstrologerById(
         req.user._id
       );
-      console.log(resp);
       if (resp?.success === true) {
         return res.status(200).json({
           success: true,
@@ -149,10 +148,8 @@ class AstrologerController {
   setAvailableTiming = async (req, res) => {
     try {
       const { newData } = req.body;
-      console.log(newData);
 
       const astrologerID = req.user._id
-      console.log("1");
       if (!newData) {
         return res.status(404).json({
           success: false,
@@ -175,7 +172,6 @@ class AstrologerController {
 
       }
     } catch (error) {
-      console.log(error);
       return res.status(500).json({
         success: false,
         error: error
@@ -199,6 +195,30 @@ class AstrologerController {
         success: false,
         message: error
       })
+    }
+  }
+
+
+  getRatingReviewByAstrologer = async(req,res)=>{
+
+        const ratingsAndReviews = await  this.astrologerServiceInstance.getRatingReviewByAstrologer(req.user._id)
+
+        return res.status(ratingsAndReviews?.errorCode).json({ratingsAndReviews})
+  
+}
+
+
+updateRatingAndReview = async(req,res)=>{
+    
+    const {status} = req.body;
+    const {userId} = req.query;
+    
+  
+  if(await this.globalServiceInstance.checkTheParams({status,userId})){
+      
+      const updateData = await this.astrologerServiceInstance.updateStatusOfRatingAndReview(req.user._id,userId,status)
+
+       return res.status(updateData?.errorCode).json(updateData)
     }
   }
   

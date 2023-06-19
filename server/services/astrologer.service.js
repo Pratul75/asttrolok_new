@@ -1,6 +1,9 @@
 const AstrologerConsultation = require("../models/Astrologers/AstrologerConsultation");
 const AstrologerPersonalDetailModel = require("../models/Astrologers/AstrologerPersonalDetailModel");
 const AvailableTiming = require("../models/Astrologers/AvailableTiming");
+const { findOneAndUpdate } = require("../models/users/Usermodel");
+const ratingsReview = require("../models/users/ratingsReview");
+const ResponseTemp = require("../utils/ResponseTemp");
 
 class AstrologerService {
   async charges(req, res) {
@@ -109,13 +112,10 @@ class AstrologerService {
   }
 
   async setAvailableTiming(astrologerID, days) {
-  
-
     try {
       const data = await AvailableTiming.findOne({ astrologerID });
 
       if (!data) {
-      
         const resp = await AvailableTiming.create({
           astrologerID,
           days,
@@ -184,82 +184,29 @@ class AstrologerService {
   }
 
   async getAllConsultation(astrologerId) {
-    try {
-      const data = await AstrologerConsultation.find({ astrologerId });
+    const data = await AstrologerConsultation.find({ astrologerId });
 
-      if (data) {
-        return {
-          success: true,
-          error: false,
-          errorCode: 200,
-          message: "",
-          data: data,
-        };
-      } else {
-        return {
-          success: false,
-          error: false,
-          errorCode: 404,
-          message: "No data found",
-        };
-      }
-    } catch (error) {
-      return {
-        success: false,
-        error: false,
-        errorCode: 500,
-        message: error.message,
-      };
+    // here we have used data.length as find gives us array and if not found still gives empty array
+    if (data?.length) {
+      return new ResponseTemp(true, "Found data", false, 200, data);
+    } else {
+      return new ResponseTemp(false, "Not found data", false, 404);
     }
   }
 
   async createNewBooking(astrologerId, userId, data) {
-    if (!astrologerId || !userId || !data) {
-      return {
-        success: false,
-        error: false,
-        errorCode: 404,
-        message: "please provide astrologerId,userId,data",
-      };
-    }
-    try {
-
-      const { bookingtype, bookingdate, bookingtime, status, waitingTime } =
-        data;
-      const resp = await AstrologerConsultation.create({
-        astrologerId,
-        userId,
-        bookingtype,
-        bookingdate,
-        bookingtime,
-        status,
-        waitingTime,
-      });
-      resp.save();
-      if (resp) {
-        return {
-          success: true,
-          error: false,
-          errorCode: 200,
-          message: "",
-          data: await AstrologerConsultation.findOne({ astrologerId }),
-        };
-      } else if (!resp) {
-        return {
-          success: false,
-          error: false,
-          errorCode: 404,
-          message: "booking failed",
-        };
-      }
-    } catch (error) {
-      return {
-        success: false,
-        error: true,
-        errorCode: 500,
-        message: error.message,
-      };
-    }
+    const { bookingtype, bookingdate, bookingtime, status, waitingTime } = data;
+    const resp = await AstrologerConsultation.create({
+      astrologerId,
+      userId,
+      bookingtype,
+      bookingdate,
+      bookingtime,
+      status,
+      waitingTime,
+    });
+    await resp.save();
+    return new ResponseTemp(true, "successful", false, 200, resp);
   }
 
   async dayFromDate(date) {
@@ -418,7 +365,7 @@ class AstrologerService {
 
       for (let i = 0; i < parentArray.length; i++) {
         for (var j = 0; j < child.length; j++) {
-          if (parentArray[i] === child[j])break;
+          if (parentArray[i] === child[j]) break;
         }
         if (child.length === j) {
           resultedArray.push(parentArray[i]);
@@ -432,13 +379,49 @@ class AstrologerService {
         data: resultedArray,
       };
     } catch (error) {
-     
       return {
         success: false,
         error: true,
         message: error.message,
         errorCode: 500,
       };
+    }
+  }
+
+  async getRatingReviewByAstrologer(astrologerId) {
+    const alreadyRatingAndReview = await ratingsReview.find({ astrologerId });
+
+    if (alreadyRatingAndReview.length) {
+      return new ResponseTemp(
+        true,
+        "found rating and Review",
+        false,
+        200,
+        alreadyRatingAndReview
+      );
+    } else {
+      return new ResponseTemp(false, "Not found", false, 404);
+    }
+  }
+
+  async updateStatusOfRatingAndReview(astrologerId, userId, status) {
+    
+    const updateData = await ratingsReview.findOne(
+      { astrologerId, userId },
+      { returnOriginal: false }
+    );
+     updateData.status = status;
+   await updateData.save()
+    if (updateData) {
+      return new ResponseTemp(
+        true,
+        "Status is updated",
+        false,
+        200,
+        updateData
+      );
+    } else {
+      return new ResponseTemp(false, "Not updated", false, 400);
     }
   }
 }
