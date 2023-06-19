@@ -16,7 +16,6 @@ const Navbar = () => {
   const isExpanded = useSelector((x) => x.appConfig.sidebarOpen);
   const darkMode = useSelector((x) => x.appConfig.darkMode);
   const navbarHeight = 64; // Adjust the height according to your navbar's height
-
   const [isFixed, setIsFixed] = useState(false);
 
   // toggle app drawer
@@ -53,7 +52,7 @@ const Navbar = () => {
               className="text-gray-500 focus:outline-none"
               onClick={toggleDrawer}
             >
-              {isExpanded ? (
+              {!isExpanded ? (
                 <HiX className="w-8" />
               ) : (
                 <HiMenu className="w-8" />

@@ -8,7 +8,7 @@ const SidebarItem = ({ Icon, text, link, itemExpanded }) => {
       return "flex px-6 py-2 rounded-lg items-center w-full bg-blue-400 ";
     }
     if (!active && expanded)
-      return "flex px-6 py-2 rounded-lg items-center w-full text-white hover:text-white hover:bg-blue-100 bg-blue-50";
+      return "flex px-6 py-2 rounded-lg items-center w-full text-white hover:text-white hover:bg-blue-100";
     if (active && !expanded) {
       return "flex rounded-lg items-center bg-blue-200  hover:bg-blue-200 ";
     }
@@ -26,7 +26,6 @@ const SidebarItem = ({ Icon, text, link, itemExpanded }) => {
             <Icon className="w-8 h-8 " />
           </button>
         )}
-
         {itemExpanded && Icon && <span className="text-black">{text}</span>}
       </NavLink>
     </div>

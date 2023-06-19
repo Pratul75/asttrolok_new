@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { Navbar, Sidebar } from "../components/";
 import { useSelector } from "react-redux";
 
+// app layout for the entire dashboard application
 const AppLayout = ({ children }) => {
   const isExpanded = useSelector((state) => state.appConfig.sidebarOpen);
 

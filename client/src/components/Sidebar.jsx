@@ -1,25 +1,43 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import SidebarItem from "./SidebarItem";
 import { sidebarMapping } from "../mappings";
 import AstrolokLogo from "../assets/astrolokLogo.png";
+import AsttrolokSmallLogo from "../assets/asttrolokSmallLogo.svg";
+import { toggleSidebar } from "../features/appConfig/AppSlice";
 
 const Sidebar = () => {
   const isExpanded = useSelector((state) => state.appConfig.sidebarOpen);
+  const dispatch = useDispatch();
+
+  const handleMouseEnter = () => {
+    if (!isExpanded) {
+      dispatch(toggleSidebar());
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (isExpanded) {
+      dispatch(toggleSidebar());
+    }
+  };
 
   return (
     <aside
-      className={` w-full text-white py-4 h-screen ${
+      className={`w-full text-white py-4 h-screen ${
         isExpanded ? "" : "-w-[20vw] "
       } transition-all duration-300 ease-in-out border-[1px] border-gray-200`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Logo */}
       <div className="flex items-center justify-center px-8 py-4">
         <img
           className={`w-${isExpanded ? "48" : "12"}`}
-          src={AstrolokLogo}
+          src={isExpanded ? AstrolokLogo : AsttrolokSmallLogo}
           alt="Astrolok logo"
         />
       </div>
+
       {/* Sidebar content */}
       <nav>
         <div className="flex flex-col gap-4 px-8 h-full">
