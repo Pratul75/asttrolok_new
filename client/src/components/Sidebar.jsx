@@ -8,7 +8,7 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={` text-white ${
+      className={` text-white bg-teal-400 py-4 ${
         isExpanded ? "" : "w-0 md:w-16"
       } transition-all duration-300 ease-in-out`}
     >

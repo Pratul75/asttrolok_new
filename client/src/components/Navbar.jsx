@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSidebar, toggleDarkMode } from "../features/appConfig/AppSlice";
 import { HiMenu, HiX } from "react-icons/hi";
@@ -14,6 +15,9 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const isExpanded = useSelector((x) => x.appConfig.sidebarOpen);
   const darkMode = useSelector((x) => x.appConfig.darkMode);
+  const navbarHeight = 64; // Adjust the height according to your navbar's height
+
+  const [isFixed, setIsFixed] = useState(false);
 
   // toggle app drawer
   const toggleDrawer = () => {
@@ -26,9 +30,22 @@ const Navbar = () => {
     console.log("CLICKED ON DARK MODE", darkMode);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      setIsFixed(scrollTop > navbarHeight);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <nav className="p-4">
+      <nav className={`p-4 ${isFixed ? "p-8 bg-white fixed " : ""}`}>
         <div className="flex justify-between items-center">
           {/* Left side */}
           <div className="flex gap-4">

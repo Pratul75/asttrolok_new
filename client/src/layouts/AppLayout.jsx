@@ -11,7 +11,7 @@ const AppLayout = ({ children }) => {
       <div
         className={`${
           isExpanded ? "w-1/4" : "w-20"
-        } bg-gray-800 transition-all duration-300`}
+        } transition-all duration-300`}
       >
         <Sidebar />
       </div>
@@ -22,7 +22,9 @@ const AppLayout = ({ children }) => {
         <Navbar />
 
         {/* Page content */}
-        <div className="flex-grow mx-52 my-4">{children}</div>
+        <div className="flex-grow mx-52 my-4 overflow-y-auto max-h-[calc(100vh-64px)]">
+          {children}
+        </div>
       </div>
     </div>
   );
