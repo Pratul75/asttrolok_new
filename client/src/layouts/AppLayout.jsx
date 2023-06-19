@@ -10,7 +10,7 @@ const AppLayout = ({ children }) => {
       {/* Sidebar */}
       <div
         className={`${
-          isExpanded ? "w-1/4" : "w-28   h-20"
+          isExpanded ? "w-1/4" : "w-32   h-20"
         } transition-all duration-300`}
       >
         <Sidebar />
@@ -22,7 +22,7 @@ const AppLayout = ({ children }) => {
         <Navbar />
 
         {/* Page content */}
-        <div className="flex-grow mx-52 my-4 overflow-y-auto max-h-[calc(100vh-64px)] custom-scrollbar">
+        <div className="flex-grow mx-48 my-4 overflow-y-auto max-h-[calc(100vh-64px)] custom-scrollbar">
           {children}
         </div>
       </div>

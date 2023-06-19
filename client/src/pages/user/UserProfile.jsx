@@ -174,6 +174,92 @@ const UserProfile = () => {
             </div>
             {/* fourth row for personal details */}
           </div>
+
+          {/* for testing purpose */}
+          <div className="w-full rounded-lg shadow-lg p-4">
+            <div>
+              <h4 className="text-xl">Person Details</h4>
+              <p className="text-sm text-gray-400">
+                To change your personal detail, edit and save from here
+              </p>
+            </div>
+            {/* first row of personal details */}
+            <div className="w-full flex gap-4">
+              <div className="form-control w-full">
+                <label htmlFor="currentPassword" className="label">
+                  <span className="label-text">First Name</span>
+                </label>
+                <input
+                  className="input input-sm border  border-3 border-gray-400"
+                  type="password"
+                  name="currentPassword"
+                  id="currentPassword"
+                />
+              </div>
+              <div className="form-control w-full">
+                <label htmlFor="currentPassword" className="label">
+                  <span className="label-text">Last Name</span>
+                </label>
+                <input
+                  className="input input-sm border  border-3 border-gray-400"
+                  type="password"
+                  name="currentPassword"
+                  id="currentPassword"
+                />
+              </div>
+            </div>
+            {/* second row for personal details */}
+            <div className="w-full flex gap-4">
+              <div className="form-control w-full">
+                <label htmlFor="currentPassword" className="label">
+                  <span className="label-text">Location</span>
+                </label>
+                <input
+                  className="input input-sm border  border-3 border-gray-400"
+                  type="password"
+                  name="currentPassword"
+                  id="currentPassword"
+                />
+              </div>
+              <div className="form-control w-full">
+                <label htmlFor="currentPassword" className="label">
+                  <span className="label-text">Currency</span>
+                </label>
+                <input
+                  className="input input-sm border  border-3 border-gray-400"
+                  type="password"
+                  name="currentPassword"
+                  id="currentPassword"
+                />
+              </div>
+            </div>
+            {/* third row for personal details */}
+            <div className="w-full flex gap-4">
+              <div className="form-control w-full">
+                <label htmlFor="currentPassword" className="label">
+                  <span className="label-text">Email</span>
+                </label>
+                <input
+                  className="input input-sm border  border-3 border-gray-400"
+                  type="password"
+                  name="currentPassword"
+                  id="currentPassword"
+                />
+              </div>
+              <div className="form-control w-full">
+                <label htmlFor="currentPassword" className="label">
+                  <span className="label-text">Phone</span>
+                </label>
+                <input
+                  className="input input-sm border  border-3 border-gray-400"
+                  type="password"
+                  name="currentPassword"
+                  id="currentPassword"
+                />
+              </div>
+            </div>
+            {/* fourth row for personal details */}
+          </div>
         </div>
       </section>
     </>
