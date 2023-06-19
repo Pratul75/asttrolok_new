@@ -1,7 +1,8 @@
 const express = require("express");
 const astrologerRoutes = express.Router();
 const { checkLoginOrNot } = require("../middleware/auth");
-const AstrologerController = require("../controllers/asttrologers")
+const AstrologerController = require("../controllers/asttrologers");
+const { tryCatch } = require("../utils/tryCatch");
 
 astrologerRoutes.get("/", (req, res) => {
     res.status(400).send("welcome to the astrologer routes")
@@ -10,21 +11,24 @@ astrologerRoutes.get("/", (req, res) => {
 const astroController = new AstrologerController;
 // astrologerRoutes.post("/register", register)
 
-astrologerRoutes.get("/getcharges",checkLoginOrNot, astroController.getcharges)
+astrologerRoutes.get("/getcharges",checkLoginOrNot,tryCatch(astroController.getcharges))
 
 
-astrologerRoutes.post("/personalDetail", checkLoginOrNot, astroController.personalDetailUpdate)
+astrologerRoutes.post("/personalDetail", checkLoginOrNot, tryCatch(astroController.personalDetailUpdate))
 
-astrologerRoutes.get("/getpersonalDetail", checkLoginOrNot, astroController.getpersonalDetail)
+astrologerRoutes.get("/getpersonalDetail", checkLoginOrNot,tryCatch(astroController.getpersonalDetail))
 
-astrologerRoutes.get("/getAvailableTiming", checkLoginOrNot, astroController.getAvailableTiming)
+astrologerRoutes.get("/getAvailableTiming", checkLoginOrNot,tryCatch(astroController.getAvailableTiming))
 
-astrologerRoutes.post("/setAvailableTiming",checkLoginOrNot, astroController.setAvailableTiming)
+astrologerRoutes.post("/setAvailableTiming",checkLoginOrNot,tryCatch(astroController.setAvailableTiming))
 
 // to get all the astrologers
-astrologerRoutes.get("/getAllAstrologers",checkLoginOrNot, astroController.getAllAstrologers)
+astrologerRoutes.get("/getAllAstrologers",checkLoginOrNot,tryCatch(astroController.getAllAstrologers))
 
 
+astrologerRoutes.get("/ratingsReviewByAstrologer",checkLoginOrNot,tryCatch(astroController.getRatingReviewByAstrologer))
+
+astrologerRoutes.post("/updateStatusRatingAndReviews", checkLoginOrNot, tryCatch(astroController.updateRatingAndReview))
 
 
 

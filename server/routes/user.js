@@ -4,10 +4,9 @@ const userRoutes = express.Router();
 const { checkLoginOrNot } = require("../middleware/auth");
 const UserController = require("../controllers/user");
 const GlobalController = require("../controllers/globalController");
+const errorHandler = require("../middleware/errorhandler");
+const { tryCatch } = require("../utils/tryCatch");
 
-userRoutes.get("/", (req, res) => {
-    res.status(400).send("welcome to the user routes")
-})
 
 const userController = new UserController;
 
@@ -15,27 +14,40 @@ const globalController = new GlobalController;
 
 
 
-userRoutes.post("/personalDetail", checkLoginOrNot,userController.personalDetailUpdate)
-userRoutes.get("/getpersonalDetail", checkLoginOrNot,userController.getpersonalDetail)
+userRoutes.get("/", checkLoginOrNot,(req, res) => {
+    res.status(400).send("welcome to the user routes")
+})
 
 
-userRoutes.get("/getAstrologerAllConsultation", checkLoginOrNot,userController.getAstrologerAllConsultation)
-
-userRoutes.post("/bookAstrologerForConsultation", checkLoginOrNot,userController.bookAstrologerForConsultation)
-
-userRoutes.post("/availableTimingOfDate", checkLoginOrNot,userController.availableTimingOfDate)
-
-userRoutes.get("/getWallet", checkLoginOrNot,userController.getWallet)
 
 
-userRoutes.post("/addMoneyTowallet", checkLoginOrNot,userController.addMoneyTowallet)
+userRoutes.post("/personalDetail", checkLoginOrNot,tryCatch(userController.personalDetailUpdate),errorHandler)
+
+userRoutes.get("/getpersonalDetail", checkLoginOrNot,tryCatch(userController.getpersonalDetail),errorHandler)
+
+
+userRoutes.get("/getAstrologerAllConsultation", checkLoginOrNot,tryCatch(userController.getAstrologerAllConsultation),errorHandler)
+
+userRoutes.post("/bookAstrologerForConsultation", checkLoginOrNot, tryCatch(userController.bookAstrologerForConsultation), errorHandler)
+
+userRoutes.post("/availableTimingOfDate", checkLoginOrNot,tryCatch(userController.availableTimingOfDate), errorHandler)
+
+userRoutes.get("/getWallet", checkLoginOrNot,tryCatch(userController.getWallet), errorHandler)
+
+
+userRoutes.post("/addMoneyTowallet", checkLoginOrNot,tryCatch(userController.addMoneyTowallet), errorHandler)
 
 
 // this route is automatically hit when user is register
-userRoutes.post("/createWallet", checkLoginOrNot,userController.createWallet)
+userRoutes.post("/createWallet", checkLoginOrNot,tryCatch(userController.createWallet), errorHandler)
 
 
-userRoutes.get("/allConsultationsOfUser", checkLoginOrNot,globalController.consultationsOfUser)
+userRoutes.get("/allConsultationsOfUser",checkLoginOrNot, tryCatch(globalController.consultationsOfUser), errorHandler)
+
+userRoutes.post("/ratingsAndReview",checkLoginOrNot, tryCatch(userController.createRatingsAndReview), errorHandler)
+
+userRoutes.get("/ratingsReviewByUser", checkLoginOrNot,tryCatch(userController.getRatingReviewByUser), errorHandler)
+
 
 
 
