@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSidebar, toggleDarkMode } from "../features/appConfig/AppSlice";
@@ -14,10 +14,11 @@ import { PATHS } from "../router/paths";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const isExpanded = useSelector((x) => x.appConfig.sidebarOpen);
-  const darkMode = useSelector((x) => x.appConfig.darkMode);
+  const isExpanded = useSelector((state) => state.appConfig.sidebarOpen);
+  const darkMode = useSelector((state) => state.appConfig.darkMode);
   const navbarHeight = 64; // Adjust the height according to your navbar's height
-  const [isFixed, setIsFixed] = React.useState(false);
+  const [isFixed, setIsFixed] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // toggle app drawer
   const toggleDrawer = () => {
@@ -27,13 +28,16 @@ const Navbar = () => {
   // toggle dark mode
   const handleDarkMode = () => {
     dispatch(toggleDarkMode());
-    console.log("CLICKED ON DARK MODE", darkMode);
   };
 
   const handleAvatarClick = () => {
     // Redirect to login page
     // Replace '/login' with your desired login page route
-    window.location.href = "/login";
+    window.location.href = PATHS.login;
+  };
+
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   React.useEffect(() => {
@@ -68,32 +72,33 @@ const Navbar = () => {
                 <HiMenu className="w-8" />
               )}
             </button>
-
-            {navbarMapping.map((item) => {
-              if (item.type === "dropdown") {
-                return (
-                  <Dropdown
-                    key={item.label}
-                    label={item.label}
-                    itemsList={item.itemsArray}
-                  />
-                );
-              } else {
-                return (
-                  <div
-                    key={item.label}
-                    className="flex justify-center items-center"
-                  >
-                    <Link
-                      to={item.link}
-                      className="btn btn-ghost text-black font-light lowercase"
+            <div className="hidden md:flex">
+              {navbarMapping?.map((item) => {
+                if (item.type === "dropdown") {
+                  return (
+                    <Dropdown
+                      key={item.label}
+                      label={item.label}
+                      itemsList={item.itemsArray}
+                    />
+                  );
+                } else {
+                  return (
+                    <div
+                      key={item.label}
+                      className="flex justify-center items-center"
                     >
-                      {item.label}
-                    </Link>
-                  </div>
-                );
-              }
-            })}
+                      <Link
+                        to={item.link}
+                        className="btn btn-ghost text-black font-light lowercase"
+                      >
+                        {item.label}
+                      </Link>
+                    </div>
+                  );
+                }
+              })}
+            </div>
           </div>
 
           {/* Right side */}
@@ -139,6 +144,50 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className="md:hidden">
+          <button
+            className="fixed top-4 right-4 text-gray-500 focus:outline-none"
+            onClick={handleMobileMenuToggle}
+          >
+            {!isMobileMenuOpen ? (
+              <HiMenu className="w-8" />
+            ) : (
+              <HiX className="w-8" />
+            )}
+          </button>
+          {isMobileMenuOpen && (
+            <div className="bg-white p-4 mt-16">
+              {navbarMapping?.map((item) => {
+                if (item.type === "dropdown") {
+                  return (
+                    <Dropdown
+                      key={item.label}
+                      label={item.label}
+                      itemsList={item.itemsArray}
+                      mobileMenu
+                    />
+                  );
+                } else {
+                  return (
+                    <div
+                      key={item.label}
+                      className="flex justify-center items-center"
+                    >
+                      <Link
+                        to={item.link}
+                        className="btn btn-ghost text-black font-light lowercase"
+                      >
+                        {item.label}
+                      </Link>
+                    </div>
+                  );
+                }
+              })}
+            </div>
+          )}
         </div>
       </nav>
     </>

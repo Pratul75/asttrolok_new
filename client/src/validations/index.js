@@ -9,7 +9,7 @@ export const loginSchema = () => {
       .required("username is required"),
     password: yup
       .string("password must be a string")
-      .min(6, "password should be atleasy 6 characters long")
+      .min(6, "password should be atleast 6 characters long")
       .required("password is required"),
   });
 };

@@ -24,8 +24,8 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`w-full text-white py-4 h-screen ${
-        isExpanded ? "" : "-w-[20vw] "
+      className={` md:w-full text-white py-4 h-screen ${
+        isExpanded ? "w-0" : "-w-[20vw] "
       } transition-all ease-in-out duration-300 border-r-[1px] border-gray-200`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -58,6 +58,8 @@ const Sidebar = () => {
                 />
               </li>
             ))}
+
+            {/*  not required */}
             {/* <li className="bg-[#E8F7FF] rounded-lg flex mt-[50%] py-4 px-8">
               <div className="w-full flex gap-2">
                 <div>
