@@ -3,7 +3,12 @@ import DashboardBanner from "../../assets/dashboardBanner.png";
 import axios from "axios";
 import { API_WRAPPER } from "../../api";
 import { CalendarPicker, InfoCard } from "../../components";
-import { PieChartIcon } from "../../icons";
+import {
+  PieChartIcon,
+  FundsChartIcon,
+  SalesBarChart,
+  FaithfullUserChart,
+} from "../../icons";
 
 const UserDashboard = () => {
   const [consultations, setConsultations] = useState(false);
@@ -73,15 +78,19 @@ const UserDashboard = () => {
           </div>
         </div>
         <div className="flex gap-2 md:gap-4 flex-wrap md:flex-nowrap h-auto rounded-lg">
-          <div className="flex flex-col justify-center items-center shadow-lg p-6">
-            <span className="loading loading-ring loading-lg text-info"></span>
-            <span className="text-2xl font-semibold">$1204</span>
-            <span>Fund Remaining</span>
+          <div className="flex flex-col gap-2 shadow-lg p-6">
+            <div className="flex flex-col">
+              <span className="text-2xl font-semibold">$1204</span>
+              <span className="font-extralight">Expense</span>
+            </div>
+            <FundsChartIcon />
           </div>
-          <div className="flex flex-col justify-center items-center shadow-lg p-6">
-            <span className="loading loading-ring loading-lg text-info"></span>
-            <span className="text-2xl font-semibold">$580</span>
-            <span>Fund Spend</span>
+          <div className="flex flex-col gap-2 shadow-lg p-6">
+            <div className="flex flex-col">
+              <span className="text-2xl font-semibold">$1204</span>
+              <span className="font-extralight">Expense</span>
+            </div>
+            <SalesBarChart />
           </div>
         </div>
       </div>
@@ -171,6 +180,41 @@ const UserDashboard = () => {
                 subHeading="Astrology"
                 time="1:30 PM"
                 icon="AB"
+              />
+            </div>
+          </div>
+          <div className="w-full md:w-1/2 p-4 rounded-lg shadow-lg">
+            <h4 className="text-[18px] font-semibold">
+              Next Badge: Faithful User
+            </h4>
+            <p className="text-[14px]">Your upcoming events</p>
+            <div className="p-4 w-full flex justify-center">
+              <FaithfullUserChart />
+            </div>
+            <div>
+              <InfoCard
+                heading="Top Course"
+                subHeading="Astrology"
+                time="11:10 AM"
+                icon="VB"
+              />
+              <InfoCard
+                heading="Best Astrologer"
+                subHeading="Vanya Ojha"
+                time="10:00 AM"
+                icon="HR"
+              />
+              <InfoCard
+                heading="Most Commented"
+                subHeading="Astrology"
+                time="1:30 PM"
+                icon="AB"
+              />
+              <InfoCard
+                heading="Top Course"
+                subHeading="Astrology"
+                time="11:10 AM"
+                icon="VB"
               />
             </div>
           </div>
