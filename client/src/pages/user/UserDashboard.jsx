@@ -5,9 +5,9 @@ const UserDashboard = () => {
     <div className="mx-auto">
       {/* First Row */}
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 w-full py-8">
-        <div className="flex justify-between h-auto bg-[#EBF3FE] rounded-lg p-6 md:p-[30px]">
+        <div className="flex flex-col md:flex-row justify-between h-auto bg-[#EBF3FE] rounded-lg p-6 md:p-[30px]">
           {/* content */}
-          <div className="flex flex-col gap-3 items-center justify-around">
+          <div className="flex flex-col gap-3 items-center md:items-start justify-around">
             <div className="flex gap-4 items-center">
               {/* avatar */}
               <div className="avatar placeholder">
@@ -30,11 +30,15 @@ const UserDashboard = () => {
             </div>
           </div>
           {/* image */}
-          <div className="w-1/2">
-            <img src={DashboardBanner} alt="dashboard banner" />
+          <div className="w-full md:w-1/2 mt-4 md:mt-0">
+            <img
+              src={DashboardBanner}
+              alt="dashboard banner"
+              className="w-full"
+            />
           </div>
         </div>
-        <div className="grid gap-2 grid-cols-2 h-auto rounded-lg">
+        <div className="grid gap-2 grid-cols-1 md:grid-cols-2 h-auto rounded-lg">
           <div className="flex flex-col justify-center items-center shadow-lg p-6">
             <span className="loading loading-ring loading-lg text-info"></span>
             <span className="text-2xl font-semibold">$1204</span>
@@ -102,7 +106,7 @@ const UserDashboard = () => {
           <div className="flex justify-between p-4 h-auto bg-teal-50">
             <div>
               <h4>Payment Gateways</h4>
-              <p className="text-sm text-gray-300">your payment gateways</p>
+              <p className="text-sm text-gray-300">Your payment gateways</p>
             </div>
             <span className="loading loading-ring loading-lg text-info"></span>
           </div>

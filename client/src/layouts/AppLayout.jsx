@@ -23,7 +23,7 @@ const AppLayout = ({ children }) => {
         <Navbar />
 
         {/* Page content */}
-        <div className="flex-grow mx-48 my-4 overflow-y-auto max-h-[calc(100vh-64px)] custom-scrollbar">
+        <div className="flex-grow mx-4  md:mx-48 my-4 overflow-y-auto md:max-h-[calc(100vh-64px)] custom-scrollbar">
           {children}
         </div>
       </div>
