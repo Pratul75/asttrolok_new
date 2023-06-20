@@ -36,19 +36,23 @@ import {
   AdminServices,
   AdminUsersList,
 } from "../pages";
+import { useSelector } from "react-redux";
 
 // main
 export const MainRoutes = () => {
+  const loginResponse = useSelector((state) => state.loginResponse.value); 
+
+
   <Routes>
     {/* protected routes */}
-    <Route path={PATHS.root} element={<ProtectedRoute />}>
+    <Route path={PATHS.root} element={<ProtectedRoute roleRequired={loginResponse?.role}/>}>
       <Route
         path={PATHS.root}
         element={<Navigate replace to={PATHS.userDashboard} />}
       />
 
       {/* all user routes */}
-      <Route element={<ProtectedRoute roleRequired="USER" />}>
+      <Route element={<ProtectedRoute roleRequired={loginResponse?.role}/>}>
         {/* user dashboard */}
         <Route path={PATHS.userDashboard} element={UserDashboard} />
         {/* user birth details */}
@@ -70,7 +74,7 @@ export const MainRoutes = () => {
     </Route>
 
     {/* all astrologer routes  */}
-    <Route element={<ProtectedRoute roleRequired={"ASTROLOGER"} />}>
+    <Route element={<ProtectedRoute ProtectedRoute roleRequired={loginResponse?.role}/>}>
       {/* astrologer account */}
       <Route path={PATHS.astrologerAccount} element={<AstrologerAccount />} />
       {/* astrologer availablity */}
@@ -103,8 +107,10 @@ export const MainRoutes = () => {
       {/* astrologer reports  */}
       <Route path={PATHS.astrologerReports} element={<AstrologerReports />} />
     </Route>
+
+    
     {/* all admin routes */}
-    <Route element={<ProtectedRoute roleRequired={"ADMIN"} />}>
+    <Route element={<ProtectedRoute roleRequired={loginResponse?.role} />}>
       {/* admin astrologer list */}
       <Route
         path={PATHS.adminAstrologerList}
@@ -144,4 +150,5 @@ export const MainRoutes = () => {
     {/** Permission denied route */}
     <Route path={PATHS.permissionDenied} element={<PermissionDenied />} />
   </Routes>;
+
 };

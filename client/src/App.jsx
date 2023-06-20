@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 import { ProtectedRoute } from "./router/ProtectedRoute";
 
 const App = () => {
+  const loginResponse = useSelector((state) => state.loginResponse.value);
+
   const darkMode = useSelector((x) => x.appConfig.darkMode);
   return (
     <div
@@ -18,18 +20,20 @@ const App = () => {
         <Route
           path={PATHS.userDashboard}
           element={
-            <ProtectedRoute>
-              <AppLayout>
+            <AppLayout>
+              <ProtectedRoute roleRequired={loginResponse?.role}>
                 <UserDashboard />
-              </AppLayout>
-            </ProtectedRoute>
+              </ProtectedRoute>
+            </AppLayout>
           }
         />
         <Route
           path={PATHS.userProfile}
           element={
             <AppLayout>
-              <UserProfile />
+              <ProtectedRoute roleRequired={loginResponse?.role}>
+                <UserProfile />
+              </ProtectedRoute>
             </AppLayout>
           }
         />
