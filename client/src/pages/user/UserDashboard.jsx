@@ -10,7 +10,14 @@ const UserDashboard = () => {
 
   const getUserConsultations = async () => {
     try {
-      const res = await API_WRAPPER.get(`/api/users/allConsultationsOfUser`);
+      const res = await  axios.get(`http://localhost:4000/api/users/allConsultationsOfUser`,{
+        headers:{
+          "Content-Type": "application/json", // Set the default Content-Type header
+          // Add any additional headers you need
+           "role" : JSON.parse(localStorage.getItem('user'))?.role ,
+           "Authorization" :JSON.parse(localStorage.getItem('token'))?.token 
+        }
+      });
 
       console.log("allConsultationsOfUser", res);
       if (res?.data?.errorCode === 200) {
