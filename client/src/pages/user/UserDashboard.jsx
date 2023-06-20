@@ -126,6 +126,24 @@ const UserDashboard = () => {
               time="1:30 PM"
               icon="AB"
             />
+            <InfoCard
+              heading="Best Astrologer"
+              subHeading="Vanya Ojha"
+              time="10:00 AM"
+              icon="HR"
+            />
+            <InfoCard
+              heading="Most Commented"
+              subHeading="Astrology"
+              time="1:30 PM"
+              icon="AB"
+            />
+            <InfoCard
+              heading="Most Commented"
+              subHeading="Astrology"
+              time="4:30 PM"
+              icon="AB"
+            />
           </div>
 
           {/* right side div */}
@@ -134,6 +152,26 @@ const UserDashboard = () => {
             <p className="text-[14px]">Your upcoming events</p>
             <div className="p-4">
               <CalendarPicker />
+            </div>
+            <div>
+              <InfoCard
+                heading="Top Course"
+                subHeading="Astrology"
+                time="11:10 AM"
+                icon="VB"
+              />
+              <InfoCard
+                heading="Best Astrologer"
+                subHeading="Vanya Ojha"
+                time="10:00 AM"
+                icon="HR"
+              />
+              <InfoCard
+                heading="Most Commented"
+                subHeading="Astrology"
+                time="1:30 PM"
+                icon="AB"
+              />
             </div>
           </div>
         </div>

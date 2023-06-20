@@ -1,6 +1,5 @@
 import UserProfileBanner from "../../assets/userProfileBanner.png";
 import { Placeholder } from "../../components";
-
 const UserProfile = () => {
   return (
     <>
