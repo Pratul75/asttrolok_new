@@ -85,6 +85,9 @@ const UserProfile = () => {
                     id="currentPassword"
                   />
                 </div>
+                <button className="btn btn-primary mt-4 float-right">
+                  Change Password
+                </button>
               </div>
             </div>
           </div>
@@ -172,6 +175,24 @@ const UserProfile = () => {
               </div>
             </div>
             {/* fourth row for personal details */}
+            <div className="w-full flex gap-4">
+              <div className="form-control w-full">
+                <label htmlFor="currentPassword" className="label">
+                  <span className="label-text">Address</span>
+                </label>
+                <input
+                  className="input input-sm border  border-3 border-gray-400"
+                  type="password"
+                  name="currentPassword"
+                  id="currentPassword"
+                />
+              </div>
+            </div>
+            {/* button */}
+            <div className="flex gap-4 mt-4 justify-end">
+              <button className="btn btn-info">Save</button>
+              <button className="btn btn-outline btn-error">Cancel</button>
+            </div>
           </div>
         </div>
       </section>
