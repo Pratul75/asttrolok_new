@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import DashboardBanner from "../../assets/dashboardBanner.png";
 import axios from "axios";
 import { API_WRAPPER } from "../../api";
+import { CalendarPicker, InfoCard } from "../../components";
+import { PieChartIcon } from "../../icons";
+
 const UserDashboard = () => {
   const [consultations, setConsultations] = useState(false);
 
-  // getUserConsultatations
-
-  const getUserConsultatations = async () => {
+  const getUserConsultations = async () => {
     try {
       const res = await API_WRAPPER.get(`/api/users/allConsultationsOfUser`);
 
@@ -24,25 +25,20 @@ const UserDashboard = () => {
   };
 
   useEffect(() => {
-    getUserConsultatations();
+    getUserConsultations();
   }, []);
 
-  console.log("USER DASHBOARD");
   return (
     <div className="mx-auto">
-      {/* First Row */}
       <div className="flex flex-col md:flex-row gap-4 w-full py-8">
         <div className="flex flex-col md:flex-row justify-between h-auto bg-[#EBF3FE] rounded-lg p-6 md:p-[30px] md:w-3/4">
-          {/* content */}
           <div className="flex flex-col gap-3 items-center md:items-start justify-around">
             <div className="flex gap-4 items-center">
-              {/* avatar */}
               <div className="avatar placeholder">
                 <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
                   <span className="text-sm">VB</span>
                 </div>
               </div>
-              {/* heading */}
               <h2 className="font-semibold">Welcome back Vishesh Bajpayee</h2>
             </div>
             <div className="flex gap-4">
@@ -58,7 +54,6 @@ const UserDashboard = () => {
               </div>
             </div>
           </div>
-          {/* image */}
           <div className="w-full md:w-1/4 mt-4 md:mt-0">
             <img
               src={DashboardBanner}
@@ -80,20 +75,55 @@ const UserDashboard = () => {
           </div>
         </div>
       </div>
-      {/* second Row */}
       <div className="flex flex-wrap md:flex-nowrap w-full gap-4">
-        <div className="md:w-full flex flex-wrap md:flex-nowrap justify-between  gap-4">
-          {/* first div */}
-          <div className="w-1/2 p-4 shadow-lg rounded-lg ">
-            <h4 className="text-[18px] font-semibold">Today Consultation</h4>
-            <p className="text-[14px]">Know about your day</p>
-          </div>
-          <div className="w-1/2 p-4 rounded-lg shadow-lg">
-            <h4 className="text-[18px] font-semibold">Upcoming Consultation</h4>
-            {/* second div */}
-            <p className="text-[14px]">Your upcoming events</p>
+        <div className="md:w-full flex flex-wrap md:flex-nowrap justify-between gap-4">
+          <div className="w-full md:w-1/2 p-4 shadow-lg rounded-lg">
             <div>
-              <input className="date-input" type="date" name="" id="" />
+              <h4 className="text-[18px] font-semibold">Today Consultation</h4>
+              <p className="text-[14px]">Know about your day</p>
+            </div>
+            <div className="w-full flex justify-center relative">
+              <span className="absolute text-3xl md:text-5xl top-[34%] font-bold">
+                30
+              </span>
+              <PieChartIcon />
+            </div>
+            <div className="flex justify-around w-full">
+              <div className="flex items-center gap-4">
+                <div className="w-2 h-2 rounded-full bg-primary"></div>
+                <span>Completed</span>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                <span>Remaining</span>
+              </div>
+            </div>
+            <InfoCard
+              heading="Top Course"
+              subHeading="Astrology"
+              time="11:10 AM"
+              icon="VB"
+            />
+            <InfoCard
+              heading="Best Astrologer"
+              subHeading="Vanya Ojha"
+              time="10:00 AM"
+              icon="HR"
+            />
+            <InfoCard
+              heading="Most Commented"
+              subHeading="Astrology"
+              time="1:30 PM"
+              icon="AB"
+            />
+          </div>
+
+          {/* right side div */}
+          <div className="w-full md:w-1/2 p-4 rounded-lg shadow-lg">
+            <h4 className="text-[18px] font-semibold">Upcoming Consultation</h4>
+            <p className="text-[14px]">Your upcoming events</p>
+            <div className="p-4">
+              <CalendarPicker />
             </div>
           </div>
         </div>

@@ -144,10 +144,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <div className="md:hidden">
-          <button
-            className="fixed top-4 right-4 text-gray-500 focus:outline-none"
-            onClick={handleMobileMenuToggle}
-          >
+          <button className="fixed top-4 right-4 text-gray-500 focus:outline-none">
             {!isMobileMenuOpen ? (
               <HiMenu className="w-8" />
             ) : (

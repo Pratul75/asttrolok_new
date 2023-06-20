@@ -9,7 +9,6 @@ export const loginResponse = createSlice({
   name: "loginResponse",
   initialState,
   reducers: {
-   
     store: (state, action) => {
       state.value = action.payload;
     },
@@ -17,6 +16,6 @@ export const loginResponse = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const {  store } = loginResponse.actions;
+export const { store } = loginResponse.actions;
 
 export default loginResponse.reducer;
