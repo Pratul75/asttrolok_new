@@ -56,7 +56,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`p-4 ${isFixed ? "p-8 bg-white fixed " : ""}`}
+        className={`p-4 w-full ${isFixed ? "p-8 bg-white fixed " : ""}`}
         style={{ filter: isFixed ? "blur(5px)" : "none" }}
       >
         <div className="flex justify-between items-center">

@@ -18,6 +18,9 @@ export default {
     //   '2xl': '1536px',
     //   // => @media (min-width: 1536px) { ... }
     // }
+    classes: {
+      "date-input": "border rounded p-2",
+    },
     extend: {
       fontFamily: {
         "plus-jakarta-sans": ['"Plus Jakarta Sans"', "sans-serif"],
