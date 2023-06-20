@@ -8,9 +8,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../validations";
 import { API_WRAPPER } from "../../api";
+import { useDispatch } from "react-redux";
+import { store } from "../../features/loginResponse/LoginResponse";
 
 // login page
 const LoginPage = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
     register,
@@ -22,13 +25,15 @@ const LoginPage = () => {
     console.log("LOGIN DATA: ", data);
 
     const res = await API_WRAPPER.post("/api/login", { ...data, role: "user" });
+
+    
     console.log("RESPONSE: ", res?.data?.data);
     if (res?.data) {
-       localStorage.setItem("user", JSON.stringify({ role: "USER" }));
-
+       localStorage.setItem("user", JSON.stringify({ role: "user" }));
+         
        if(res?.data?.data?.token){
-           console.log("iamworking");
-       localStorage.setItem("token", JSON.stringify({ role: res?.data?.data?.token }));
+         dispatch(store(res?.data?.data)) 
+       localStorage.setItem("token", JSON.stringify({ token: res?.data?.data?.token }));
        }
     }
     navigate(PATHS.userDashboard);

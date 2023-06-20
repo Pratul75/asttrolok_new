@@ -42,7 +42,7 @@ userRoutes.post("/addMoneyTowallet", checkLoginOrNot,tryCatch(userController.add
 userRoutes.post("/createWallet", checkLoginOrNot,tryCatch(userController.createWallet), errorHandler)
 
 
-userRoutes.get("/allConsultationsOfUser",checkLoginOrNot, tryCatch(globalController.consultationsOfUser), errorHandler)
+userRoutes.get("/allConsultationsOfUser",checkLoginOrNot, tryCatch(userController.getAllConsultationOfUser), errorHandler)
 
 userRoutes.post("/ratingsAndReview",checkLoginOrNot, tryCatch(userController.createRatingsAndReview), errorHandler)
 

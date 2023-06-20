@@ -11,11 +11,13 @@ exports.checkLoginOrNot = async (req, res, next) => {
   // req.cookies.token
   // req.body.token
 
+
   if (!token) {
     return res.status(404).json("token is missing, Please login");
   }
   try {
     const decode = jwt.verify(token, process.env.SECRET_KEY);
+   
     if (!decode) {
       return res.status(400).json({
         success: false,

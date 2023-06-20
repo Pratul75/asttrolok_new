@@ -1,3 +1,4 @@
+const AstrologerConsultation = require("../models/Astrologers/AstrologerConsultation");
 const purchaseHistory = require("../models/common/purchaseHistory");
 const Usermodel = require("../models/users/Usermodel");
 const ratingsReview = require("../models/users/ratingsReview");
@@ -125,6 +126,18 @@ class UserService extends BaseService {
       return new ResponseTemp(false,"Not found", false, 404)
     }
 
+}
+
+async getAllConsultation(userId) {
+  const data = await AstrologerConsultation.find({ userId});
+ 
+ 
+  // here we have used data.length as find gives us array and if not found still gives empty array
+  if (data?.length) {
+    return new ResponseTemp(true, "Found data", false, 200, data);
+  } else {
+    return new ResponseTemp(false, "No consultation yet", false, 404);
+  }
 }
  
 }

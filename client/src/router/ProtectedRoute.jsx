@@ -1,12 +1,14 @@
 import PropTypes from "prop-types";
 import { Navigate, Outlet } from "react-router-dom";
 import { PATHS } from "./paths";
+import { Children } from "react";
 
 const useAuth = () => {
   // get item from localstorage
   let user;
   const _user = localStorage.getItem("user");
-  console.log("USER IN USE AUTH", _user);
+
+  // console.log("USER IN USE AUTH", _user);
   if (_user) {
     user = JSON.parse(_user);
     console.log("user", user);
@@ -25,15 +27,16 @@ const useAuth = () => {
 };
 
 // protected routes
-export const ProtectedRoute = ({ roleRequired }) => {
+export const ProtectedRoute = ({ roleRequired, children }) => {
   const { auth, role } = useAuth();
-  console.log("AUTH: ", auth, "ROLE: ", role);
+
+  // console.log("AUTH: ", auth, "ROLE: ", role);
   // if the role required is there or not
   if (roleRequired) {
-    console.log("ROLE REQUIRED: ", roleRequired, role);
+    // console.log("ROLE REQUIRED: ", roleRequired, role);
     return auth ? (
       roleRequired === role ? (
-        <Outlet />
+        children
       ) : (
         <Navigate to={PATHS.permissionDenied} />
       )
@@ -41,7 +44,7 @@ export const ProtectedRoute = ({ roleRequired }) => {
       <Navigate to={PATHS.login} />
     );
   } else {
-    return auth ? <Outlet /> : <Navigate to={PATHS.login} />;
+    return auth ? children : <Navigate to={PATHS.login} />;
   }
 };
 
