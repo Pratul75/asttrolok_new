@@ -3,26 +3,22 @@ import DashboardBanner from "../../assets/dashboardBanner.png";
 import axios from "axios";
 import { API_WRAPPER } from "../../api";
 const UserDashboard = () => {
-
-  const [consultations ,setConsultations] = useState(false)
-
-
+  const [consultations, setConsultations] = useState(false);
 
   // getUserConsultatations
 
   const getUserConsultatations = async () => {
-
     try {
       const res = await API_WRAPPER.get(`/api/users/allConsultationsOfUser`);
 
-      console.log("allConsultationsOfUser",res);
-      if(res?.data?.errorCode === 200){
-        setConsultations(res?.data?.data.length)
+      console.log("allConsultationsOfUser", res);
+      if (res?.data?.errorCode === 200) {
+        setConsultations(res?.data?.data.length);
       }
     } catch (error) {
       console.log(error?.response?.data);
-      if(error?.response?.data?.errorCode === 404){
-        setConsultations(error?.response?.data?.message)
+      if (error?.response?.data?.errorCode === 404) {
+        setConsultations(error?.response?.data?.message);
       }
     }
   };
@@ -55,7 +51,9 @@ const UserDashboard = () => {
                 <p>Number of Courses</p>
               </div>
               <div>
-                <span className="text-3xl font-semibold">{consultations?(consultations):(0)}</span>
+                <span className="text-3xl font-semibold">
+                  {consultations ? consultations : 0}
+                </span>
                 <p>Number of Consultation</p>
               </div>
             </div>

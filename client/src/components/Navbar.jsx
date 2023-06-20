@@ -33,9 +33,7 @@ const Navbar = () => {
   const handleAvatarClick = () => {
     const token = localStorage.getItem("token");
     localStorage.clear();
-    window.location.href = "/login"; 
-
-   
+    window.location.href = "/login";
   };
 
   React.useEffect(() => {
