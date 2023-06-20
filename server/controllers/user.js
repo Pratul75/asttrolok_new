@@ -15,8 +15,6 @@ class UserController {
   globalServiceInstance = new GlobalService();
   BaseServiceInstance = new BaseService();
 
-
-
   //update personal Detail
   personalDetailUpdate = async (req, res) => {
     const { data } = req.body;
@@ -36,38 +34,50 @@ class UserController {
 
   //get personal Detail this is get route
   getpersonalDetail = async (req, res) => {
+    const data = await this.BaseServiceInstance.findById(
+      req.user._id,
+      Usermodel
+    );
 
-      const data = await this.BaseServiceInstance.findById(req.user._id, Usermodel);
-
-      return res.status(data?.errorCode).json(data)
+    return res.status(data?.errorCode).json(data);
   };
 
   getAstrologerAllConsultation = async (req, res) => {
     const { astrologerId } = req.query;
 
-      if(await this.globalServiceInstance.checkTheParams(astrologerId,"Please provide astrologerId")){
+    if (
+      await this.globalServiceInstance.checkTheParams(
+        astrologerId,
+        "Please provide astrologerId"
+      )
+    ) {
+      const consultations =
+        await this.astrologerServiceInstance.getAllConsultation(astrologerId);
 
-        const consultations =
-          await this.astrologerServiceInstance.getAllConsultation(astrologerId);
-  
-        return res.status(consultations?.errorCode).json(consultations)
-      }
-
-     
-      
-  
+      return res.status(consultations?.errorCode).json(consultations);
+    }
   };
 
+  getAllConsultationOfUser = async (req, res) => {
+
+
+    const consultations =
+      await this.userServiceInstance.getAllConsultation(req.user._id);
+
+    return res.status(consultations?.errorCode).json(consultations);
+  };
 
   bookAstrologerForConsultation = async (req, res) => {
     try {
-
-      
       const { astrologerId } = req.query;
       const { bookingDetails } = req.body;
-      
-      if(await this.globalServiceInstance.checkTheParams({astrologerId,bookingDetails})){
 
+      if (
+        await this.globalServiceInstance.checkTheParams({
+          astrologerId,
+          bookingDetails,
+        })
+      ) {
       }
       const createdNewBooking =
         await this.astrologerServiceInstance.createNewBooking(
@@ -203,72 +213,69 @@ class UserController {
   };
 
   getWallet = async (req, res) => {
+    const walletData = await this.BaseServiceInstance.findOneByUserId(
+      req.user._id,
+      wallet
+    );
 
-      const walletData = await this.BaseServiceInstance.findOneByUserId(
-        req.user._id,wallet
-      );
-
-      return res.status(walletData?.errorCode).json({ walletData });
-  
+    return res.status(walletData?.errorCode).json({ walletData });
   };
 
   createWallet = async (req, res) => {
- 
-      const newWallet = await this.userServiceInstance.createNewWallet(
-        req.user._id
-      );
+    const newWallet = await this.userServiceInstance.createNewWallet(
+      req.user._id
+    );
 
-      return res.status(newWallet.errorCode).json({ newWallet });
-  
+    return res.status(newWallet.errorCode).json({ newWallet });
   };
 
   addMoneyTowallet = async (req, res) => {
-      const { amount } = req.body;
-      if (!amount) {
-        return new ResponseTemp(false, "did not add money to wallet", false, 404);
+    const { amount } = req.body;
+    if (!amount) {
+      return new ResponseTemp(false, "did not add money to wallet", false, 404);
+    } else {
+      const newAmount = await this.userServiceInstance.addMoneyToWallet(
+        req.user._id,
+        amount
+      );
 
-      } else {
-        const newAmount = await this.userServiceInstance.addMoneyToWallet(
-          req.user._id,
-          amount
-        );
-
-        return res.status(newAmount.errorCode).json({ newAmount });
-      }
-  
+      return res.status(newAmount.errorCode).json({ newAmount });
+    }
   };
 
   // their is get rating api but it is in  global controller
   createRatingsAndReview = async (req, res) => {
-   
-      const { rating, review } = req.body;
-      const { astrologerId } = req.query;
+    const { rating, review } = req.body;
+    const { astrologerId } = req.query;
 
-      if(await this.globalServiceInstance.checkTheParams({rating,review,astrologerId})){
-        let status = 'pending';
-        const newRatingsAndReview =
-          await this.userServiceInstance.createNewRatingAndReview(
-            rating,
-            review,
-            req.user._id,
-            astrologerId,
-            status
-          );
-        return res.status(newRatingsAndReview?.errorCode).json(newRatingsAndReview);
-
-      }
+    if (
+      await this.globalServiceInstance.checkTheParams({
+        rating,
+        review,
+        astrologerId,
+      })
+    ) {
+      let status = "pending";
+      const newRatingsAndReview =
+        await this.userServiceInstance.createNewRatingAndReview(
+          rating,
+          review,
+          req.user._id,
+          astrologerId,
+          status
+        );
+      return res
+        .status(newRatingsAndReview?.errorCode)
+        .json(newRatingsAndReview);
+    }
   };
 
   getRatingReviewByUser = async (req, res) => {
     const ratingsAndReviews =
-    await this.userServiceInstance.getRatingAndReviewByuser(req.user._id)
+      await this.userServiceInstance.getRatingAndReviewByuser(req.user._id);
 
-  return res
-    .status(ratingsAndReviews?.errorCode)
-    .json(ratingsAndReviews);    
-  }
-
- 
+    return res.status(ratingsAndReviews?.errorCode).json(ratingsAndReviews);
+  };
 }
 
 module.exports = UserController;
