@@ -136,6 +136,7 @@ class AuthService {
 
   async changePassword(id,password,oldPassword, newPassword,model){
 
+    console.log(id,password,oldPassword, newPassword);
   
     if(await bcrypt.compare(oldPassword, password)){
             
@@ -147,9 +148,12 @@ class AuthService {
       const user = await model.findById(id)
         
       if(user){
-        console.log(user,"asas");
+        
         user.password = newPassword;
+     
         await user.save();
+
+        
         return new ResponseTemp(true,"password changes",false, 200)
       }
       else{

@@ -8,7 +8,7 @@ const PersonalDetails = () => {
   const [userProfile, setUserProfile] = useState("");
 
 
-  
+
   const getpersonalDetailOfUser = async () => {
     try {
       const resp = await axios.get(
@@ -31,9 +31,7 @@ const PersonalDetails = () => {
     }
   };
 
-  useEffect(() => {
-    getpersonalDetailOfUser();
-  }, []);
+ 
 
   const {
     register,
@@ -57,7 +55,7 @@ const PersonalDetails = () => {
           },
         }
       );
-      console.log(resp);
+    
       if (resp) {
         console.log(resp?.data);
       }
@@ -65,6 +63,7 @@ const PersonalDetails = () => {
       console.log(error);
     }
   };
+  
   useEffect(() => {
     getpersonalDetailOfUser();
   }, []);

@@ -43,7 +43,6 @@ const UserSchema = new mongoose.Schema(
     },
     mobile: {
       type: Number,
-      required: true,
     },
     profilePicture: {
       id: String,
