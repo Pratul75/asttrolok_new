@@ -1,5 +1,7 @@
 import React from "react";
 import { changePasswordSchema } from "../../../validations";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const ChangePassword = () => {
   const {
@@ -29,7 +31,7 @@ const ChangePassword = () => {
             </label>
             <input
               className="input input-sm border  border-3 border-gray-400"
-              // {...register("currentPassword")}
+              {...register("currentPassword")}
               type="password"
               name="currentPassword"
               id="currentPassword"
@@ -42,7 +44,7 @@ const ChangePassword = () => {
             </label>
             <input
               className="input input-sm border  border-3 border-gray-400"
-              // {...register("newPassword")}
+              {...register("newPassword")}
               type="password"
               name="newPassword"
               id="newPassword"
@@ -56,7 +58,7 @@ const ChangePassword = () => {
             </label>
             <input
               className="input input-sm border  border-3 border-gray-400"
-              // {...register("confirmPassword")}
+              {...register("confirmPassword")}
               type="password"
               name="confirmPassword"
               id="confirmPassword"
