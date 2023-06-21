@@ -93,30 +93,33 @@ class AuthController {
     return res.status(logindetails?.errorCode).json(logindetails);
   };
 
-  changePassword = async (req, res)=>{
-
-
-     const {currentPassword, newPassword} = req.body
-      if(await this.globalServiceInstance.checkTheParams({currentPassword, newPassword})){
-        
-        let model;     
-       if(req.user.role === "user"){
-         model = Usermodel;
-       } 
-       else if(req.user.role === "astrologer"){
+  changePassword = async (req, res) => {
+    const { currentPassword, newPassword } = req.body;
+    if (
+      await this.globalServiceInstance.checkTheParams({
+        currentPassword,
+        newPassword,
+      })
+    ) {
+      let model;
+      if (req.user.role === "user") {
+        model = Usermodel;
+      } else if (req.user.role === "astrologer") {
         model = AstrologerPersonalDetailModel;
-       }
-       else if(req.user.role === "admin"){
+      } else if (req.user.role === "admin") {
         model = Admindetails;
-       }
-       const data =await this.authSeriviceInstance.changePassword(req.user._id,req.user.password,currentPassword,newPassword,model)
-          
-      
-       
-
-       return res.status(data?.errorCode).json(data)
       }
-  }
+      const data = await this.authSeriviceInstance.changePassword(
+        req.user._id,
+        req.user.password,
+        currentPassword,
+        newPassword,
+        model
+      );
+
+      return res.status(data?.errorCode).json(data);
+    }
+  };
 }
 
 module.exports = AuthController;
