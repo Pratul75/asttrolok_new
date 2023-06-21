@@ -73,6 +73,7 @@ const LoginPage = () => {
         <div className="text-center text-xs text-gray-400">
           _____or sign in with_____
         </div>
+        
         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
           {/* username input */}
           <div className="form-control">
@@ -82,6 +83,7 @@ const LoginPage = () => {
             <input
               {...register("userName")}
               name="userName"
+              
               type="text"
               className="input input-bordered border-2 w-full"
             />

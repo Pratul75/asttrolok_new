@@ -50,3 +50,23 @@ export const forgetPasswordSchema = () => {
       .required("email cannot be empty string"),
   });
 };
+
+export const profileUpdateSchema = () => {
+  return yup.object({
+    firstName: yup
+      .string("name must be a string")
+      .min(3, "name must contain atleast 3 characters ")
+      .required("name is required"),
+    lastName: yup
+      .string("name must be a string")
+      .min(3, "name must contain atleast 3 characters ")
+      .required("name is required"),
+    email: yup.string().email("invalid email").required("email is required"),
+    
+
+    address: yup.string("address must be a string"),
+    location: yup.string("location must be a string"),
+    mobile: yup
+      .string()
+  });
+};

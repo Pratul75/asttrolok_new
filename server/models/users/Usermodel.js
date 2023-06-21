@@ -2,7 +2,13 @@ const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema(
   {
-    name: {
+    firstName: {
+      type: String,
+      require: true,
+      min: 2,
+      max: 25,
+    },
+    lastName:{
       type: String,
       require: true,
       min: 2,
@@ -47,6 +53,12 @@ const UserSchema = new mongoose.Schema(
       type: String,
       default: "user",
     },
+    address:{
+      type: String,
+    },
+    location:{
+      type: String,
+    }
   },
   { timestamps: true }
 );

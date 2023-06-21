@@ -37,6 +37,7 @@ class AuthController {
           const newWalletCreated =
             await this.userServiceInstance.createNewWallet(newUserCreated?._id);
           console.log(newWalletCreated);
+
           return res.status(newWalletCreated?.errorCode).json(newWalletCreated);
         } else {
           return res.status(404).json({
@@ -91,6 +92,30 @@ class AuthController {
     }
     return res.status(logindetails?.errorCode).json(logindetails);
   };
+
+  changePassword = async (req, res)=>{
+
+
+     const {oldPassword, newPassword} = req.body
+      if(await this.globalServiceInstance.checkTheParams({oldPassword, newPassword})){
+        
+        let model;     
+       if(req.user.role === "user"){
+         model = Usermodel;
+       } 
+       else if(req.user.role === "astrologer"){
+        model = AstrologerPersonalDetailModel;
+       }
+       else if(req.user.role === "admin"){
+        model = Admindetails;
+       }
+       const data =await this.authSeriviceInstance.changePassword(req.user._id,req.user.password,oldPassword,newPassword,model)
+          
+       
+
+       return res.status(data?.errorCode).json(data)
+      }
+  }
 }
 
 module.exports = AuthController;

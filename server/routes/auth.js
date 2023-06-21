@@ -3,6 +3,7 @@ const  AuthController  = require("../controllers/authController");
 const { register } = require("../controllers/user");
 const { tryCatch } = require("../utils/tryCatch");
 const errorHandler = require("../middleware/errorhandler");
+const { checkLoginOrNot } = require("../middleware/auth");
 const authRoutes = express.Router();
 
 
@@ -14,7 +15,7 @@ const auth = new AuthController;
 
  authRoutes.post("/register", auth.register);
  authRoutes.post("/login",tryCatch(auth.login),errorHandler);
-  
+ authRoutes.put("/changePassword", checkLoginOrNot, tryCatch(auth.changePassword) ,errorHandler  ) 
 
 module.exports = authRoutes;
 

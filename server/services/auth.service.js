@@ -6,9 +6,11 @@ const jwt = require("jsonwebtoken");
 const AppError = require("../utils/AppError");
 const { tryCatch } = require("../utils/tryCatch");
 const ResponseTemp = require("../utils/ResponseTemp");
+const BaseService = require("./base.service");
 
 class AuthService {
   // in check details if user or astrologer is already present then we will not send the data to controller we will do diect response to clint from here
+   baseServiceInstance = new BaseService();
   async checkdetails(data, res) {
     try {
       const { email, role } = data;
@@ -103,6 +105,8 @@ class AuthService {
 
   async login(password, loginPerson) {
     if (await bcrypt.compare(password, loginPerson.password)) {
+
+      
       const token = jwt.sign(
         { id: loginPerson._id, role: loginPerson.role },
         process.env.SECRET_KEY,
@@ -128,6 +132,35 @@ class AuthService {
     } else {
       return new ResponseTemp(false, "password is incorrect", false, 404);
     }
+  }
+
+  async changePassword(id,password,oldPassword, newPassword,model){
+
+  
+    if(await bcrypt.compare(oldPassword, password)){
+            
+      const salt = await bcrypt.genSalt(10);
+
+      const hashedPassword = await bcrypt.hash(newPassword, salt);
+      newPassword = hashedPassword;
+       
+      const user = await model.findById(id)
+        
+      if(user){
+        console.log(user,"asas");
+        user.password = newPassword;
+        await user.save();
+        return new ResponseTemp(true,"password changes",false, 200)
+      }
+      else{
+        return new ResponseTemp(false,"password not changes",false, 400)
+      } 
+           
+    }
+    else{
+      return new ResponseTemp(false,"password does not match",false,400)
+    }
+      
   }
 }
 

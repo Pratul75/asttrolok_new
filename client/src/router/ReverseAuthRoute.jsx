@@ -1,6 +1,5 @@
 import { Outlet, Navigate, useLocation } from "react-router-dom";
 import { PATHS } from "../router/paths";
-import { Children } from "react";
 
 const ReverseAuthRoute = ({children}) => {
   const location = useLocation();

@@ -1,7 +1,88 @@
+import { useEffect, useState } from "react";
 import UserProfileBanner from "../../assets/userProfileBanner.png";
 import { Placeholder } from "../../components";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { profileUpdateSchema } from "../../validations";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const UserProfile = () => {
+
+ const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(profileUpdateSchema()) });
+
+
+  
+
+  
+  
+
+
+  const [userProfile, setUserProfile] = useState('')
+   
+  const onSubmit = async(data)=>{
+     
+
+    
+
+
+
+    try {
+      console.log("onsumbit");
+       const resp = await axios.post(`http://localhost:4000/api/users/personalDetail`,{data},
+       {
+        headers: {
+          "Content-Type": "application/json", // Set the default Content-Type header
+          // Add any additional headers you need
+          role: JSON.parse(localStorage.getItem("user"))?.role,
+          Authorization: JSON.parse(localStorage.getItem("token"))?.token,
+        },
+      })
+      console.log(resp);
+     if(resp){
+      console.log(resp?.data);
+     }
+ 
+    } catch (error) {
+      console.log(error);  
+    }
+  
+   
+  }
+    
+
+ 
+   
+  const getpersonalDetailOfUser = async() =>{
+    try {
+      const resp = await axios.get(`http://localhost:4000/api/users/getpersonalDetail`, {
+        headers: {
+          "Content-Type": "application/json", // Set the default Content-Type header
+          // Add any additional headers you need
+          role: JSON.parse(localStorage.getItem("user"))?.role,
+          Authorization: JSON.parse(localStorage.getItem("token"))?.token,
+        },
+      })
+      if(resp?.data?.errorCode === 200){
+        console.log(resp?.data?.data);
+        setUserProfile(resp?.data?.data)
+      }
+    } catch (error) {
+       console.log(error);
+    }
+  }
+
+  useEffect(()=>{
+    getpersonalDetailOfUser();
+   },[])
+ 
+
+
+
+
   return (
     <>
       {/* header */}
@@ -55,6 +136,7 @@ const UserProfile = () => {
                   </label>
                   <input
                     className="input input-sm border  border-3 border-gray-400"
+                    // {...register("currentPassword")}
                     type="password"
                     name="currentPassword"
                     id="currentPassword"
@@ -62,27 +144,29 @@ const UserProfile = () => {
                 </div>
                 {/* new password */}
                 <div className="form-control w-full">
-                  <label htmlFor="currentPassword" className="label">
+                  <label htmlFor="newPassword" className="label">
                     <span className="label-text">New Password</span>
                   </label>
                   <input
                     className="input input-sm border  border-3 border-gray-400"
+                    // {...register("newPassword")}
                     type="password"
-                    name="currentPassword"
-                    id="currentPassword"
+                    name="newPassword"
+                    id="newPassword"
                   />
                 </div>
 
                 {/* confirm password */}
                 <div className="form-control w-full">
-                  <label htmlFor="currentPassword" className="label">
+                  <label htmlFor="confirmPassword" className="label">
                     <span className="label-text">Confirm Password</span>
                   </label>
                   <input
                     className="input input-sm border  border-3 border-gray-400"
+                    // {...register("confirmPassword")}
                     type="password"
-                    name="currentPassword"
-                    id="currentPassword"
+                    name="confirmPassword"
+                    id="confirmPassword"
                   />
                 </div>
                 <button className="btn btn-primary mt-4 float-right">
@@ -91,6 +175,7 @@ const UserProfile = () => {
               </div>
             </div>
           </div>
+
           {/* second row */}
           <div className="w-full rounded-lg shadow-lg p-4">
             <div>
@@ -99,100 +184,120 @@ const UserProfile = () => {
                 To change your personal detail, edit and save from here
               </p>
             </div>
+
             {/* first row of personal details */}
+            <form onSubmit={handleSubmit(onSubmit)}>
+
             <div className="w-full flex gap-4">
               <div className="form-control w-full">
-                <label htmlFor="currentPassword" className="label">
+                <label htmlFor="firstName" className="label">
                   <span className="label-text">First Name</span>
                 </label>
+                {console.log(userProfile)}
                 <input
                   className="input input-sm border  border-3 border-gray-400"
-                  type="password"
-                  name="currentPassword"
-                  id="currentPassword"
+                  {...register("firstName")}
+                  type="text"
+                  defaultValue={userProfile?.firstName}
+                  name="firstName"
+                  id="firstName"
                 />
               </div>
               <div className="form-control w-full">
-                <label htmlFor="currentPassword" className="label">
+                <label htmlFor="lastName" className="label">
                   <span className="label-text">Last Name</span>
                 </label>
                 <input
                   className="input input-sm border  border-3 border-gray-400"
-                  type="password"
-                  name="currentPassword"
-                  id="currentPassword"
+                  {...register("lastName")}
+                  type="text"
+                  defaultValue={userProfile?.lastName}
+                  name="lastName"
+                  id="lastName"
                 />
               </div>
             </div>
+
             {/* second row for personal details */}
             <div className="w-full flex gap-4">
               <div className="form-control w-full">
-                <label htmlFor="currentPassword" className="label">
+                <label htmlFor="location" className="label">
                   <span className="label-text">Location</span>
                 </label>
                 <input
                   className="input input-sm border  border-3 border-gray-400"
-                  type="password"
-                  name="currentPassword"
-                  id="currentPassword"
+                  {...register("location")}
+                  defaultValue={userProfile?.location}
+                  type="text"
+                  name="location"
+                  id="location"
                 />
               </div>
               <div className="form-control w-full">
-                <label htmlFor="currentPassword" className="label">
+                <label htmlFor="currency" className="label">
                   <span className="label-text">Currency</span>
                 </label>
                 <input
                   className="input input-sm border  border-3 border-gray-400"
-                  type="password"
-                  name="currentPassword"
-                  id="currentPassword"
+                  type="number"
+                  name="currency"
+                  id="currency"
                 />
               </div>
             </div>
             {/* third row for personal details */}
             <div className="w-full flex gap-4">
               <div className="form-control w-full">
-                <label htmlFor="currentPassword" className="label">
+                <label htmlFor="email" className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
+                  
                   className="input input-sm border  border-3 border-gray-400"
-                  type="password"
-                  name="currentPassword"
-                  id="currentPassword"
+                  {...register("email")}
+                  type="email"
+                  defaultValue={userProfile?.email}
+                  name="email"
+                  id="email"
                 />
               </div>
               <div className="form-control w-full">
-                <label htmlFor="currentPassword" className="label">
-                  <span className="label-text">Phone</span>
+                <label htmlFor="mobile" className="label">
+                  <span className="label-text">mobile</span>
                 </label>
                 <input
                   className="input input-sm border  border-3 border-gray-400"
-                  type="password"
-                  name="currentPassword"
-                  id="currentPassword"
+                  {...register("mobile")}
+                  type="tel"
+                  defaultValue={userProfile?.mobile}
+                  name="mobile"
+                  id="mobile"
                 />
               </div>
             </div>
             {/* fourth row for personal details */}
             <div className="w-full flex gap-4">
               <div className="form-control w-full">
-                <label htmlFor="currentPassword" className="label">
+                <label htmlFor="address" className="label">
                   <span className="label-text">Address</span>
                 </label>
+                
                 <input
                   className="input input-sm border  border-3 border-gray-400"
-                  type="password"
-                  name="currentPassword"
-                  id="currentPassword"
+                  {...register("address")}
+                  defaultValue={userProfile?.address}
+                  type="text"
+                  name="address"
+                  id="address"
                 />
               </div>
             </div>
             {/* button */}
             <div className="flex gap-4 mt-4 justify-end">
-              <button className="btn btn-info">Save</button>
-              <button className="btn btn-outline btn-error">Cancel</button>
+              <button type="submit" className="btn btn-info">save</button>
+              <button  className="btn btn-outline btn-error">Cancel</button>
             </div>
+            </form>
           </div>
         </div>
       </section>

@@ -17,12 +17,15 @@ class UserController {
 
   //update personal Detail
   personalDetailUpdate = async (req, res) => {
-    const { data } = req.body;
 
-    await this.globalServiceInstance.checkTheParams(
-      data,
-      "please provide some data"
-    );
+   
+    const { data } = req.body;
+    
+  
+    // await this.globalServiceInstance.checkTheParams(
+    //   data,
+    //   "please provide some data"
+    // );
 
     const resp = await this.BaseServiceInstance.findByIdAndUpdate(
       req.user._id,
@@ -34,6 +37,7 @@ class UserController {
 
   //get personal Detail this is get route
   getpersonalDetail = async (req, res) => {
+   
     const data = await this.BaseServiceInstance.findById(
       req.user._id,
       Usermodel

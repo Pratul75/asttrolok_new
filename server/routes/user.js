@@ -52,7 +52,6 @@ userRoutes.get("/ratingsReviewByUser", checkLoginOrNot,tryCatch(userController.g
 
 
 
-
 // userRoutes.post("/booking", checkLoginOrNot, booking)
 
 
