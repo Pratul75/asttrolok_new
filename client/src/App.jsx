@@ -9,9 +9,6 @@ import ReverseAuthRoute from "./router/ReverseAuthRoute";
 const App = () => {
   const loginResponse = useSelector((state) => state.loginResponse.value);
 
-
-
-
   const darkMode = useSelector((x) => x.appConfig.darkMode);
 
   return (
@@ -22,12 +19,14 @@ const App = () => {
       <Routes>
         <Route path={PATHS.root} element={<Navigate to={PATHS.login} />} />
 
-        <Route path={PATHS.login} element=
-        {
-          <ReverseAuthRoute>
-            <LoginPage />
-          </ReverseAuthRoute>
-        } />
+        <Route
+          path={PATHS.login}
+          element={
+            <ReverseAuthRoute>
+              <LoginPage />
+            </ReverseAuthRoute>
+          }
+        />
 
         <Route
           path={PATHS.userDashboard}

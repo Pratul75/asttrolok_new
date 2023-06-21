@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import DashboardBanner from "../../assets/dashboardBanner.png";
 import axios from "axios";
-import { API_WRAPPER } from "../../api";
 import { CalendarPicker, InfoCard } from "../../components";
-import { PieChartIcon } from "../../icons";
+import {
+  PieChartIcon,
+  FundsChartIcon,
+  SalesBarChart,
+  FaithfullUserChart,
+} from "../../icons";
 
 const UserDashboard = () => {
   const [consultations, setConsultations] = useState(false);
@@ -73,21 +77,26 @@ const UserDashboard = () => {
           </div>
         </div>
         <div className="flex gap-2 md:gap-4 flex-wrap md:flex-nowrap h-auto rounded-lg">
-          <div className="flex flex-col justify-center items-center shadow-lg p-6">
-            <span className="loading loading-ring loading-lg text-info"></span>
-            <span className="text-2xl font-semibold">$1204</span>
-            <span>Fund Remaining</span>
+          <div className="flex flex-col gap-2 shadow-lg p-6">
+            <div className="flex flex-col">
+              <span className="text-2xl font-semibold">$1204</span>
+              <span className="font-extralight">Expenses</span>
+            </div>
+            <FundsChartIcon />
           </div>
-          <div className="flex flex-col justify-center items-center shadow-lg p-6">
-            <span className="loading loading-ring loading-lg text-info"></span>
-            <span className="text-2xl font-semibold">$580</span>
-            <span>Fund Spend</span>
+          <div className="flex flex-col gap-2 shadow-lg p-6">
+            <div className="flex flex-col">
+              <span className="text-2xl font-semibold">$1204</span>
+              <span className="font-extralight">Sales</span>
+            </div>
+            <SalesBarChart />
           </div>
         </div>
       </div>
       <div className="flex flex-wrap md:flex-nowrap w-full gap-4">
         <div className="md:w-full flex flex-wrap md:flex-nowrap justify-between gap-4">
-          <div className="w-full md:w-1/2 p-4 shadow-lg rounded-lg">
+          {/* total consultation */}
+          <div className="w-full h-[62vh] md:w-1/2 p-4 shadow-lg rounded-lg overflow-y-auto">
             <div>
               <h4 className="text-[18px] font-semibold">Today Consultation</h4>
               <p className="text-[14px]">Know about your day</p>
@@ -113,27 +122,163 @@ const UserDashboard = () => {
               subHeading="Astrology"
               time="11:10 AM"
               icon="VB"
+              color="bg-accent"
             />
             <InfoCard
               heading="Best Astrologer"
               subHeading="Vanya Ojha"
               time="10:00 AM"
               icon="HR"
+              color="bg-primary"
             />
             <InfoCard
               heading="Most Commented"
               subHeading="Astrology"
               time="1:30 PM"
               icon="AB"
+              color="bg-info"
+            />
+            <InfoCard
+              heading="Best Astrologer"
+              subHeading="Vanya Ojha"
+              time="10:00 AM"
+              icon="HR"
+              color="bg-success"
+            />
+
+            <InfoCard
+              heading="Most Commented"
+              subHeading="Astrology"
+              time="1:30 PM"
+              icon="AB"
+              color="bg-warning"
+            />
+            <InfoCard
+              heading="Most Commented"
+              subHeading="Astrology"
+              time="4:30 PM"
+              icon="AB"
+              color="bg-secondary"
             />
           </div>
-
-          {/* right side div */}
-          <div className="w-full md:w-1/2 p-4 rounded-lg shadow-lg">
+          {/* upcoming consultation */}
+          <div className="w-full h-auto md:w-1/2 p-4 rounded-lg shadow-lg  ">
             <h4 className="text-[18px] font-semibold">Upcoming Consultation</h4>
             <p className="text-[14px]">Your upcoming events</p>
             <div className="p-4">
               <CalendarPicker />
+            </div>
+            <div className="overflow-y-auto h-[30vh]">
+              <InfoCard
+                heading="Top Course"
+                subHeading="Astrology"
+                time="11:10 AM"
+                icon="VB"
+                color="bg-secondary"
+              />
+              <InfoCard
+                heading="Best Astrologer"
+                subHeading="Vanya Ojha"
+                time="10:00 AM"
+                icon="HR"
+                color="bg-info"
+              />
+              <InfoCard
+                heading="Most Commented"
+                subHeading="Astrology"
+                time="1:30 PM"
+                icon="AB"
+                color="bg-success"
+              />
+              <InfoCard
+                heading="Best Astrologer"
+                subHeading="Vanya Ojha"
+                time="10:00 AM"
+                icon="HR"
+                color="bg-info"
+              />
+              <InfoCard
+                heading="Most Commented"
+                subHeading="Astrology"
+                time="1:30 PM"
+                icon="AB"
+                color="bg-success"
+              />
+              <InfoCard
+                heading="Top Course"
+                subHeading="Astrology"
+                time="11:10 AM"
+                icon="VB"
+                color="bg-secondary"
+              />
+              <InfoCard
+                heading="Best Astrologer"
+                subHeading="Vanya Ojha"
+                time="10:00 AM"
+                icon="HR"
+                color="bg-info"
+              />
+              <InfoCard
+                heading="Most Commented"
+                subHeading="Astrology"
+                time="1:30 PM"
+                icon="AB"
+                color="bg-success"
+              />
+              <InfoCard
+                heading="Best Astrologer"
+                subHeading="Vanya Ojha"
+                time="10:00 AM"
+                icon="HR"
+                color="bg-info"
+              />
+              <InfoCard
+                heading="Most Commented"
+                subHeading="Astrology"
+                time="1:30 PM"
+                icon="AB"
+                color="bg-success"
+              />
+            </div>
+          </div>
+          {/* Next badge faithful user */}
+          <div className="w-full md:w-1/2 p-4 rounded-lg shadow-lg">
+            <h4 className="text-[18px] font-semibold">
+              Next Badge: Faithful User
+            </h4>
+            <p className="text-[14px]">Your upcoming events</p>
+            <div className="p-4 w-full flex justify-center">
+              <FaithfullUserChart />
+            </div>
+            <div>
+              <InfoCard
+                heading="Top Course"
+                subHeading="Astrology"
+                time="11:10 AM"
+                icon="VB"
+                color="bg-primary"
+              />
+              <InfoCard
+                heading="Best Astrologer"
+                subHeading="Vanya Ojha"
+                time="10:00 AM"
+                icon="HR"
+                color="bg-secondary"
+              />
+              <InfoCard
+                heading="Most Commented"
+                subHeading="Astrology"
+                time="1:30 PM"
+                icon="AB"
+                color="bg-success"
+              />
+              <InfoCard
+                heading="Top Course"
+                subHeading="Astrology"
+                time="11:10 AM"
+                icon="VB"
+                color="bg-warning"
+              />
             </div>
           </div>
         </div>
