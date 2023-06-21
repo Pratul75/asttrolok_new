@@ -25,7 +25,6 @@ export { default as AdminCommissionFees } from "./admin/AdminCommissionFees";
 export { default as AdminDashboard } from "./admin/AdminDashboard";
 export { default as AdminProducts } from "./admin/AdminProducts";
 export { default as AdminProfile } from "./admin/AdminProfile";
-export { default as AdminRatings } from "./admin/AdminRatings";
 export { default as AdminReports } from "./admin/AdminReports";
 export { default as AdminRevenues } from "./admin/AdminRevenues";
 export { default as AdminServices } from "./admin/AdminServices";
@@ -36,6 +35,3 @@ export { default as ForgetPasswordPage } from "./auth/ForgotPassword";
 export { default as LoginPage } from "./auth/LoginPage";
 export { default as SignupPage } from "./auth/SignupPage";
 export { default as PermissionDenied } from "./auth/PermissionDenied";
-
-// experimental
-// export { default as HomePage } from "./HomePage";
