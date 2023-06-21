@@ -96,8 +96,8 @@ class AuthController {
   changePassword = async (req, res)=>{
 
 
-     const {oldPassword, newPassword} = req.body
-      if(await this.globalServiceInstance.checkTheParams({oldPassword, newPassword})){
+     const {currentPassword, newPassword} = req.body
+      if(await this.globalServiceInstance.checkTheParams({currentPassword, newPassword})){
         
         let model;     
        if(req.user.role === "user"){
@@ -109,8 +109,9 @@ class AuthController {
        else if(req.user.role === "admin"){
         model = Admindetails;
        }
-       const data =await this.authSeriviceInstance.changePassword(req.user._id,req.user.password,oldPassword,newPassword,model)
+       const data =await this.authSeriviceInstance.changePassword(req.user._id,req.user.password,currentPassword,newPassword,model)
           
+      
        
 
        return res.status(data?.errorCode).json(data)
