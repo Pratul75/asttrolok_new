@@ -8,6 +8,7 @@ const Usermodel = require("../models/users/Usermodel");
 const wallet = require("../models/users/wallet");
 const ratingsReview = require("../models/users/ratingsReview");
 const AstrologerPersonalDetailModel = require("../models/Astrologers/AstrologerPersonalDetailModel");
+const UserFamilyMemberDetailModel = require("../models/users/UserFamilyMemberDetailModel");
 
 class UserController {
   userServiceInstance = new UserService();
@@ -17,15 +18,9 @@ class UserController {
 
   //update personal Detail
   personalDetailUpdate = async (req, res) => {
-
-   
     const { data } = req.body;
-    
-  
-    // await this.globalServiceInstance.checkTheParams(
-    //   data,
-    //   "please provide some data"
-    // );
+
+ //here we need to make some changes in check params  
 
     const resp = await this.BaseServiceInstance.findByIdAndUpdate(
       req.user._id,
@@ -35,11 +30,19 @@ class UserController {
     return res.status(resp?.errorCode).json(resp);
   };
 
+  familyDetailUpdate = async(req,res)=>{
+    const { data } = req.body;
 
-
+    const resp = await this.BaseServiceInstance.findByIdAndUpdate(
+      req.user._id,
+      data,
+      UserFamilyMemberDetailModel
+    );
+    return res.status(resp?.errorCode).json(resp);
+  }
+  
   //get personal Detail this is get route
   getpersonalDetail = async (req, res) => {
-   
     const data = await this.BaseServiceInstance.findById(
       req.user._id,
       Usermodel
@@ -65,10 +68,9 @@ class UserController {
   };
 
   getAllConsultationOfUser = async (req, res) => {
-
-
-    const consultations =
-      await this.userServiceInstance.getAllConsultation(req.user._id);
+    const consultations = await this.userServiceInstance.getAllConsultation(
+      req.user._id
+    );
 
     return res.status(consultations?.errorCode).json(consultations);
   };

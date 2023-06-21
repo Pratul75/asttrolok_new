@@ -71,26 +71,43 @@ export const profileUpdateSchema = () => {
 
 export const changePasswordSchema = () => {
   return yup.object({
-    currentPassword: yup
-      .string(),
-      // .min(3, "password cannot be less than 3 characters")
-      // .required("password is required")
-      // .matches(
-      //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
-      //   "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
-      // ),
-    newPassword: yup
-      .string(),
-      // .min(3, "password cannot be less than 3 characters")
-      // .required("password is required")
-      // .matches(
-      //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
-      //   "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
-      // ),
+    currentPassword: yup.string(),
+    // .min(3, "password cannot be less than 3 characters")
+    // .required("password is required")
+    // .matches(
+    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+    //   "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+    // ),
+    newPassword: yup.string(),
+    // .min(3, "password cannot be less than 3 characters")
+    // .required("password is required")
+    // .matches(
+    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+    //   "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+    // ),
 
     confirmPassword: yup
       .string()
       .oneOf([yup.ref("newPassword"), null], "Passwords must match")
       .required("Confirm Password is required"),
+  });
+};
+
+export const birthDetailsUpdateSchema = () => {
+  return yup.object({
+    firstName: yup
+      .string("firstName must be a string")
+      .min(3, "firstName must contain atleast 3 characters ")
+      .required("firstName is required"),
+    lastName: yup
+      .string("lastName must be a string")
+      .min(3, "lastName must contain atleast 3 characters ")
+      .required("lastName is required"),
+    gender: yup.string("gender must be a string"),
+    dateOfBirth:yup.string("dateOfBirth must be a string"),
+    placeOfbirth:yup.string("placeOFBirth must be a string"),
+    birthTime:yup.string("birthTime must be a string"),
+    message:yup.string("message must be a string"),
+    relation:yup.string("relation must be a string"),
   });
 };

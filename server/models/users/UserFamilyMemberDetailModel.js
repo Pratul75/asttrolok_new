@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Usermodel = require("./Usermodel");
 
-const UserSchema = new mongoose.Schema(
+const UserFamilyMemberDetailModel = new mongoose.Schema(
   {
     userId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -36,14 +36,8 @@ const UserSchema = new mongoose.Schema(
       type: String,
     },
 
-    email: {
-      type: String,
-  
-    },
-   
     mobile: {
       type: Number,
-      required: true,
     },
     profilePicture: {
       id: String,
@@ -58,9 +52,12 @@ const UserSchema = new mongoose.Schema(
     },
     message:{
       type:String,
+    },
+    relation:{
+      type:String
     }
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("userData", UserSchema);
+module.exports = mongoose.model("UserFamilyMemberDetailModel", UserFamilyMemberDetailModel);

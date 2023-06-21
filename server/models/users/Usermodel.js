@@ -60,6 +60,10 @@ const UserSchema = new mongoose.Schema(
     },
     message:{
       type:String,
+    },
+    relation:{
+      type:String,
+      default:"self",
     }
   },
   { timestamps: true }

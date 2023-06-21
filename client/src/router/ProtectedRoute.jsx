@@ -11,7 +11,7 @@ const useAuth = () => {
   // console.log("USER IN USE AUTH", _user);
   if (_user) {
     user = JSON.parse(_user);
-    console.log("user", user);
+   
   }
   if (user) {
     return {
@@ -31,7 +31,6 @@ export const ProtectedRoute = ({ roleRequired, children }) => {
   const { auth, role } = useAuth();
   // console.log("AUTH: ", auth, "ROLE: ", role);
   // if the role required is there or not
-console.log("roleRequired",roleRequired, "auth",auth,"role");
   
   if (roleRequired) {
     // console.log("ROLE REQUIRED: ", roleRequired, role);

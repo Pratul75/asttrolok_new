@@ -23,6 +23,8 @@ userRoutes.get("/", checkLoginOrNot,(req, res) => {
 
 userRoutes.post("/personalDetail", checkLoginOrNot,tryCatch(userController.personalDetailUpdate),errorHandler)
 
+userRoutes.post("/familyDetailUpate", checkLoginOrNot,tryCatch(userController.familyDetailUpdate),errorHandler)
+
 userRoutes.get("/getpersonalDetail", checkLoginOrNot,tryCatch(userController.getpersonalDetail),errorHandler)
 
 

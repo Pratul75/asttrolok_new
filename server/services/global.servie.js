@@ -8,7 +8,7 @@ class GlobalService {
   async checkTheParams(params, defaultMessage) {
     // if params is undefined
  
-    if(!params){
+    if(!params  || !params?.length || (!Object.keys(params))){
       throw new AppError(
         false,
         defaultMessage ? defaultMessage : "No data",
@@ -16,32 +16,7 @@ class GlobalService {
         404
       ); 
     }
-    // if params is empty object
-   else if (Object.keys(params)?.length) {
-      const arr = [];
-      const message = " not found";
-      for (const key in params) {
-        if (params.hasOwnProperty(key)) {
-          if (!params[key]) {
-            arr.push(key + message);
-          }
-        }
-      }
-    
-      if (arr?.length) {
-        throw new AppError(false, ...arr, false, 404);
-      } else {
-        return true;
-      }
-    } else {
-   
-      throw new AppError(
-        false,
-        defaultMessage ? defaultMessage : "No data",
-        false,
-        404
-      );
-    }
+    else return true
   }
 
   async allConsultationOfUser(userId, astrologerId) {

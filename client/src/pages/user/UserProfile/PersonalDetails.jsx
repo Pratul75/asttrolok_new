@@ -64,7 +64,7 @@ const PersonalDetails = () => {
    
     
     try {
-   console.log("iamworking");
+   
       const resp = await axios.post(
         `http://localhost:4000/api/users/personalDetail`,
         { data },
