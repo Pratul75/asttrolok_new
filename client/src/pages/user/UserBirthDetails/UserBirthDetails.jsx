@@ -1,4 +1,5 @@
 import BirthDetailsImage from "../../../assets/birthDetailsBanner.png";
+import { Table } from "../../../components";
 
 const UserBirthDetails = () => {
   return (
@@ -171,6 +172,7 @@ const UserBirthDetails = () => {
             <button>close</button>
           </form>
         </dialog>
+        <Table />
       </div>
     </>
   );

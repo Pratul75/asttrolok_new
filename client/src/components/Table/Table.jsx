@@ -14,7 +14,7 @@ const Table = ({ columns, data }) => {
             {headerGroup.headers.map((column) => (
               <th
                 key={nanoid()}
-                className="px-4 py-2 bg-gray-100 text-left"
+                className="px-4 py-2 bg-blue-50 text-left"
                 {...column.getHeaderProps()}
               >
                 {column.render("Header")}
