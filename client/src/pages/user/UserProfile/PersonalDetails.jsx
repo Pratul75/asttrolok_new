@@ -8,7 +8,6 @@ const PersonalDetails = () => {
   const [userProfile, setUserProfile] = useState("");
 
 
-
   const getpersonalDetailOfUser = async () => {
     try {
       const resp = await axios.get(
@@ -31,18 +30,41 @@ const PersonalDetails = () => {
     }
   };
 
- 
+  useEffect(() => {
+    getpersonalDetailOfUser();
+  }, []);
+
+  let initialFormValues = {};
+  useEffect(() => {
+     initialFormValues = {
+      firstName: userProfile?.firstName,
+      lastName: userProfile?.lastName,
+      location: userProfile?.location,
+      email: userProfile?.email,
+      mobile: userProfile?.mobile,
+      address: userProfile?.address,
+      // ...
+    };
+
+    reset(initialFormValues); // Reset the form values after fetching the user profile
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userProfile]);
+
+
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(profileUpdateSchema()) });
+    reset
+  } = useForm({ resolver: yupResolver(profileUpdateSchema()), defaultValues: initialFormValues?(initialFormValues):(' ') });
 
   const onSubmit = async (data) => {
-    console.log(errors?.root);
+   
+    
     try {
-      console.log("onsumbit");
+   console.log("iamworking");
       const resp = await axios.post(
         `http://localhost:4000/api/users/personalDetail`,
         { data },
@@ -55,23 +77,21 @@ const PersonalDetails = () => {
           },
         }
       );
-    
-      if (resp) {
+
+      if (resp?.data) {
         console.log(resp?.data);
       }
     } catch (error) {
       console.log(error);
     }
   };
+
   
-  useEffect(() => {
-    getpersonalDetailOfUser();
-  }, []);
 
   return (
     <div className="w-full rounded-lg shadow-lg p-4">
       <div>
-        <h4 className="text-xl">Person Details</h4>
+        <h4 className="text-xl">Personal Details</h4>
         <p className="text-sm text-gray-400">
           To change your personal detail, edit and save from here
         </p>
@@ -187,7 +207,7 @@ const PersonalDetails = () => {
           <button type="submit" className="btn btn-info">
             save
           </button>
-          <button className="btn btn-outline btn-error">Cancel</button>
+          <button type="reset" className="btn btn-outline btn-error">Cancel</button>
         </div>
       </form>
     </div>
