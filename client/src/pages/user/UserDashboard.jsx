@@ -162,19 +162,68 @@ const UserDashboard = () => {
             />
           </div>
           {/* upcoming consultation */}
-          <div className="w-full h-[62vh] md:w-1/2 p-4 rounded-lg shadow-lg  overflow-y-auto">
+          <div className="w-full h-auto md:w-1/2 p-4 rounded-lg shadow-lg  ">
             <h4 className="text-[18px] font-semibold">Upcoming Consultation</h4>
             <p className="text-[14px]">Your upcoming events</p>
             <div className="p-4">
               <CalendarPicker />
             </div>
-            <div>
+            <div className="overflow-y-auto h-[30vh]">
               <InfoCard
                 heading="Top Course"
                 subHeading="Astrology"
                 time="11:10 AM"
                 icon="VB"
                 color="bg-secondary"
+              />
+              <InfoCard
+                heading="Best Astrologer"
+                subHeading="Vanya Ojha"
+                time="10:00 AM"
+                icon="HR"
+                color="bg-info"
+              />
+              <InfoCard
+                heading="Most Commented"
+                subHeading="Astrology"
+                time="1:30 PM"
+                icon="AB"
+                color="bg-success"
+              />
+              <InfoCard
+                heading="Best Astrologer"
+                subHeading="Vanya Ojha"
+                time="10:00 AM"
+                icon="HR"
+                color="bg-info"
+              />
+              <InfoCard
+                heading="Most Commented"
+                subHeading="Astrology"
+                time="1:30 PM"
+                icon="AB"
+                color="bg-success"
+              />
+              <InfoCard
+                heading="Top Course"
+                subHeading="Astrology"
+                time="11:10 AM"
+                icon="VB"
+                color="bg-secondary"
+              />
+              <InfoCard
+                heading="Best Astrologer"
+                subHeading="Vanya Ojha"
+                time="10:00 AM"
+                icon="HR"
+                color="bg-info"
+              />
+              <InfoCard
+                heading="Most Commented"
+                subHeading="Astrology"
+                time="1:30 PM"
+                icon="AB"
+                color="bg-success"
               />
               <InfoCard
                 heading="Best Astrologer"
