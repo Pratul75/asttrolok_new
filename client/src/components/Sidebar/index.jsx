@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import SidebarItem from "./SidebarItem";
-import { sidebarMapping } from "../mappings";
-import AstrolokLogo from "../assets/astrolokLogo.png";
-import AsttrolokSmallLogo from "../assets/asttrolokSmallLogo.svg";
-import { toggleSidebar } from "../features/appConfig/AppSlice";
+import { sidebarMapping } from "../../mappings";
+import AstrolokLogo from "../../assets/astrolokLogo.png";
+import AsttrolokSmallLogo from "../../assets/asttrolokSmallLogo.svg";
+import { toggleSidebar } from "../../features/appConfig/AppSlice";
 
 const Sidebar = () => {
   const isExpanded = useSelector((state) => state.appConfig.sidebarOpen);
