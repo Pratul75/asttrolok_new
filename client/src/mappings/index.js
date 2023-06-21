@@ -10,6 +10,7 @@ import {
   FinancialIcon,
   SupportIcon,
 } from "../icons";
+
 // maps the sidebar
 export const sidebarMapping = [
   {
