@@ -5,6 +5,7 @@ import {
   CalendarPicker,
   InfoCard,
   RecentTransactionItem,
+  Table,
 } from "../../../components";
 import {
   FundsChartIcon,
@@ -418,6 +419,7 @@ const UserDashboard = () => {
           <div></div>
         </div>
       </div>
+      <Table />
     </div>
   );
 };

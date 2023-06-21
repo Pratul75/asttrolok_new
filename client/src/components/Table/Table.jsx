@@ -1,50 +1,42 @@
 import PropTypes from "prop-types";
 import { useTable } from "react-table";
+import { nanoid } from "nanoid";
 
 const Table = ({ columns, data }) => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
 
-  const handleRowClick = (row) => {
-    console.log("Clicked row:", row.original);
-  };
-
   return (
-    <table className="table-auto w-full" {...getTableProps()}>
-      <thead>
-        {headerGroups?.map((headerGroup, idx) => (
-          <tr key={idx} {...headerGroup.getHeaderGroupProps()}>
+    <table className="table w-full mt-8  overflow-hidden" {...getTableProps()}>
+      <thead className="rounded-lg">
+        {headerGroups.map((headerGroup) => (
+          <tr key={nanoid()} {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th key={idx} className="px-4 py-2" {...column.getHeaderProps()}>
+              <th
+                key={nanoid()}
+                className="px-4 py-2 bg-gray-100 text-left"
+                {...column.getHeaderProps()}
+              >
                 {column.render("Header")}
               </th>
             ))}
-            <th className="px-4 py-2">Action</th>
           </tr>
         ))}
       </thead>
       <tbody {...getTableBodyProps()}>
-        {rows?.map((row, rowIdx) => {
+        {rows.map((row) => {
           prepareRow(row);
           return (
-            <tr key={rowIdx} {...row.getRowProps()}>
+            <tr key={nanoid()} {...row.getRowProps()}>
               {row.cells.map((cell) => (
                 <td
-                  key={rowIdx}
+                  key={nanoid()}
                   className="border px-4 py-2"
                   {...cell.getCellProps()}
                 >
                   {cell.render("Cell")}
                 </td>
               ))}
-              <td className="border px-4 py-2">
-                <button
-                  className="text-blue-500 hover:text-blue-700"
-                  onClick={() => handleRowClick(row)}
-                >
-                  Log
-                </button>
-              </td>
             </tr>
           );
         })}
@@ -63,4 +55,41 @@ Table.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default Table;
+const ExampleTable = () => {
+  const columns = [
+    {
+      Header: "Name",
+      accessor: "name",
+    },
+    {
+      Header: "Age",
+      accessor: "age",
+    },
+    {
+      Header: "Location",
+      accessor: "location",
+    },
+  ];
+
+  const data = [
+    {
+      name: "John Doe",
+      age: 25,
+      location: "New York",
+    },
+    {
+      name: "Jane Smith",
+      age: 30,
+      location: "London",
+    },
+    {
+      name: "Bob Johnson",
+      age: 35,
+      location: "Paris",
+    },
+  ];
+
+  return <Table columns={columns} data={data} />;
+};
+
+export default ExampleTable;

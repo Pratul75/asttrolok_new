@@ -17,7 +17,6 @@ const Dropdown = ({ label, itemsList }) => {
   );
 };
 
-// 
 Dropdown.propTypes = {
   label: PropTypes.string.isRequired,
   itemsList: PropTypes.arrayOf(
