@@ -1,11 +1,11 @@
 // USERS PAGES
-export { default as UserDashboard } from "./user/UserDashboard";
+export { default as UserDashboard } from "./user/UserDashboard/UserDashboard";
 export { default as UserBirthDetails } from "./user/UserBirthDetails";
-export { default as UserConsultationList } from "./user/UserConsultationList";
-export { default as UserCourseList } from "./user/UserCourseList";
+export { default as UserConsultationList } from "./user/UserConsultationList/UserConsultationList";
+export { default as UserCourseList } from "./user/UserCourseList/UserCourseList";
 export { default as UserProfile } from "./user/UserProfile";
-export { default as UseReports } from "./user/UserReports";
-export { default as UserWallet } from "./user/UserWallet";
+export { default as UseReports } from "./user/UserReports/UserReports";
+export { default as UserWallet } from "./user/UserWallet/UserWallet";
 
 // ASTROLOGER PAGES
 export { default as AstrologerAccount } from "./astrologer/AstrologerAccount";

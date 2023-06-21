@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import DashboardBanner from "../../assets/dashboardBanner.png";
+import DashboardBanner from "../../../assets/dashboardBanner.png";
 import axios from "axios";
 import {
   CalendarPicker,
   InfoCard,
   RecentTransactionItem,
-} from "../../components";
+} from "../../../components";
 import {
   FundsChartIcon,
   SalesBarChart,
@@ -14,7 +14,7 @@ import {
   TodayConsultationChart,
   YearlyLearningChart,
   TotalFundBox,
-} from "../../icons";
+} from "../../../icons";
 
 const UserDashboard = () => {
   const [consultations, setConsultations] = useState(false);
