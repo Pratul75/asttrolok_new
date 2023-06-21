@@ -1,4 +1,4 @@
-import BirthDetailsImage from "../../assets/birthDetailsBanner.png";
+import BirthDetailsImage from "../../../assets/birthDetailsBanner.png";
 
 const UserBirthDetails = () => {
   return (

@@ -1,6 +1,6 @@
 // USERS PAGES
 export { default as UserDashboard } from "./user/UserDashboard/UserDashboard";
-export { default as UserBirthDetails } from "./user/UserBirthDetails";
+export { default as UserBirthDetails } from "./user/UserBirthDetails/UserBirthDetails";
 export { default as UserConsultationList } from "./user/UserConsultationList/UserConsultationList";
 export { default as UserCourseList } from "./user/UserCourseList/UserCourseList";
 export { default as UserProfile } from "./user/UserProfile";
