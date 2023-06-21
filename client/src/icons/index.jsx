@@ -669,3 +669,290 @@ export const FaithfullUserChart = () => {
     </svg>
   );
 };
+
+// today's consultations
+export const TodayConsultationChart = () => {
+  return (
+    <svg
+      width="230"
+      height="230"
+      viewBox="0 0 189 189"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g filter="url(#filter0_d_320_997)">
+        <path
+          d="M175.227 130.719C195.224 86.1291 175.309 33.77 130.719 13.7729C86.1291 -6.22419 33.7701 13.6909 13.7729 58.2809C-6.22419 102.871 13.6908 155.23 58.2809 175.227C102.871 195.224 155.23 175.309 175.227 130.719Z"
+          fill="url(#paint0_radial_320_997)"
+        />
+      </g>
+      <path
+        d="M162.039 132.029C154.797 144.706 144.135 155.059 131.288 161.889C118.441 168.719 103.935 171.746 89.4495 170.619C74.9642 169.493 61.0922 164.259 49.4399 155.524C37.7876 146.789 28.8318 134.91 23.6097 121.263L31.6476 118.147C36.2848 130.265 44.2375 140.814 54.5847 148.57C64.9318 156.327 77.2501 160.974 90.113 161.975C102.976 162.975 115.857 160.287 127.265 154.222C138.673 148.158 148.141 138.964 154.572 127.706L162.039 132.029Z"
+        fill="#5D87FF"
+      />
+      <path
+        d="M25.3574 125.459C19.8989 113.365 17.6239 100.061 18.751 86.8266C19.8782 73.5919 24.3696 60.8719 31.7934 49.8899C39.2171 38.908 49.3234 30.0338 61.14 24.1208C72.9566 18.2078 86.0859 15.455 99.2652 16.1273C112.444 16.7995 125.23 20.8741 136.392 27.9592C147.555 35.0443 156.718 44.9015 163.001 56.5825C169.284 68.2636 172.475 81.3755 172.267 94.6571C172.059 107.939 168.46 120.943 161.815 132.419L154.373 128.053C160.274 117.862 163.47 106.315 163.654 94.5206C163.839 82.7267 161.005 71.0833 155.426 60.7106C149.847 50.3379 141.71 41.5848 131.798 35.2933C121.886 29.0018 110.532 25.3835 98.8293 24.7865C87.1262 24.1896 75.4673 26.634 64.9743 31.8847C54.4812 37.1354 45.5069 45.0157 38.9147 54.7676C32.3224 64.5195 28.334 75.8149 27.3331 87.5672C26.3322 99.3195 28.3525 111.133 33.1995 121.872L25.3574 125.459Z"
+        fill="#49BEFF"
+      />
+      <defs>
+        <filter
+          id="filter0_d_320_997"
+          x="0"
+          y="0"
+          width="189"
+          height="189"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset />
+          <feGaussianBlur stdDeviation="3" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_320_997"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_320_997"
+            result="shape"
+          />
+        </filter>
+        <radialGradient
+          id="paint0_radial_320_997"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(-16.3732 -83.6686) scale(295.279)"
+        >
+          <stop stopColor="#BAC4DD" />
+          <stop offset="0.02" stopColor="#BCC6DE" />
+          <stop offset="0.27" stopColor="#D9DEEC" />
+          <stop offset="0.52" stopColor="#EEF0F6" />
+          <stop offset="0.77" stopColor="#FAFBFC" />
+          <stop offset="1" stopColor="white" />
+        </radialGradient>
+      </defs>
+    </svg>
+  );
+};
+
+export const LearningStatistics = () => {
+  return (
+    <svg
+      width="308"
+      height="121"
+      viewBox="0 0 308 121"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <mask
+        id="mask0_12_1939"
+        maskUnits="userSpaceOnUse"
+        x="-3"
+        y="-1"
+        width="314"
+        height="123"
+      >
+        <path d="M311 -0.410034H-3V121.59H311V-0.410034Z" fill="white" />
+      </mask>
+      <g mask="url(#mask0_12_1939)">
+        <path
+          d="M0 120.59V100.59C26.95 100.59 50.05 0.589966 77 0.589966C103.95 0.589966 127.05 100.59 154 100.59C180.95 100.59 204.05 50.59 231 50.59C257.95 50.59 281.05 100.59 308 100.59C308 100.59 308 100.59 308 120.59"
+          fill="url(#paint0_linear_12_1939)"
+        />
+      </g>
+      <mask
+        id="mask1_12_1939"
+        maskUnits="userSpaceOnUse"
+        x="-3"
+        y="-1"
+        width="314"
+        height="123"
+      >
+        <path d="M311 -0.410034H-3V121.59H311V-0.410034Z" fill="white" />
+      </mask>
+      <g mask="url(#mask1_12_1939)">
+        <path
+          d="M0 100.59C26.95 100.59 50.05 0.589966 77 0.589966C103.95 0.589966 127.05 100.59 154 100.59C180.95 100.59 204.05 50.59 231 50.59C257.95 50.59 281.05 100.59 308 100.59"
+          stroke="#5D87FF"
+          strokeWidth="2"
+        />
+      </g>
+      <defs>
+        <linearGradient
+          id="paint0_linear_12_1939"
+          x1="0"
+          y1="0.589966"
+          x2="0"
+          y2="120.59"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.2" stopOpacity="0.18" />
+          <stop offset="1" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+};
+
+export const YearlyLearningChart = () => {
+  return (
+    <svg
+      width="280"
+      height="188"
+      viewBox="0 0 280 188"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <mask
+        id="mask0_12_1999"
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="280"
+        height="188"
+      >
+        <path d="M280 0.590027H0V187.59H280V0.590027Z" fill="white" />
+      </mask>
+      <g mask="url(#mask0_12_1999)">
+        <path
+          d="M14.6499 187.59V75.715C14.6499 72.3817 16.3166 70.715 19.6499 70.715H30.3499C33.6832 70.715 35.3499 72.3817 35.3499 75.715V187.59H14.6499Z"
+          fill="#F2F6FA"
+          fillOpacity="0.85"
+        />
+      </g>
+      <mask
+        id="mask1_12_1999"
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="280"
+        height="188"
+      >
+        <path d="M280 0.590027H0V187.59H280V0.590027Z" fill="white" />
+      </mask>
+      <g mask="url(#mask1_12_1999)">
+        <path
+          d="M60.6499 187.59V104.934C60.6499 101.6 62.3166 99.9338 65.6499 99.9338H76.3499C79.6832 99.9338 81.3499 101.6 81.3499 104.934V187.59H60.6499Z"
+          fill="#F2F6FA"
+          fillOpacity="0.85"
+        />
+      </g>
+      <mask
+        id="mask2_12_1999"
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="280"
+        height="188"
+      >
+        <path d="M280 0.590027H0V187.59H280V0.590027Z" fill="white" />
+      </mask>
+      <g mask="url(#mask2_12_1999)">
+        <path
+          d="M106.65 187.59V17.2775C106.65 13.9442 108.317 12.2775 111.65 12.2775H122.35C125.683 12.2775 127.35 13.9442 127.35 17.2775V187.59H106.65Z"
+          fill="#5D87FF"
+        />
+      </g>
+      <mask
+        id="mask3_12_1999"
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="280"
+        height="188"
+      >
+        <path d="M280 0.590027H0V187.59H280V0.590027Z" fill="white" />
+      </mask>
+      <g mask="url(#mask3_12_1999)">
+        <path
+          d="M152.65 187.59V46.4963C152.65 43.1629 154.317 41.4963 157.65 41.4963H168.35C171.683 41.4963 173.35 43.1629 173.35 46.4963V187.59H152.65Z"
+          fill="#F2F6FA"
+          fillOpacity="0.85"
+        />
+      </g>
+      <mask
+        id="mask4_12_1999"
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="280"
+        height="188"
+      >
+        <path d="M280 0.590027H0V187.59H280V0.590027Z" fill="white" />
+      </mask>
+      <g mask="url(#mask4_12_1999)">
+        <path
+          d="M198.65 187.59V134.153C198.65 130.819 200.317 129.153 203.65 129.153H214.35C217.683 129.153 219.35 130.819 219.35 134.153V187.59H198.65Z"
+          fill="#F2F6FA"
+          fillOpacity="0.85"
+        />
+      </g>
+      <mask
+        id="mask5_12_1999"
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="280"
+        height="188"
+      >
+        <path d="M280 0.590027H0V187.59H280V0.590027Z" fill="white" />
+      </mask>
+      <g mask="url(#mask5_12_1999)">
+        <path
+          d="M244.65 187.59V104.934C244.65 101.6 246.317 99.9338 249.65 99.9338H260.35C263.683 99.9338 265.35 101.6 265.35 104.934V187.59H244.65Z"
+          fill="#F2F6FA"
+          fillOpacity="0.85"
+        />
+      </g>
+    </svg>
+  );
+};
+
+export const TotalFundBox = () => {
+  return (
+    <svg
+      width="36"
+      height="37"
+      viewBox="0 0 36 37"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect y="0.589966" width="36" height="36" rx="7" fill="#ECF2FF" />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M14 12.59C14 13.6945 13.1046 14.59 12 14.59C10.8954 14.59 10 13.6945 10 12.59C10 11.4854 10.8954 10.59 12 10.59C13.1046 10.59 14 11.4854 14 12.59ZM26 12.59C26 13.6945 25.1046 14.59 24 14.59C22.8954 14.59 22 13.6945 22 12.59C22 11.4854 22.8954 10.59 24 10.59C25.1046 10.59 26 11.4854 26 12.59ZM26 18.59C26 19.6945 25.1046 20.59 24 20.59C22.8954 20.59 22 19.6945 22 18.59C22 17.4854 22.8954 16.59 24 16.59C25.1046 16.59 26 17.4854 26 18.59ZM24 26.59C25.1046 26.59 26 25.6945 26 24.59C26 23.4854 25.1046 22.59 24 22.59C22.8954 22.59 22 23.4854 22 24.59C22 25.6945 22.8954 26.59 24 26.59ZM18 14.59C19.1046 14.59 20 13.6945 20 12.59C20 11.4854 19.1046 10.59 18 10.59C16.8954 10.59 16 11.4854 16 12.59C16 13.6945 16.8954 14.59 18 14.59ZM14 18.59C14 19.6945 13.1046 20.59 12 20.59C10.8954 20.59 10 19.6945 10 18.59C10 17.4854 10.8954 16.59 12 16.59C13.1046 16.59 14 17.4854 14 18.59ZM18 20.59C19.1046 20.59 20 19.6945 20 18.59C20 17.4854 19.1046 16.59 18 16.59C16.8954 16.59 16 17.4854 16 18.59C16 19.6945 16.8954 20.59 18 20.59ZM14 24.59C14 25.6945 13.1046 26.59 12 26.59C10.8954 26.59 10 25.6945 10 24.59C10 23.4854 10.8954 22.59 12 22.59C13.1046 22.59 14 23.4854 14 24.59ZM18 26.59C19.1046 26.59 20 25.6945 20 24.59C20 23.4854 19.1046 22.59 18 22.59C16.8954 22.59 16 23.4854 16 24.59C16 25.6945 16.8954 26.59 18 26.59Z"
+        fill="#49BEFF"
+      />
+    </svg>
+  );
+};
+
+export const StraightLine = () => {
+  return (
+    <svg
+      width="2"
+      height="39"
+      viewBox="0 0 2 39"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="0.5" y="0.589966" width="1" height="70" fill="#EBF1F6" />
+    </svg>
+  );
+};
