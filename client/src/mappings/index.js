@@ -5,6 +5,10 @@ import {
   CourseListIcon,
   UserProfileIcon,
   UserReportsIcon,
+  QuizIcon,
+  CertificateIcon,
+  FinancialIcon,
+  SupportIcon,
 } from "../icons";
 // maps the sidebar
 export const sidebarMapping = [
@@ -20,13 +24,33 @@ export const sidebarMapping = [
   },
   {
     Icon: ConsultationIcon,
-    text: "Consultation",
+    text: "Consultation List",
     navlink: "/consultation-list",
   },
   {
     Icon: CourseListIcon,
     text: "Course List",
     navlink: "/course-list",
+  },
+  {
+    Icon: QuizIcon,
+    text: "Quizes",
+    navlink: "/quizes",
+  },
+  {
+    Icon: CertificateIcon,
+    text: "Certificates",
+    navlink: "/certificates",
+  },
+  {
+    Icon: FinancialIcon,
+    text: "Financial",
+    navlink: "/financial",
+  },
+  {
+    Icon: SupportIcon,
+    text: "Support",
+    navlink: "/support",
   },
   {
     Icon: UserProfileIcon,
