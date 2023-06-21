@@ -35,6 +35,8 @@ class UserController {
     return res.status(resp?.errorCode).json(resp);
   };
 
+
+
   //get personal Detail this is get route
   getpersonalDetail = async (req, res) => {
    

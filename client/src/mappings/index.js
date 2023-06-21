@@ -16,7 +16,7 @@ export const sidebarMapping = [
   {
     Icon: BirthDetailsIcon,
     text: "Birth Details",
-    navlink: "/birth-details",
+    navlink: "/user-birth-details",
   },
   {
     Icon: ConsultationIcon,

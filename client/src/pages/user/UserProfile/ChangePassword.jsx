@@ -1,6 +1,18 @@
 import React from "react";
+import { changePasswordSchema } from "../../../validations";
 
 const ChangePassword = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(changePasswordSchema()) });
+
+  const onSubmit = async (data) => {
+    console.log("data", data);
+    console.log("error", errors);
+  };
+
   return (
     <div className="p-4 shadow-lg rounded-lg w-1/2 h-auto bg-base-100">
       <h4 className="text-xl">Change Password</h4>
@@ -9,48 +21,51 @@ const ChangePassword = () => {
       </p>
       <div className="mt-4">
         {/* current password */}
-        <div className="form-control w-full">
-          <label htmlFor="currentPassword" className="label">
-            <span className="label-text">Current Password</span>
-          </label>
-          <input
-            className="input input-sm border  border-3 border-gray-400"
-            // {...register("currentPassword")}
-            type="password"
-            name="currentPassword"
-            id="currentPassword"
-          />
-        </div>
-        {/* new password */}
-        <div className="form-control w-full">
-          <label htmlFor="newPassword" className="label">
-            <span className="label-text">New Password</span>
-          </label>
-          <input
-            className="input input-sm border  border-3 border-gray-400"
-            // {...register("newPassword")}
-            type="password"
-            name="newPassword"
-            id="newPassword"
-          />
-        </div>
 
-        {/* confirm password */}
-        <div className="form-control w-full">
-          <label htmlFor="confirmPassword" className="label">
-            <span className="label-text">Confirm Password</span>
-          </label>
-          <input
-            className="input input-sm border  border-3 border-gray-400"
-            // {...register("confirmPassword")}
-            type="password"
-            name="confirmPassword"
-            id="confirmPassword"
-          />
-        </div>
-        <button className="btn btn-primary mt-4 float-right">
-          Change Password
-        </button>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="form-control w-full">
+            <label htmlFor="currentPassword" className="label">
+              <span className="label-text">Current Password</span>
+            </label>
+            <input
+              className="input input-sm border  border-3 border-gray-400"
+              // {...register("currentPassword")}
+              type="password"
+              name="currentPassword"
+              id="currentPassword"
+            />
+          </div>
+          {/* new password */}
+          <div className="form-control w-full">
+            <label htmlFor="newPassword" className="label">
+              <span className="label-text">New Password</span>
+            </label>
+            <input
+              className="input input-sm border  border-3 border-gray-400"
+              // {...register("newPassword")}
+              type="password"
+              name="newPassword"
+              id="newPassword"
+            />
+          </div>
+
+          {/* confirm password */}
+          <div className="form-control w-full">
+            <label htmlFor="confirmPassword" className="label">
+              <span className="label-text">Confirm Password</span>
+            </label>
+            <input
+              className="input input-sm border  border-3 border-gray-400"
+              // {...register("confirmPassword")}
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+            />
+          </div>
+          <button className="btn btn-primary mt-4 float-right">
+            Change Password
+          </button>
+        </form>
       </div>
     </div>
   );

@@ -62,11 +62,34 @@ export const profileUpdateSchema = () => {
       .min(3, "name must contain atleast 3 characters ")
       .required("name is required"),
     email: yup.string().email("invalid email").required("email is required"),
-    
 
     address: yup.string("address must be a string"),
     location: yup.string("location must be a string"),
-    mobile: yup
+    mobile: yup.string(),
+  });
+};
+
+export const changePasswordSchema = () => {
+  return yup.object({
+    oldPassword: yup
       .string()
+      .min(3, "password cannot be less than 3 characters")
+      .required("password is required")
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+        "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+      ),
+    newPassword: yup
+      .string()
+      .min(3, "password cannot be less than 3 characters")
+      .required("password is required")
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+        "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+      ),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref("newPassword"), null], "Passwords must match")
+      .required("Confirm Password is required"),
   });
 };

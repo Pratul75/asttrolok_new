@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
-import { UserDashboard, UserProfile, LoginPage } from "./pages";
+import { UserDashboard, UserProfile, LoginPage, UserBirthDetails } from "./pages";
 import { PATHS } from "./router/paths";
 import { useSelector } from "react-redux";
 import { ProtectedRoute } from "./router/ProtectedRoute";
@@ -44,6 +44,16 @@ const App = () => {
             <AppLayout>
               <ProtectedRoute roleRequired={loginResponse?.role}>
                 <UserProfile />
+              </ProtectedRoute>
+            </AppLayout>
+          }
+        />
+        <Route
+          path={PATHS.userBirthDetails}
+          element={
+            <AppLayout>
+              <ProtectedRoute roleRequired={loginResponse?.role}>
+                <UserBirthDetails />
               </ProtectedRoute>
             </AppLayout>
           }
