@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-import BirthDetailsImage from "../../assets/birthDetailsBanner.png";
+import BirthDetailsImage from "../../../assets/birthDetailsBanner.png";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { birthDetailsUpdateSchema } from "../../validations";
+import { birthDetailsUpdateSchema } from "../../../validations";
 import axios from "axios";
 
 const UserBirthDetails = () => {
