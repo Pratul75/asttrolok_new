@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 
-const InfoCard = ({ heading, subHeading, time, icon }) => {
+const InfoCard = ({ heading, subHeading, time, icon, color }) => {
   return (
     <div className="flex justify-between items-center my-4">
       <div className="flex gap-4">
         {/* avatar */}
         <div className="avatar placeholder">
-          <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
+          <div className={`${color} text-neutral-content rounded-full w-12`}>
             <span>{icon}</span>
           </div>
         </div>
@@ -28,6 +28,7 @@ InfoCard.propTypes = {
   subHeading: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   icon: PropTypes.node.isRequired,
+  color: PropTypes.string.isRequired,
 };
 
 export default InfoCard;
