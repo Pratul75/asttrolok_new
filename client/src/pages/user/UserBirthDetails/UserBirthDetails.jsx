@@ -290,6 +290,7 @@ const UserBirthDetails = () => {
             <button>close</button>
           </form>
         </dialog>
+        <Table />
       </div>
     </>
   );

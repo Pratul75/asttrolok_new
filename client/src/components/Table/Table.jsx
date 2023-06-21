@@ -7,41 +7,47 @@ const Table = ({ columns, data }) => {
     useTable({ columns, data });
 
   return (
-    <table className="table w-full mt-8  overflow-hidden" {...getTableProps()}>
-      <thead className="rounded-lg">
-        {headerGroups.map((headerGroup) => (
-          <tr key={nanoid()} {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th
-                key={nanoid()}
-                className="px-4 py-2 bg-gray-100 text-left"
-                {...column.getHeaderProps()}
-              >
-                {column.render("Header")}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-          return (
-            <tr key={nanoid()} {...row.getRowProps()}>
-              {row.cells.map((cell) => (
-                <td
+    <div className="overflow-x-auto shadow-md">
+      <table className="table w-full mt-8" {...getTableProps()}>
+        <thead className="rounded-xl ">
+          {headerGroups.map((headerGroup) => (
+            <tr
+              className="table-row"
+              key={nanoid()}
+              {...headerGroup.getHeaderGroupProps()}
+            >
+              {headerGroup.headers.map((column) => (
+                <th
                   key={nanoid()}
-                  className="border px-4 py-2"
-                  {...cell.getCellProps()}
+                  className="p-4 bg-blue-50 text-left"
+                  {...column.getHeaderProps()}
                 >
-                  {cell.render("Cell")}
-                </td>
+                  {column.render("Header")}
+                </th>
               ))}
             </tr>
-          );
-        })}
-      </tbody>
-    </table>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row) => {
+            prepareRow(row);
+            return (
+              <tr className="table-row" key={nanoid()} {...row.getRowProps()}>
+                {row.cells.map((cell) => (
+                  <td
+                    key={nanoid()}
+                    className="table-cell border p-6 sm:p-4"
+                    {...cell.getCellProps()}
+                  >
+                    {cell.render("Cell")}
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
