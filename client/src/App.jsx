@@ -5,17 +5,22 @@ import {
   UserProfile,
   LoginPage,
   UserBirthDetails,
+  AstrologerDashboard,
 } from "./pages";
 import { PATHS } from "./router/paths";
 import { useSelector } from "react-redux";
 import { ProtectedRoute } from "./router/ProtectedRoute";
 import ReverseAuthRoute from "./router/ReverseAuthRoute";
+import { useState } from "react";
+
 
 const App = () => {
+
+  const [role, setRole] = useState(JSON.parse(localStorage.getItem("role"))?.role)
   const loginResponse = useSelector((state) => state.loginResponse.value);
 
   const darkMode = useSelector((x) => x.appConfig.darkMode);
-
+  console.log("ASasdasddd",loginResponse);
   return (
     <div
       data-theme={`${darkMode ? "dark" : "light"}`}
@@ -31,7 +36,7 @@ const App = () => {
           }
         />
         <Route path={PATHS.root} element={<Navigate to={PATHS.login} />} />
-        
+
         <Route
           path={PATHS.login}
           element={
@@ -40,32 +45,33 @@ const App = () => {
             </ReverseAuthRoute>
           }
         />
+        <Route
+            path={PATHS.userDashboard}
+            element={
+              <AppLayout>
+                <ProtectedRoute roleRequired={role} paths={PATHS.userDashboard}>
+                  <UserDashboard />
+                </ProtectedRoute>
+              </AppLayout>
+            }
+          />
+        <Route
+            path={PATHS.astrologerDashboard}
+            element={
+              <AppLayout>
+                <ProtectedRoute roleRequired={role} paths={PATHS.astrologerDashboard}>
+                  <astrologerDashboard />
+                </ProtectedRoute>
+              </AppLayout>
+            }
+          />
 
-        <Route
-          path={PATHS.userDashboard}
-          element={
-            <AppLayout>
-              <ProtectedRoute roleRequired={loginResponse?.role}>
-                <UserDashboard />
-              </ProtectedRoute>
-            </AppLayout>
-          }
-        />
-        <Route
-          path={PATHS.userProfile}
-          element={
-            <AppLayout>
-              <ProtectedRoute roleRequired={loginResponse?.role}>
-                <UserProfile />
-              </ProtectedRoute>
-            </AppLayout>
-          }
-        />
+
         <Route
           path={PATHS.userBirthDetails}
           element={
             <AppLayout>
-              <ProtectedRoute roleRequired={loginResponse?.role}>
+              <ProtectedRoute roleRequired={role}>
                 <UserBirthDetails />
               </ProtectedRoute>
             </AppLayout>

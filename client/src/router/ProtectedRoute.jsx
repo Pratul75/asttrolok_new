@@ -6,17 +6,29 @@ import { Children } from "react";
 const useAuth = () => {
   // get item from localstorage
   let user;
-  const _user = localStorage.getItem("user");
+  let astrologer;
+  let admin;
+  let role;
+  const _user = localStorage.getItem("role");
 
   // console.log("USER IN USE AUTH", _user);
   if (_user) {
-    user = JSON.parse(_user);
-   
+    role = JSON.parse(_user).role;
+    if (role === "user") {
+      user = role
+    }
+    else if (role === "astrologer") {
+      astrologer = role
+    }
+    else if (role === "admin") {
+      admin = role
+    }
+
   }
-  if (user) {
+  if (user || astrologer || admin) {
     return {
       auth: true,
-      role: user.role,
+      role: role,
     };
   } else {
     return {
@@ -26,24 +38,46 @@ const useAuth = () => {
   }
 };
 
+const RouteValidate = (path, role) => {
+
+  for (let key in PATHS) {
+    if (PATHS[key] === path) {
+
+      if (PATHS[key].includes(role)) {
+        return true
+      }
+    }
+  }
+
+  return false
+
+}
+
+
+
 // protected routes
-export const ProtectedRoute = ({ roleRequired, children }) => {
+export const ProtectedRoute = ({ roleRequired, paths, children }) => {
   const { auth, role } = useAuth();
+  console.log( "this is protected ROute");
+  console.log(roleRequired, paths, children,auth);
   // console.log("AUTH: ", auth, "ROLE: ", role);
   // if the role required is there or not
-  
+
   if (roleRequired) {
     // console.log("ROLE REQUIRED: ", roleRequired, role);
     return auth ? (
-      roleRequired === role ? (
-        children
+      roleRequired === role && RouteValidate(paths, role) ? (
+        children,console.log("iam ALSO ")
       ) : (
+        console.log("iam ALSO SA"),
         <Navigate to={PATHS.permissionDenied} />
       )
     ) : (
+      console.log("1"),
       <Navigate to={PATHS.login} />
     );
   } else {
+    console.log("2")
     return auth ? children : <Navigate to={PATHS.login} />;
   }
 };
