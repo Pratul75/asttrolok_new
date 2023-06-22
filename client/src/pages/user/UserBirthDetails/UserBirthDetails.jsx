@@ -3,8 +3,7 @@ import BirthDetailsImage from "../../../assets/birthDetailsBanner.png";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { birthDetailsUpdateSchema } from "../../../validations";
 import axios from "axios";
-import { Dropdown } from "../../../components";
-
+import { FiSearch } from "react-icons/fi";
 const UserBirthDetails = () => {
   const initialFormValues = {
     // Define your initial values here
@@ -106,6 +105,7 @@ const UserBirthDetails = () => {
               />
             </div>
           </header>
+          {/* secondary header */}
           <div className="w-full p-8 shadow-md rounded-lg mt-16 flex justify-between">
             <div className="relative">
               <select
@@ -131,6 +131,20 @@ const UserBirthDetails = () => {
                 </svg>
               </div>
             </div>
+            <button className="btn btn-info">Add Birth Details</button>
+          </div>
+
+          {/* content component */}
+          <div className="w-full flex gap-1">
+            <div className="w-1/3 h-sceen bg-teal-400 mt-4 p-4 relative">
+              <input
+                type="text"
+                className="input w-full"
+                placeholder="Search"
+              />
+              <FiSearch className="w-5 h-5 text-gray-400 absolute right-8 top-7" />
+            </div>
+            <div className="w-2/3 h-sceen bg-teal-400 mt-4 p-4">b</div>
           </div>
         </div>
       </div>
