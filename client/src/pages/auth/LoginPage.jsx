@@ -29,8 +29,8 @@ const LoginPage = () => {
     
     console.log("RESPONSE: ", res?.data?.data);
     if (res?.data) {
-       localStorage.setItem("role", JSON.stringify({ role: res?.data?.data?.role }));
-       console.log("this is sparta",JSON.stringify(localStorage.getItem("role")));
+       localStorage.setItem("user", JSON.stringify({ role: "user" }));
+         
        if(res?.data?.data?.token){
          dispatch(store(res?.data?.data)) 
        localStorage.setItem("token", JSON.stringify({ token: res?.data?.data?.token }));
