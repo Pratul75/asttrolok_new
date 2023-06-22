@@ -30,17 +30,6 @@ class UserController {
     return res.status(resp?.errorCode).json(resp);
   };
 
-  familyDetailUpdate = async(req,res)=>{
-    const { data } = req.body;
-
-    const resp = await this.BaseServiceInstance.findByIdAndUpdate(
-      req.user._id,
-      data,
-      UserFamilyMemberDetailModel
-    );
-    return res.status(resp?.errorCode).json(resp);
-  }
-  
   //get personal Detail this is get route
   getpersonalDetail = async (req, res) => {
     const data = await this.BaseServiceInstance.findById(
@@ -51,6 +40,38 @@ class UserController {
     return res.status(data?.errorCode).json(data);
   };
 
+  // family personal Detail
+  familyDetailUpdate = async(req,res)=>{
+    const { data } = req.body;
+    const {id} = req.query
+    const resp = await this.BaseServiceInstance.findByIdAndUpdate(
+      id,
+      data,
+      UserFamilyMemberDetailModel
+    );
+
+    return res.status(resp?.errorCode).json(resp);
+  }
+
+newMemberBirthdetailsAdded = async(req,res)=>{
+    const data = req.body
+  
+    data.userId = req.user._id
+    const resp = await this.BaseServiceInstance.createNewData(data, UserFamilyMemberDetailModel) 
+    return res.status(resp?.errorCode).json(resp);
+    
+  }
+  
+ //get personal Detail this is get route
+ getAllotherBirthDetails = async (req, res) => {
+ 
+  const data = await this.BaseServiceInstance.findAllByUserId(
+    req.user._id,
+    UserFamilyMemberDetailModel
+  );
+
+  return res.status(data?.errorCode).json(data);
+};
   getAstrologerAllConsultation = async (req, res) => {
     const { astrologerId } = req.query;
 
