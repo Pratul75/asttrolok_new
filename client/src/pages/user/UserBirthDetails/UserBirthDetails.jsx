@@ -7,7 +7,15 @@ import BirthDetailsSidebar from "./BirthDetailsSidebar";
 import BirthDetailsContactDetails from "./BirthDetailsContactDetails";
 import AddBirthDetailModal from "./AddBirthDetailModal";
 import { RxCross2 } from "react-icons/rx";
+import { useDispatch, useSelector } from "react-redux";
 const UserBirthDetails = () => {
+  
+  
+  
+
+  const birthDetailsOfSelectedMember = useSelector((state)=>state?.userDetails)
+
+   console.log('UserBirthDetails.jsx', birthDetailsOfSelectedMember);
   const initialFormValues = {
     // Define your initial values here
     firstName: "",

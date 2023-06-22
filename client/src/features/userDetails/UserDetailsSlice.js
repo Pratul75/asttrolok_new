@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
  const initialState = {
     data:[],
-    status:IdleDeadline,
  }
 
 
@@ -11,7 +10,7 @@ export const userDetailSlice = createSlice({
     initialState,
     reducers: {
       setOtherDetails: (state, action) => {
-        state.value = action.payload;
+        state.data = action.payload;
       },
     },
   });
