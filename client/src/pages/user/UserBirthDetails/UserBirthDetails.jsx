@@ -5,6 +5,7 @@ import { birthDetailsUpdateSchema } from "../../../validations";
 import axios from "axios";
 import { FiSearch } from "react-icons/fi";
 import BirthDetailsSidebar from "./BirthDetailsSidebar";
+import BirthDetailsContactDetails from "./BirthDetailsContactDetails";
 const UserBirthDetails = () => {
   const initialFormValues = {
     // Define your initial values here
@@ -92,7 +93,7 @@ const UserBirthDetails = () => {
   return (
     <>
       <div>
-        <div className="p-4">
+        <div className="p-4 shadow-md">
           <header className="w-full h-auto bg-[#EBF3FE] rounded-lg flex justify-between relative">
             <div className="px-8 py-16">
               <h4 className="font-semibold text-2xl">Birth Details</h4>
@@ -138,7 +139,7 @@ const UserBirthDetails = () => {
           {/* content component */}
           <div className="w-full flex gap-1">
             <BirthDetailsSidebar />
-            <div className="w-2/3 h-sceen bg-teal-400 mt-4 p-4">b</div>
+            <BirthDetailsContactDetails />
           </div>
         </div>
       </div>

@@ -31,7 +31,7 @@ const App = () => {
           }
         />
         <Route path={PATHS.root} element={<Navigate to={PATHS.login} />} />
-        
+
         <Route
           path={PATHS.login}
           element={
