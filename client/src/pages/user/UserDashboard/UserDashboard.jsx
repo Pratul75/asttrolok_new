@@ -39,7 +39,7 @@ const UserDashboard = () => {
         setConsultations(res?.data?.data.length);
       }
     } catch (error) {
-      console.log(error?.response?.data);
+
       if (error?.response?.data?.errorCode === 404) {
         setConsultations(error?.response?.data?.message);
       }

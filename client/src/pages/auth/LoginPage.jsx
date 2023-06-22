@@ -29,8 +29,10 @@ const LoginPage = () => {
     
     console.log("RESPONSE: ", res?.data?.data);
     if (res?.data) {
-       localStorage.setItem("user", JSON.stringify({ role: "user" }));
-         
+       localStorage.setItem("role", JSON.stringify({ role: res?.data?.data?.role }));
+       
+
+
        if(res?.data?.data?.token){
          dispatch(store(res?.data?.data)) 
        localStorage.setItem("token", JSON.stringify({ token: res?.data?.data?.token }));
