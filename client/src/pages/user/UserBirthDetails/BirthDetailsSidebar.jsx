@@ -2,7 +2,7 @@ import { FiSearch } from "react-icons/fi";
 import { InfoCard } from "../../../components";
 const BirthDetailsSidebar = () => {
   return (
-    <div className="w-1/3    border-r-[2px] mt-4 p-4 relative">
+    <div className="w-1/3 shadow rounded-lg border-r-[2px] mt-4 p-4 relative">
       <div className="form-control">
         <input type="text" className="input w-full" placeholder="Search" />
         <FiSearch className="w-5 h-5 text-gray-400 absolute right-8 top-7" />

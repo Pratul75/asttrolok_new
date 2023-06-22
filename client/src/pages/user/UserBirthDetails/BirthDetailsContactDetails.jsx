@@ -3,7 +3,7 @@ import { MdOutlineModeEdit } from "react-icons/md";
 import { RiDeleteBin7Line } from "react-icons/ri";
 const BirthDetailsContactDetails = () => {
   return (
-    <div className="w-2/3 h-auto mt-4">
+    <div className="w-2/3 h-auto mt-4 shadow">
       {/* first row */}
       <div className=" border-b-[1px] p-8 h-auto w-full flex justify-between items-center">
         <div>
