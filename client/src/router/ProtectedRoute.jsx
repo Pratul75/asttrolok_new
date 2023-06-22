@@ -67,17 +67,17 @@ export const ProtectedRoute = ({ roleRequired, paths, children }) => {
     // console.log("ROLE REQUIRED: ", roleRequired, role);
     return auth ? (
       roleRequired === role && RouteValidate(paths, role) ? (
-        children,console.log("iam ALSO ")
+        children
       ) : (
-        console.log("iam ALSO SA"),
+    
         <Navigate to={PATHS.permissionDenied} />
       )
     ) : (
-      console.log("1"),
+  
       <Navigate to={PATHS.login} />
     );
   } else {
-    console.log("2")
+ 
     return auth ? children : <Navigate to={PATHS.login} />;
   }
 };

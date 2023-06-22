@@ -121,7 +121,7 @@ const BirthDetailsSidebar = () => {
           {friendsFamily &&
             friendsFamily.map(
               (item) => (
-                console.log(item?.firstName + " " + item?.lastName),
+               
                 (
                   <InfoCard
                     id={item?._id}
