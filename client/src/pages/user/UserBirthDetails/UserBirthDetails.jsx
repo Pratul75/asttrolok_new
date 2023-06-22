@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { birthDetailsUpdateSchema } from "../../../validations";
 import axios from "axios";
 import { FiSearch } from "react-icons/fi";
+import BirthDetailsSidebar from "./BirthDetailsSidebar";
 const UserBirthDetails = () => {
   const initialFormValues = {
     // Define your initial values here
@@ -136,14 +137,7 @@ const UserBirthDetails = () => {
 
           {/* content component */}
           <div className="w-full flex gap-1">
-            <div className="w-1/3 h-sceen bg-teal-400 mt-4 p-4 relative">
-              <input
-                type="text"
-                className="input w-full"
-                placeholder="Search"
-              />
-              <FiSearch className="w-5 h-5 text-gray-400 absolute right-8 top-7" />
-            </div>
+            <BirthDetailsSidebar />
             <div className="w-2/3 h-sceen bg-teal-400 mt-4 p-4">b</div>
           </div>
         </div>
