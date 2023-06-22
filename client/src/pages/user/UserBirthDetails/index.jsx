@@ -6,7 +6,6 @@ import axios from "axios";
 import BirthDetailsSidebar from "./BirthDetailsSidebar";
 import BirthDetailsContactDetails from "./BirthDetailsContactDetails";
 import AddBirthDetailModal from "./AddBirthDetailModal";
-import { RxCross2 } from "react-icons/rx";
 const UserBirthDetails = () => {
   const initialFormValues = {
     // Define your initial values here
@@ -60,7 +59,7 @@ const UserBirthDetails = () => {
           },
         }
       );
-console.log('UserBirthDetails.jsx', resp,"get");
+      console.log("UserBirthDetails.jsx", resp, "get");
       if (resp?.data) {
         console.log(resp?.data);
       }
@@ -82,8 +81,8 @@ console.log('UserBirthDetails.jsx', resp,"get");
           },
         }
       );
-      
-        console.log('UserBirthDetails.jsx', "post",resp);
+
+      console.log("UserBirthDetails.jsx", "post", resp);
       if (resp?.data) {
         console.log(resp?.data);
       }
@@ -92,7 +91,7 @@ console.log('UserBirthDetails.jsx', resp,"get");
     }
   };
 
-  const  OthersBirthDetail = async (data) => {
+  const OthersBirthDetail = async (data) => {
     try {
       const resp = await axios.post(
         `http://localhost:4000/api/users/familyDetailUpate`,
@@ -106,8 +105,8 @@ console.log('UserBirthDetails.jsx', resp,"get");
           },
         }
       );
-      
-        console.log('UserBirthDetails.jsx', "post",resp);
+
+      console.log("UserBirthDetails.jsx", "post", resp);
       if (resp?.data) {
         console.log(resp?.data);
       }
@@ -115,7 +114,6 @@ console.log('UserBirthDetails.jsx', resp,"get");
       console.log(error);
     }
   };
-
 
   return (
     <>
