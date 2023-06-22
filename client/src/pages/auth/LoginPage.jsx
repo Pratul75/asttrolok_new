@@ -26,17 +26,20 @@ const LoginPage = () => {
 
     const res = await API_WRAPPER.post("/api/login", { ...data, role: "user" });
 
-    
     console.log("RESPONSE: ", res?.data?.data);
     if (res?.data) {
-       localStorage.setItem("role", JSON.stringify({ role: res?.data?.data?.role }));
-       
+      localStorage.setItem(
+        "role",
+        JSON.stringify({ role: res?.data?.data?.role })
+      );
 
-
-       if(res?.data?.data?.token){
-         dispatch(store(res?.data?.data)) 
-       localStorage.setItem("token", JSON.stringify({ token: res?.data?.data?.token }));
-       }
+      if (res?.data?.data?.token) {
+        dispatch(store(res?.data?.data));
+        localStorage.setItem(
+          "token",
+          JSON.stringify({ token: res?.data?.data?.token })
+        );
+      }
     }
     navigate(PATHS.userDashboard);
   };
@@ -75,7 +78,7 @@ const LoginPage = () => {
         <div className="text-center text-xs text-gray-400">
           _____or sign in with_____
         </div>
-        
+
         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
           {/* username input */}
           <div className="form-control">
@@ -85,7 +88,6 @@ const LoginPage = () => {
             <input
               {...register("userName")}
               name="userName"
-              
               type="text"
               className="input input-bordered border-2 w-full"
             />
@@ -140,9 +142,5 @@ const LoginPage = () => {
     </div>
   );
 };
-
-
-
-
 
 export default LoginPage;

@@ -7,7 +7,7 @@ const BirthDetailsSidebar = () => {
         <input type="text" className="input w-full" placeholder="Search" />
         <FiSearch className="w-5 h-5 text-gray-400 absolute right-8 top-7" />
       </div>
-      <div className="h-[70vh] overflow-y-auto">
+      <div className="h-[70vh] overflow-y-auto px-3 py-2">
         <InfoCard
           color="bg-primary"
           heading="Vishesh Bajpayee"

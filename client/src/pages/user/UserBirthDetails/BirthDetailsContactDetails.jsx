@@ -19,7 +19,7 @@ const BirthDetailsContactDetails = () => {
       <div className="p-8">
         <div className="flex items-center gap-5">
           <div className="avatar placeholder">
-            <div className="bg-neutral-focus text-neutral-content rounded-full w-24">
+            <div className="bg-primary hover:bg-primary-focus text-neutral-content rounded-full w-24 cursor-pointer">
               <span className="text-3xl">VB</span>
             </div>
           </div>

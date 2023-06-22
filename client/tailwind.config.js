@@ -25,6 +25,9 @@ export default {
       fontFamily: {
         "plus-jakarta-sans": ['"Plus Jakarta Sans"', "sans-serif"],
       },
+      colors: {
+        theme: "#5D87FF",
+      },
     },
   },
   plugins: [require("daisyui")],

@@ -13,14 +13,14 @@ import { ProtectedRoute } from "./router/ProtectedRoute";
 import ReverseAuthRoute from "./router/ReverseAuthRoute";
 import { useState } from "react";
 
-
 const App = () => {
-
-  const [role, setRole] = useState(JSON.parse(localStorage.getItem("role"))?.role)
+  const [role, setRole] = useState(
+    JSON.parse(localStorage.getItem("role"))?.role
+  );
   const loginResponse = useSelector((state) => state.loginResponse.value);
 
   const darkMode = useSelector((x) => x.appConfig.darkMode);
-  console.log("ASasdasddd",loginResponse);
+  console.log("ASasdasddd", loginResponse);
   return (
     <div
       data-theme={`${darkMode ? "dark" : "light"}`}
@@ -46,26 +46,38 @@ const App = () => {
           }
         />
         <Route
-            path={PATHS.userDashboard}
-            element={
-              <AppLayout>
-                <ProtectedRoute roleRequired={role} paths={PATHS.userDashboard}>
-                  <UserDashboard />
-                </ProtectedRoute>
-              </AppLayout>
-            }
-          />
+          path={PATHS.userDashboard}
+          element={
+            <AppLayout>
+              <ProtectedRoute roleRequired={role} paths={PATHS.userDashboard}>
+                <UserDashboard />
+              </ProtectedRoute>
+            </AppLayout>
+          }
+        />
         <Route
-            path={PATHS.astrologerDashboard}
-            element={
-              <AppLayout>
-                <ProtectedRoute roleRequired={role} paths={PATHS.astrologerDashboard}>
-                  <astrologerDashboard />
-                </ProtectedRoute>
-              </AppLayout>
-            }
-          />
-
+          path={PATHS.astrologerDashboard}
+          element={
+            <AppLayout>
+              <ProtectedRoute
+                roleRequired={role}
+                paths={PATHS.astrologerDashboard}
+              >
+                <astrologerDashboard />
+              </ProtectedRoute>
+            </AppLayout>
+          }
+        />
+        <Route
+          path={PATHS.userProfile}
+          element={
+            <AppLayout>
+              <ProtectedRoute roleRequired={role} paths={PATHS.userProfile}>
+                <UserProfile />
+              </ProtectedRoute>
+            </AppLayout>
+          }
+        />
 
         <Route
           path={PATHS.userBirthDetails}

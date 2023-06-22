@@ -24,7 +24,7 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={` md:w-full text-white py-4 h-screen ${
+      className={` md:w-full text-white py-4 h-screen overflow-y-auto  ${
         isExpanded ? "w-0" : "-w-[20vw] "
       } transition-all ease-in-out duration-300 border-r-[1px] border-gray-200`}
       onMouseEnter={handleMouseEnter}
@@ -40,9 +40,9 @@ const Sidebar = () => {
       </div>
 
       {/* Sidebar content */}
-      <nav>
+      <nav className="overflow-y-auto">
         <div className="flex flex-col gap-4 px-8 h-full">
-          <ul className="py-2 flex flex-col gap-4 w-full overflow-y-auto">
+          <ul className="py-2 flex flex-col gap-4 w-full">
             {sidebarMapping.map(({ Icon, text, navlink }) => (
               <li
                 key={text}
