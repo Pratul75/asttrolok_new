@@ -81,6 +81,7 @@ const UserBirthDetails = () => {
           },
         }
       );
+      
 
       if (resp?.data) {
         console.log(resp?.data);
