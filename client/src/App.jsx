@@ -30,8 +30,8 @@ const App = () => {
             </AppLayout>
           }
         />
-        {/* <Route path={PATHS.root} element={<Navigate to={PATHS.login} />} /> */}
-        {/* 
+        <Route path={PATHS.root} element={<Navigate to={PATHS.login} />} />
+        
         <Route
           path={PATHS.login}
           element={
@@ -70,7 +70,7 @@ const App = () => {
               </ProtectedRoute>
             </AppLayout>
           }
-        /> */}
+        />
       </Routes>
     </div>
   );
