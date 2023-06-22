@@ -7,8 +7,9 @@ const ResponseTemp = require("../utils/ResponseTemp");
 class GlobalService {
   async checkTheParams(params, defaultMessage) {
     // if params is undefined
- 
-    if(!params  || !params?.length || (!Object.keys(params))){
+    
+    if(!params  || (params.length) || (!Object.keys(params))){
+      console.log("Imworking");
       throw new AppError(
         false,
         defaultMessage ? defaultMessage : "No data",
