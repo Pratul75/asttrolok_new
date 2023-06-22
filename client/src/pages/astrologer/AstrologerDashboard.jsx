@@ -3,6 +3,3 @@ const AstrologerDashboard = () => {
 };
 
 export default AstrologerDashboard;
-
-
-

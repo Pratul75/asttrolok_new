@@ -3,6 +3,7 @@ import BirthDetailsImage from "../../../assets/birthDetailsBanner.png";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { birthDetailsUpdateSchema } from "../../../validations";
 import axios from "axios";
+import { Dropdown } from "../../../components";
 
 const UserBirthDetails = () => {
   const initialFormValues = {
@@ -28,72 +29,65 @@ const UserBirthDetails = () => {
     defaultValues: initialFormValues, // Set initial form values
   });
 
-  const onSubmit = async(data)=>{
-    console.log("data",data);
-    if(data && !errors){
-        if(data?.relation === "Self"){
-             updateUserProfile(data);
-        }
-        else{
-          // this can be of friends and family
-             createProfile(data)
-        }
-    }
-    else{
-
-      console.log("error",errors);
-
-    }
-  }
-
-// user profile Updates
- const updateUserProfile = async(data)=>{
-  try {
-   
-    const resp = await axios.post(
-      `http://localhost:4000/api/users/personalDetail`,
-      { data },
-      {
-        headers: {
-          "Content-Type": "application/json", // Set the default Content-Type header
-          // Add any additional headers you need
-          role: JSON.parse(localStorage.getItem("user"))?.role,
-          Authorization: JSON.parse(localStorage.getItem("token"))?.token,
-        },
+  const onSubmit = async (data) => {
+    console.log("data", data);
+    if (data && !errors) {
+      if (data?.relation === "Self") {
+        updateUserProfile(data);
+      } else {
+        // this can be of friends and family
+        createProfile(data);
       }
-    );
-
-    if (resp?.data) {
-      console.log(resp?.data);
+    } else {
+      console.log("error", errors);
     }
-  } catch (error) {
-    console.log(error);
-  }
- }
- const createProfile = async(data)=>{
-  try {
-   
-    const resp = await axios.post(
-      `http://localhost:4000/api/users/familyDetailUpate`,
-      { data },
-      {
-        headers: {
-          "Content-Type": "application/json", // Set the default Content-Type header
-          // Add any additional headers you need
-          role: JSON.parse(localStorage.getItem("user"))?.role,
-          Authorization: JSON.parse(localStorage.getItem("token"))?.token,
-        },
+  };
+
+  // user profile Updates
+  const updateUserProfile = async (data) => {
+    try {
+      const resp = await axios.post(
+        `http://localhost:4000/api/users/personalDetail`,
+        { data },
+        {
+          headers: {
+            "Content-Type": "application/json", // Set the default Content-Type header
+            // Add any additional headers you need
+            role: JSON.parse(localStorage.getItem("user"))?.role,
+            Authorization: JSON.parse(localStorage.getItem("token"))?.token,
+          },
+        }
+      );
+
+      if (resp?.data) {
+        console.log(resp?.data);
       }
-    );
-
-    if (resp?.data) {
-      console.log(resp?.data);
+    } catch (error) {
+      console.log(error);
     }
-  } catch (error) {
-    console.log(error);
-  }
- }
+  };
+  const createProfile = async (data) => {
+    try {
+      const resp = await axios.post(
+        `http://localhost:4000/api/users/familyDetailUpate`,
+        { data },
+        {
+          headers: {
+            "Content-Type": "application/json", // Set the default Content-Type header
+            // Add any additional headers you need
+            role: JSON.parse(localStorage.getItem("user"))?.role,
+            Authorization: JSON.parse(localStorage.getItem("token"))?.token,
+          },
+        }
+      );
 
+      if (resp?.data) {
+        console.log(resp?.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -112,185 +106,33 @@ const UserBirthDetails = () => {
               />
             </div>
           </header>
-
-          {/* create table */}
-          <div className="flex justify-end mt-4">
-            <button
-              onClick={() => window.addBirthDetailsModal.showModal()}
-              className="btn btn-info text-white"
-            >
-              Add Birth Details
-            </button>
+          <div className="w-full p-8 shadow-md rounded-lg mt-16 flex justify-between">
+            <div className="relative">
+              <select
+                className="w-48 py-2 pl-3 pr-8 text-sm leading-5 border border-gray-300 rounded-md bg-white text-gray-700 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out"
+                name="sort-by"
+                id="sort-by"
+              >
+                <option value="default">Sort By</option>
+                <option value="name">A-Z</option>
+                <option value="price">Z-A</option>
+                <option value="date">Date</option>
+              </select>
+              <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <svg
+                  className="w-5 h-5 text-gray-400"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 12l-6-6 1.5-1.5L10 9.5l4.5-4.5L16 6l-6 6z"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
-        <dialog id="addBirthDetailsModal" className="modal">
-        
-          <form onSubmit={handleSubmit(onSubmit)} method="dialog w-[40vw]" className="modal-box">
-            <h2 className="py-4 text-2xl">Enter Birth Details</h2>
-            <hr />
-            {/* first row */}
-            <div className="flex gap-4">
-              {/* first name */}
-              <div className="form-control w-full max-w-xs">
-                <label htmlFor="firstName" className="label">
-                  <span className="label-text">First Name</span>
-                </label>
-                <input
-                  type="text"
-                  {...register("firstName")}
-                  name="firstName"
-                  id="firstName"
-                  placeholder="First Name"
-                  className="input input-bordered w-full max-w-xs"
-                />
-              <p className="text-rose-600">{errors.firstName?.message}</p>
-              </div>
-              {/* last name */}
-              <div className="form-control w-full max-w-xs">
-                <label htmlFor="lastName" className="label">
-                  <span className="label-text">Last Name</span>
-                </label>
-                <input
-                  type="text"
-                  {...register("lastName")}
-                  name="lastName"
-                  id="lastName"
-                  placeholder="Last Name"
-                  className="input input-bordered w-full max-w-xs"
-                />
-            <p className="text-rose-600">{errors.lastName?.message}</p>
-              </div>
-            </div>
-
-            {/* second row */}
-            <div className="flex gap-4">
-              {/* gender */}
-              <div className="form-control w-full max-w-xs">
-                <div className="mt-4">
-                  <label
-                    htmlFor="relation"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Type
-                  </label>
-                  <div className="mt-1">
-                    <select
-                      id="relation"
-                      name="relation"
-                      {...register("relation")}
-                      className="input input-bordered w-full max-w-xs"
-                    >
-                      <option>Self</option>
-                      <option>Family Member</option>
-                      <option>Other</option>
-                    </select>
-                    
-                  </div>
-                  <p className="text-rose-600">{errors.relation?.message}</p>
-                </div>
-              </div>
-
-              <div className="form-control w-full max-w-xs">
-                <div className="mt-4">
-                  <label
-                    htmlFor="gender"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Gender
-                  </label>
-                  <div className="mt-1">
-                    <select
-                      id="gender"
-                      name="gender"
-                      {...register("gender")}
-                      className="input input-bordered w-full max-w-xs"
-                    >
-                      <option>Male</option>
-                      <option>Female</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                  <p className="text-rose-600">{errors.gender?.message}</p>
-                </div>
-              </div>
-
-              {/* last name */}
-            </div>
-            {/* third row */}
-            <div className="flex gap-4">
-              {/* Date of Birth */}
-              <div className="form-control w-full max-w-xs">
-                <label htmlFor="dateOfBirth" className="label">
-                  <span className="label-text">Date of Birth</span>
-                </label>
-                <input
-                  type="date"
-                  id="dateOfBirth"
-                  name="dateOfBirth"
-                  placeholder="Type here"
-                  {...register("dateOfBirth")}
-                  
-                  className="input input-bordered w-full max-w-xs"
-                />
-                    <p className="text-rose-600">{errors.dateOfBirth?.message}</p>
-              </div>
-              {/* Place of birth*/}
-              <div className="form-control w-full max-w-xs">
-                <label htmlFor="placeOfbirth" className="label">
-                  <span className="label-text">Place of Birth</span>
-                </label>
-                <input
-                  type="text"
-                  id="placeOfbirth"
-                  name="placeOfbirth"
-                  placeholder="Type here"
-                  {...register("placeOfbirth")}
-                  className="input input-bordered w-full max-w-xs"
-                />
-              <p className="text-rose-600">{errors.placeOfbirth?.message}</p>
-              </div>
-            </div>
-            {/* fourth row */}
-            <div className="flex gap-4">
-              {/* birth time */}
-              <div className="form-control w-full max-w-xs">
-                <label htmlFor="birthTime" className="label">
-                  <span className="label-text">Birth Time</span>
-                </label>
-                <input
-                  type="time"
-                  id="birthTime"
-                  name="birthTime"
-                  {...register("birthTime")}
-                  placeholder="Type here"
-                  className="input input-bordered w-full max-w-xs"
-                />
-          <p className="text-rose-600">{errors.birthTime?.message}</p>
-              </div>
-              {/* message */}
-              <div className="form-control w-full max-w-xs">
-                <label htmlFor="message" className="label">
-                  <span className="label-text">Message</span>
-                </label>
-                <input
-                  type="text"
-                  id="message"
-                  name="message"
-                  {...register("message")}
-                  placeholder="max 30 characters"
-                  className="input input-bordered w-full max-w-xs"
-                />
-            <p className="text-rose-600">{errors.message?.message}</p>
-              </div>
-            </div>
-            <div></div>
-            <button type="submit" className="btn btn-primary w-full mt-4">Add</button>
-          </form>
-          <form type="reset" method="dialog" className="modal-backdrop">
-            <button>close</button>
-          </form>
-        </dialog>
-        <Table />
       </div>
     </>
   );

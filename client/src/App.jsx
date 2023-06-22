@@ -22,8 +22,16 @@ const App = () => {
       className="font-plus-jakarta-sans"
     >
       <Routes>
-        <Route path={PATHS.root} element={<Navigate to={PATHS.login} />} />
-
+        <Route
+          path={PATHS.userBirthDetails}
+          element={
+            <AppLayout>
+              <UserBirthDetails />
+            </AppLayout>
+          }
+        />
+        {/* <Route path={PATHS.root} element={<Navigate to={PATHS.login} />} /> */}
+        {/* 
         <Route
           path={PATHS.login}
           element={
@@ -62,7 +70,7 @@ const App = () => {
               </ProtectedRoute>
             </AppLayout>
           }
-        />
+        /> */}
       </Routes>
     </div>
   );
