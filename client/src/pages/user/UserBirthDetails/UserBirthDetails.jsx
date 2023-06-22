@@ -3,9 +3,9 @@ import BirthDetailsImage from "../../../assets/birthDetailsBanner.png";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { birthDetailsUpdateSchema } from "../../../validations";
 import axios from "axios";
-import { FiSearch } from "react-icons/fi";
 import BirthDetailsSidebar from "./BirthDetailsSidebar";
 import BirthDetailsContactDetails from "./BirthDetailsContactDetails";
+
 const UserBirthDetails = () => {
   const initialFormValues = {
     // Define your initial values here
@@ -133,7 +133,9 @@ const UserBirthDetails = () => {
                 </svg>
               </div>
             </div>
-            <button className="btn btn-info">Add Birth Details</button>
+            <button className="btn btn-info text-white">
+              Add Birth Details
+            </button>
           </div>
 
           {/* content component */}

@@ -7,7 +7,7 @@ const BirthDetailsContactDetails = () => {
       {/* first row */}
       <div className=" border-b-[1px] p-8 h-auto w-full flex justify-between items-center">
         <div>
-          <h3 className="text-[18px] font-semibold">Contact Details</h3>
+          <h3 className="text-[18px] font-semibold">Birth Details</h3>
         </div>
         <div className="flex gap-4">
           <AiOutlineStar className="cursor-pointer" />
@@ -33,7 +33,6 @@ const BirthDetailsContactDetails = () => {
       {/* third-row */}
       <div className="p-8">
         <div>
-          <h4 className="font-semibold text-[18px] ">Birth Details</h4>
           <hr className="mt-4" />
         </div>
         <div>
