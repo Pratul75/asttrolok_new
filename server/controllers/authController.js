@@ -67,15 +67,17 @@ class AuthController {
   };
 
   login = async (req, res) => {
+
     const { userName, password } = req.body;
     const email = userName;
 
     // checking the given values
     await this.globalServiceInstance.checkTheParams({ userName, password });
-
+ 
     const arr = [Usermodel, AstrologerPersonalDetailModel, Admindetails];
 
     let logindetails;
+   
     for (let i = 0; i < arr.length; i++) {
       logindetails = await this.BaseServiceInstance.findOneByEmail(
         email,
