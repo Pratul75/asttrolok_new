@@ -27,6 +27,12 @@ userRoutes.post("/familyDetailUpate", checkLoginOrNot,tryCatch(userController.fa
 
 userRoutes.get("/getpersonalDetail", checkLoginOrNot,tryCatch(userController.getpersonalDetail),errorHandler)
 
+userRoutes.get("/getAllotherBirthDetails", checkLoginOrNot,tryCatch(userController.getAllotherBirthDetails),errorHandler)
+
+userRoutes.post("/newMemberBirthdetailsAdded", checkLoginOrNot,tryCatch(userController.newMemberBirthdetailsAdded),errorHandler)
+
+
+
 
 userRoutes.get("/getAstrologerAllConsultation", checkLoginOrNot,tryCatch(userController.getAstrologerAllConsultation),errorHandler)
 

@@ -42,7 +42,7 @@ import { useSelector } from "react-redux";
 export const MainRoutes = () => {
   const loginResponse = useSelector((state) => state.loginResponse.value); 
 
-   console.log("iaminside main routes checking if its wokrif");
+
   <Routes>
     {/* protected routes */}
     <Route path={PATHS.root} element={<ProtectedRoute roleRequired={loginResponse?.role}/>}>

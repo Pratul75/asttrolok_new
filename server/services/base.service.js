@@ -21,6 +21,7 @@ class BaseService {
       } 
       else {
         const userDetails = await model.findByIdAndUpdate(id, data,{ returnOriginal: false});
+
         if (!userDetails) {
           throw new AppError(false, "user not found", false, 404);
         } 
@@ -40,6 +41,14 @@ class BaseService {
     }
   }
 
+  async findAllByUserId(userId,model){
+    const data = await model.find({ userId });
+    if (!data) {
+      return new ResponseTemp(false, "not found", false, 404);
+    } else {
+      return new ResponseTemp(true, " successful ", false, 200,data);
+    }
+  }
   async findOneByAstrologerId(AstrologerId,model){
     const data = await model.findOne({ AstrologerId });
     if (!data) {
@@ -54,6 +63,7 @@ class BaseService {
     if (!id) {
       return new ResponseTemp(false, "id did not found", false, 404);
     } else {
+      
       const userDetails = await model.findById(id);
 
       if (!userDetails) {
@@ -63,6 +73,17 @@ class BaseService {
         return new ResponseTemp(true, "user found", false, 200,userDetails)
       }
     }
+  }
+
+  async createNewData(data, model){
+  
+    const resp = await model.create(data)
+    if (!resp) {
+      return new ResponseTemp(false, "New Data not created", false, 404);
+  }
+  else{
+    return new ResponseTemp(true, "New Data created", false, 200,resp)
+  }
   }
 }
 

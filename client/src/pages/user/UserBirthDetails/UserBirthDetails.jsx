@@ -59,7 +59,7 @@ const UserBirthDetails = () => {
           },
         }
       );
-
+console.log('UserBirthDetails.jsx', resp,"get");
       if (resp?.data) {
         console.log(resp?.data);
       }
@@ -82,7 +82,7 @@ const UserBirthDetails = () => {
         }
       );
       
-
+        console.log('UserBirthDetails.jsx', "post",resp);
       if (resp?.data) {
         console.log(resp?.data);
       }
@@ -90,6 +90,31 @@ const UserBirthDetails = () => {
       console.log(error);
     }
   };
+
+  const  OthersBirthDetail = async (data) => {
+    try {
+      const resp = await axios.post(
+        `http://localhost:4000/api/users/familyDetailUpate`,
+        { data },
+        {
+          headers: {
+            "Content-Type": "application/json", // Set the default Content-Type header
+            // Add any additional headers you need
+            role: JSON.parse(localStorage.getItem("user"))?.role,
+            Authorization: JSON.parse(localStorage.getItem("token"))?.token,
+          },
+        }
+      );
+      
+        console.log('UserBirthDetails.jsx', "post",resp);
+      if (resp?.data) {
+        console.log(resp?.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 
   return (
     <>
