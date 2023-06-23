@@ -1,7 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { AiOutlineStar } from "react-icons/ai";
-import { MdOutlineModeEdit } from "react-icons/md";
 import { RiDeleteBin7Line } from "react-icons/ri";
 import { birthDetailsUpdateSchema } from "../../../validations";
 import { useSelector } from "react-redux";
