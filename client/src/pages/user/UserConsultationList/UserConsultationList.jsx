@@ -56,7 +56,9 @@ const UserConsultationList = () => {
   const consultationColumns = [
     {
       Header: "Astrologer",
-      accessor: "_id",
+      Cell: ({ row }) => {
+        return row?.original?.astrologerId?.name;
+      },
     },
     {
       Header: "User",
