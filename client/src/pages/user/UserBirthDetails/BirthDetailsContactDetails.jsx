@@ -1,7 +1,61 @@
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import { AiOutlineStar } from "react-icons/ai";
 import { MdOutlineModeEdit } from "react-icons/md";
 import { RiDeleteBin7Line } from "react-icons/ri";
+import { birthDetailsUpdateSchema } from "../../../validations";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+
+
+
+
 const BirthDetailsContactDetails = () => {
+ const details = useSelector((state)=>state?.userDetail?.data) 
+   console.log('BirthDetailsContactDetails.jsx', details);
+
+  const initialFormValues = {
+    // Define your initial values here
+    firstName: details?.firstName,
+    lastName: details?.lastName,
+    gender: details?.gender,
+    dateOfBirth: details?.dateOfBirth,
+    placeOfbirth: details?.placeOfbirth,
+    birthTime: details?.birthTime,
+    message: details?.message,
+    relation: details?.relation,
+    // ...
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(birthDetailsUpdateSchema()),
+    defaultValues: initialFormValues, // Set initial form values
+  });
+
+useEffect(()=>{
+  const initialFormValues = {
+    // Define your initial values here
+    firstName: details?.firstName,
+    lastName: details?.lastName,
+    gender: details?.gender,
+    dateOfBirth: details?.dateOfBirth,
+    placeOfbirth: details?.placeOfbirth,
+    birthTime: details?.birthTime,
+    message: details?.message,
+    relation: details?.relation,
+    // ...
+    reset(initialFormValues)
+  };
+
+},[])
+
+
+
   return (
     <div className="w-2/3 h-auto mt-4 shadow">
       {/* first row */}
@@ -25,7 +79,7 @@ const BirthDetailsContactDetails = () => {
           </div>
           <div className="font-semibold">
             <h4 className="text-[18px] font-semibold text-2xl">
-              Vishesh Bajpayee
+              Vishesh 
             </h4>
           </div>
         </div>
@@ -38,18 +92,19 @@ const BirthDetailsContactDetails = () => {
         <div>
           {/* first sub row */}
           <div className="flex justify-between gap-4 mt-4">
-            <div className="form-control w-full">
-              <label htmlFor="firstName" className="label">
-                First Name
-              </label>
-              <input
-                type="text"
-                name=""
-                id="firstName"
-                className="input border-[1px] border-gray-800"
-                placeholder="Enter your first name"
-              />
-            </div>
+          <div className="form-control w-full">
+            <label htmlFor="firstName" className="label">
+              <span className="label-text">First Name</span>
+            </label>
+          
+            <input
+              className="input input-sm border  border-3 border-gray-400"
+              {...register("firstName")}
+              type="text"
+              name="firstName"
+              id="firstName"
+            />
+          </div>
             <div className="form-control w-full">
               <label htmlFor="lastName" className="label">
                 Last Name

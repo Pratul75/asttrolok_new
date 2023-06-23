@@ -38,7 +38,7 @@ const BirthDetailsSidebar = () => {
 
 
   const handleItemClick = (item) => {
-    console.log("sdasdasdasdasdasdsa");
+ console.log('BirthDetailsSidebar.jsx', item);
     dispatch(setOtherDetails(item))
     // Perform any additional logic or actions when an item is clicked
   };
@@ -59,7 +59,7 @@ const BirthDetailsSidebar = () => {
               heading={item.firstName + " " + item.lastName}
               subHeading={item.email}
               icon="VB"
-              onClick={() => handleItemClick(item)}
+              handleItemClick = {()=>(handleItemClick(item))}
             />
           ))}
       </div>

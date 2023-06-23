@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
-const InfoCard = ({ heading, subHeading, time, icon, color }) => {
+const InfoCard = ({ heading, subHeading, time, icon, color,handleItemClick }) => {
   return (
-    <div className="flex justify-between cursor-pointer items-center my-4 hover:bg-gray-100 px-4 py-2 rounded-lg ">
+    <div onClick={handleItemClick} className="flex justify-between cursor-pointer items-center my-4 hover:bg-gray-100 px-4 py-2 rounded-lg ">
       <div className="flex gap-4">
         {/* avatar */}
         <div className="avatar placeholder">
