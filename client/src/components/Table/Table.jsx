@@ -50,7 +50,7 @@ const Table = ({ columns, data }) => {
     </div>
   );
 };
-
+// table props
 Table.propTypes = {
   columns: PropTypes.arrayOf(
     PropTypes.shape({

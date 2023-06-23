@@ -12,7 +12,6 @@ const UserBirthDetails = () => {
   const birthDetailsOfSelectedMember = useSelector(
     (state) => state?.userDetails
   );
-
   console.log("UserBirthDetails.jsx", birthDetailsOfSelectedMember);
   const initialFormValues = {
     // Define your initial values here
@@ -144,18 +143,6 @@ const UserBirthDetails = () => {
                 <option value="price">Z-A</option>
                 <option value="date">Date</option>
               </select>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                <svg
-                  className="w-5 h-5 text-gray-400"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 12l-6-6 1.5-1.5L10 9.5l4.5-4.5L16 6l-6 6z"
-                  />
-                </svg>
-              </div>
             </div>
             <button
               onClick={() => window.add_birth_details_modal.showModal()}
