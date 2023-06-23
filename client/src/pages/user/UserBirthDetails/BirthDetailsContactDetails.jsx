@@ -128,8 +128,15 @@ const BirthDetailsContactDetails = () => {
                 <option disabled value="">
                   Select
                 </option>
-                <option>Male</option>
-                <option>Female</option>
+                {console.log('BirthDetailsContactDetails.jsx', details?.gender)}
+                {/* <option selected>Male</option> */}
+                {/* <option >female</option> */}
+                {  
+                  ("male" === details?.gender)?(
+                    <option selected>Male</option>
+                  ):(  <option selected>female</option>)
+                  
+                  }
               </select>
             </div>
             <div className="form-control w-full">
