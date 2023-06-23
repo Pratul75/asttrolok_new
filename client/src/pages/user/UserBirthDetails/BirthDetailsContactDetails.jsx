@@ -188,7 +188,7 @@ const BirthDetailsContactDetails = () => {
       {/* fifth row */}
       <div className="p-8">
         <div className="flex gap-4">
-          <button className="btn bg-[#5D87FF] text-white">Edit</button>
+          <button className="btn bg-[#5D87FF] text-white">Save</button>
           <button className="btn btn-outline btn-error">Cancel</button>
         </div>
       </div>
