@@ -1,4 +1,3 @@
-import { Table } from "../../../components";
 import TotalConsultation from "./TotalConsultation";
 import UpcomingConsultation from "./UpcomingConsultation";
 import NextBadgeFaithfulUser from "./NextBadgeFaithfulUser";
@@ -35,7 +34,6 @@ const UserDashboard = () => {
           <RecentTransactions />
         </div>
       </div>
-      <Table />
     </div>
   );
 };

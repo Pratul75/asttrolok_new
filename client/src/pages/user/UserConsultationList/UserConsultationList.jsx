@@ -37,9 +37,17 @@ const UserConsultationList = () => {
     const givenDate = new Date(year, month - 1, day); // Create a Date object from the extracted date components
 
     if (givenDate < currentDate) {
-      return <button className="btn btn-success btn-sm">Completed</button>;
+      return (
+        <button className="btn btn-success btn-sm btn-outline">
+          Completed
+        </button>
+      );
     } else if (givenDate > currentDate) {
-      return <button className="btn btn-info btn-sm">Upcoming</button>;
+      return (
+        <button className="btn btn-secondary btn-outline btn-sm">
+          Upcoming
+        </button>
+      );
     } else {
       return <button className="btn btn-warning btn-sm">Today's Date</button>;
     }
@@ -61,19 +69,17 @@ const UserConsultationList = () => {
         switch (row?.original?.bookingtype) {
           case "chat":
             return (
-              <button className="btn btn-outline btn-sm btn-success">
+              <button className="btn btn-outline btn-sm btn-warning">
                 chat
               </button>
             );
           case "call":
             return (
-              <button className="btn btn-outline btn-sm btn-primary">
-                call
-              </button>
+              <button className="btn btn-outline btn-sm btn-info">call</button>
             );
           case "video":
             return (
-              <button className="btn btn-outline btn-sm btn-secondary">
+              <button className="btn btn-outline btn-sm btn-primary">
                 video
               </button>
             );
@@ -94,22 +100,21 @@ const UserConsultationList = () => {
         return checkDateAndReturnButton(row?.original?.bookingdate);
       },
     },
-
     {
       Header: "Action", // New column for action button
       Cell: ({ row }) => (
         <div className="flex gap-2">
           <button
-            className="btn btn-error btn-circle text-white"
-            onClick={() => handleAction(row.original)}
-          >
-            <AiOutlineDelete />
-          </button>
-          <button
             className="btn btn-primary btn-circle text-white"
             onClick={() => handleAction(row.original)}
           >
             <FiEdit2 />
+          </button>
+          <button
+            className="btn btn-error btn-circle text-white"
+            onClick={() => handleAction(row.original)}
+          >
+            <AiOutlineDelete />
           </button>
         </div>
       ),
@@ -156,5 +161,5 @@ const UserConsultationList = () => {
     </div>
   );
 };
-
+ 
 export default UserConsultationList;
