@@ -12,6 +12,7 @@ export const userDetailSlice = createSlice({
       setOtherDetails: (state, action) => {
         state.data = action.payload;
       },
+    
     },
   });
 

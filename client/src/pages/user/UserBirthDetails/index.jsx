@@ -12,13 +12,13 @@ const UserBirthDetails = () => {
   const birthDetailsOfSelectedMember = useSelector(
     (state) => state?.userDetails
   );
-  console.log("UserBirthDetails.jsx", birthDetailsOfSelectedMember);
+
   const initialFormValues = {
     // Define your initial values here
     firstName: "",
     lastName: "",
     gender: "",
-    dateOfBirth: "",
+    birthDate: "",
     placeOfbirth: "",
     birthTime: "",
     message: "",

@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 
 const PersonalDetails = () => {
   const [userProfile, setUserProfile] = useState("");
-
+  
+  
 
   const getpersonalDetailOfUser = async () => {
     try {

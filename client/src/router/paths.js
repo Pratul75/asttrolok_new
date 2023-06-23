@@ -20,7 +20,7 @@ export const PATHS = {
   astrologerConsultationFees: "/astrologer-consultation-fees",
   astrologerDashboard: "/astrologer-dashboard",
   astrologerGoLive: "/astrologer-go-live",
-  astrologerProfile: "/astrolobger-profile",
+  astrologerProfile: "/astrologer-profile",
   astrologerReports: "/astrologer-reports",
 
   // admin dashboard

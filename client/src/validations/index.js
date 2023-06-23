@@ -104,7 +104,7 @@ export const birthDetailsUpdateSchema = () => {
       .min(3, "lastName must contain atleast 3 characters ")
       .required("lastName is required"),
     gender: yup.string("gender must be a string"),
-    dateOfBirth:yup.string("dateOfBirth must be a string"),
+    birthDate:yup.string("birthDate must be a string"),
     placeOfbirth:yup.string("placeOFBirth must be a string"),
     birthTime:yup.string("birthTime must be a string"),
     message:yup.string("message must be a string"),
