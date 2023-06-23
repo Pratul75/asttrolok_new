@@ -10,58 +10,58 @@ import {
   FinancialIcon,
   SupportIcon,
 } from "../icons";
-
+import { PATHS } from "../router/paths";
 // maps the sidebar
 export const sidebarMapping = [
   {
     Icon: DashboardIcon,
     text: "Dashboard",
-    navlink: "/user-dashboard",
+    navlink: PATHS.userDashboard,
   },
   {
     Icon: BirthDetailsIcon,
     text: "Birth Details",
-    navlink: "/user-birth-details",
+    navlink: PATHS.userBirthDetails,
   },
   {
     Icon: ConsultationIcon,
     text: "Consultation List",
-    navlink: "/consultation-list",
+    navlink: PATHS.userConsultationList,
   },
   {
     Icon: CourseListIcon,
     text: "Course List",
-    navlink: "/course-list",
+    navlink: PATHS.userCourseList,
   },
   {
     Icon: QuizIcon,
     text: "Quizes",
-    navlink: "/quizes",
+    navlink: PATHS.userQuizes,
   },
   {
     Icon: CertificateIcon,
     text: "Certificates",
-    navlink: "/certificates",
+    navlink: PATHS.userCertificate,
   },
   {
     Icon: FinancialIcon,
     text: "Financial",
-    navlink: "/financial",
+    navlink: PATHS.userFinancial,
   },
   {
     Icon: SupportIcon,
     text: "Support",
-    navlink: "/support",
+    navlink: PATHS.userSupport,
   },
   {
     Icon: UserProfileIcon,
     text: "User Profile",
-    navlink: "/user-profile",
+    navlink: PATHS.userProfile,
   },
   {
     Icon: UserReportsIcon,
     text: "User Reports",
-    navlink: "/user reports",
+    navlink: PATHS.userReports,
   },
 ];
 

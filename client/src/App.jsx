@@ -6,6 +6,7 @@ import {
   LoginPage,
   UserBirthDetails,
   AstrologerDashboard,
+  UserConsultationList,
 } from "./pages";
 import { PATHS } from "./router/paths";
 import { useSelector } from "react-redux";
@@ -85,6 +86,19 @@ const App = () => {
             <AppLayout>
               <ProtectedRoute roleRequired={role}>
                 <UserBirthDetails />
+              </ProtectedRoute>
+            </AppLayout>
+          }
+        />
+        <Route
+          path={PATHS.userConsultationList}
+          element={
+            <AppLayout>
+              <ProtectedRoute
+                paths={PATHS.userConsultationList}
+                roleRequired={role}
+              >
+                <UserConsultationList />
               </ProtectedRoute>
             </AppLayout>
           }

@@ -7,6 +7,10 @@ export const PATHS = {
   userProfile: "/user-profile",
   userReports: "/user-reports",
   userWallet: "/user-wallet",
+  userQuizes: "/user-quizes",
+  userCertificate: "/user-quizes",
+  userFinancial: "/user-financial",
+  userSupport: "/user-support",
 
   // astrologer dashboard
   astrologerAccount: "/astrologer-account",
