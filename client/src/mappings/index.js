@@ -9,6 +9,7 @@ import {
   CertificateIcon,
   FinancialIcon,
   SupportIcon,
+  UserWalletIcon,
 } from "../icons";
 import { PATHS } from "../router/paths";
 // maps the sidebar
@@ -62,6 +63,11 @@ export const sidebarMapping = [
     Icon: UserReportsIcon,
     text: "User Reports",
     navlink: PATHS.userReports,
+  },
+  {
+    Icon: UserWalletIcon,
+    text: "User Wallet",
+    navlink: PATHS.userWallet,
   },
 ];
 

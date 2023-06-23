@@ -6,40 +6,38 @@ import { useDispatch } from "react-redux";
 import { setOtherDetails } from "../../../features/userDetails/UserDetailsSlice";
 
 const BirthDetailsSidebar = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getOthersBirthDetails();
   }, []);
 
-  const [friendsFamily, setFriendsFamily] = useState('');
- 
+  const [friendsFamily, setFriendsFamily] = useState("");
 
   const getOthersBirthDetails = async () => {
     try {
-      const resp = await axios.get(`http://localhost:4000/api/users/getAllotherBirthDetails`, {
-        headers: {
-          "Content-Type": "application/json",
-          role: JSON.parse(localStorage.getItem("user"))?.role,
-          Authorization: JSON.parse(localStorage.getItem("token"))?.token,
-        },
-      });
+      const resp = await axios.get(
+        `http://localhost:4000/api/users/getAllotherBirthDetails`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            role: JSON.parse(localStorage.getItem("user"))?.role,
+            Authorization: JSON.parse(localStorage.getItem("token"))?.token,
+          },
+        }
+      );
 
       if (resp?.data?.errorCode === 200) {
         setFriendsFamily(resp?.data?.data);
-    
-    
       }
-    
     } catch (error) {
       console.log(error);
     }
   };
 
-
   const handleItemClick = (item) => {
- console.log('BirthDetailsSidebar.jsx', item);
-    dispatch(setOtherDetails(item))
+    console.log("BirthDetailsSidebar.jsx", item);
+    dispatch(setOtherDetails(item));
     // Perform any additional logic or actions when an item is clicked
   };
 
@@ -59,7 +57,7 @@ const BirthDetailsSidebar = () => {
               heading={item.firstName + " " + item.lastName}
               subHeading={item.email}
               icon="VB"
-              handleItemClick = {()=>(handleItemClick(item))}
+              handleItemClick={() => handleItemClick(item)}
             />
           ))}
       </div>

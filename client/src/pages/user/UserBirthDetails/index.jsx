@@ -73,6 +73,7 @@ const UserBirthDetails = () => {
       console.log(error);
     }
   };
+
   const createProfile = async (data) => {
     try {
       const resp = await axios.post(
