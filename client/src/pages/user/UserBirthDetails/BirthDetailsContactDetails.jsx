@@ -11,21 +11,30 @@ import { useEffect } from "react";
 
 
 const BirthDetailsContactDetails = () => {
- const details = useSelector((state)=>state?.userDetail?.data) 
-   console.log('BirthDetailsContactDetails.jsx', details);
+  const details = useSelector((state) => state?.userDetail?.data)
+  console.log('BirthDetailsContactDetails.jsx', details);
 
-  const initialFormValues = {
-    // Define your initial values here
-    firstName: details?.firstName,
-    lastName: details?.lastName,
-    gender: details?.gender,
-    dateOfBirth: details?.dateOfBirth,
-    placeOfbirth: details?.placeOfbirth,
-    birthTime: details?.birthTime,
-    message: details?.message,
-    relation: details?.relation,
-    // ...
-  };
+
+
+
+  let initialFormValues = {}
+  useEffect(() => {
+    initialFormValues = {
+      // Define your initial values here
+      firstName: details?.firstName || " ",
+      lastName: details?.lastName || " ",
+      gender: details?.gender || " ",
+      dateOfBirth: details?.dateOfBirth || " ",
+      placeOfbirth: details?.placeOfbirth || " ",
+      birthTime: details?.birthTime || " ",
+      message: details?.message || " ",
+      relation: details?.relation || " ",
+      // ...
+    };
+
+    reset(initialFormValues);
+
+  }, [details])
 
   const {
     register,
@@ -36,24 +45,6 @@ const BirthDetailsContactDetails = () => {
     resolver: yupResolver(birthDetailsUpdateSchema()),
     defaultValues: initialFormValues, // Set initial form values
   });
-
-useEffect(()=>{
-  const initialFormValues = {
-    // Define your initial values here
-    firstName: details?.firstName,
-    lastName: details?.lastName,
-    gender: details?.gender,
-    dateOfBirth: details?.dateOfBirth,
-    placeOfbirth: details?.placeOfbirth,
-    birthTime: details?.birthTime,
-    message: details?.message,
-    relation: details?.relation,
-    // ...
-    reset(initialFormValues)
-  };
-
-},[])
-
 
 
   return (
@@ -79,7 +70,7 @@ useEffect(()=>{
           </div>
           <div className="font-semibold">
             <h4 className="text-[18px] font-semibold text-2xl">
-              Vishesh 
+              Vishesh
             </h4>
           </div>
         </div>
@@ -92,29 +83,31 @@ useEffect(()=>{
         <div>
           {/* first sub row */}
           <div className="flex justify-between gap-4 mt-4">
-          <div className="form-control w-full">
-            <label htmlFor="firstName" className="label">
-              <span className="label-text">First Name</span>
-            </label>
-          
-            <input
-              className="input input-sm border  border-3 border-gray-400"
-              {...register("firstName")}
-              type="text"
-              name="firstName"
-              id="firstName"
-            />
-          </div>
+            <div className="form-control w-full">
+              <label htmlFor="firstName" className="label">
+                <span className="label-text">First Name</span>
+              </label>
+
+              <input
+                className="input input-sm border  border-3 border-gray-400"
+                {...register("firstName")}
+                defaultValue={initialFormValues?.firstName}
+                type="text"
+                name="firstName"
+                id="firstName"
+              />
+            </div>
             <div className="form-control w-full">
               <label htmlFor="lastName" className="label">
                 Last Name
               </label>
               <input
+                className="input input-sm border  border-3 border-gray-400"
+                {...register("lastName")}
                 type="text"
-                name=""
-                id="firstName"
-                className="input border-[1px] border-gray-800"
-                placeholder="Enter your last name"
+                defaultValue={initialFormValues?.lastName}
+                name="lastName"
+                id="lastName"
               />
             </div>
           </div>
@@ -125,10 +118,14 @@ useEffect(()=>{
                 Gender
               </label>
               <select
-                name="selectLabel"
+                {...register("gender")}
+                defaultValue={initialFormValues?.gender}
+                
+                name="gender"
+                id="gender"
                 className="select select-bordered w-full max-w-xs"
               >
-                <option disabled selected>
+                <option disabled value="">
                   Select
                 </option>
                 <option>Male</option>
@@ -140,7 +137,10 @@ useEffect(()=>{
                 Place of Birth
               </label>
               <select
-                name="selectLabel"
+                {...register("placeOfbirth")}
+                defaultValue={initialFormValues?.placeOfbirth}
+                name="placeOfbirth"
+                id="placeOfbirth"
                 className="select select-bordered w-full max-w-xs"
               >
                 <option disabled selected>
@@ -161,9 +161,11 @@ useEffect(()=>{
                 Date of Birth
               </label>
               <input
+                {...register("dateOfBirth")}
+                defaultValue={initialFormValues?.dateOfBirth}
                 type="date"
-                name=""
-                id="firstName"
+                name="dateOfBirth"
+                id="dateOfBirth"
                 className="input border-[1px] border-gray-800 "
                 placeholder="Enter your first name"
               />
@@ -173,9 +175,11 @@ useEffect(()=>{
                 Birth Time
               </label>
               <input
-                type="time"
-                name=""
-                id="firstName"
+                {...register("dateOfBirth")}
+                defaultValue={initialFormValues?.dateOfBirth}
+                type="date"
+                name="dateOfBirth"
+                id="dateOfBirth"
                 className="input border-[1px] border-gray-800"
               />
             </div>
@@ -187,7 +191,10 @@ useEffect(()=>{
                 Type
               </label>
               <select
-                name="selectLabel"
+                {...register("relation")}
+                defaultValue={initialFormValues?.relation}
+                name="relation"
+                id="relation"
                 className="select select-bordered w-full max-w-xs"
               >
                 <option disabled selected>
@@ -203,6 +210,10 @@ useEffect(()=>{
                 Message
               </label>
               <textarea
+               {...register("message")}
+               defaultValue={initialFormValues?.message}
+             name="message"
+             id="message"
                 rows={1}
                 className="textarea border-[1px] border-gray-700"
               />
