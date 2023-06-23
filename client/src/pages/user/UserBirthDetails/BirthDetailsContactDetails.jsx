@@ -7,34 +7,9 @@ import { birthDetailsUpdateSchema } from "../../../validations";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
-
-
-
 const BirthDetailsContactDetails = () => {
-  const details = useSelector((state) => state?.userDetail?.data)
-  console.log('BirthDetailsContactDetails.jsx', details);
-
-
-
-
-  let initialFormValues = {}
-  useEffect(() => {
-    initialFormValues = {
-      // Define your initial values here
-      firstName: details?.firstName || " ",
-      lastName: details?.lastName || " ",
-      gender: details?.gender || " ",
-      dateOfBirth: details?.dateOfBirth || " ",
-      placeOfbirth: details?.placeOfbirth || " ",
-      birthTime: details?.birthTime || " ",
-      message: details?.message || " ",
-      relation: details?.relation || " ",
-      // ...
-    };
-
-    reset(initialFormValues);
-
-  }, [details])
+  const details = useSelector((state) => state?.userDetail?.data);
+  console.log("BirthDetailsContactDetails.jsx", details);
 
   const {
     register,
@@ -43,21 +18,21 @@ const BirthDetailsContactDetails = () => {
     reset,
   } = useForm({
     resolver: yupResolver(birthDetailsUpdateSchema()),
-    defaultValues: initialFormValues, // Set initial form values
   });
 
+  useEffect(() => {
+    reset(details);
+  }, [details, reset]);
 
   return (
     <div className="w-2/3 h-auto mt-4 shadow">
       {/* first row */}
-      <div className=" border-b-[1px] p-8 h-auto w-full flex justify-between items-center">
+      <div className="border-b-[1px] p-8 h-auto w-full flex justify-between items-center">
         <div>
           <h3 className="text-[18px] font-semibold">Birth Details</h3>
         </div>
         <div className="flex gap-4">
-          <AiOutlineStar className="cursor-pointer" />
-          <MdOutlineModeEdit className="cursor-pointer" />
-          <RiDeleteBin7Line className="cursor-pointer" />
+          <RiDeleteBin7Line className="cursor-pointer text-error" />
         </div>
       </div>
       {/* second row */}
@@ -70,12 +45,12 @@ const BirthDetailsContactDetails = () => {
           </div>
           <div className="font-semibold">
             <h4 className="text-[18px] font-semibold text-2xl">
-              Vishesh
+              {details?.firstName}
             </h4>
           </div>
         </div>
       </div>
-      {/* third-row */}
+      {/* third row */}
       <div className="p-8">
         <div>
           <hr className="mt-4" />
@@ -89,9 +64,8 @@ const BirthDetailsContactDetails = () => {
               </label>
 
               <input
-                className="input input-sm border  border-3 border-gray-400"
+                className="input input-sm border border-3 border-gray-400"
                 {...register("firstName")}
-                defaultValue={initialFormValues?.firstName}
                 type="text"
                 name="firstName"
                 id="firstName"
@@ -102,10 +76,9 @@ const BirthDetailsContactDetails = () => {
                 Last Name
               </label>
               <input
-                className="input input-sm border  border-3 border-gray-400"
+                className="input input-sm border border-3 border-gray-400"
                 {...register("lastName")}
                 type="text"
-                defaultValue={initialFormValues?.lastName}
                 name="lastName"
                 id="lastName"
               />
@@ -114,13 +87,11 @@ const BirthDetailsContactDetails = () => {
           {/* second sub row */}
           <div className="flex justify-between gap-4 mt-4">
             <div className="form-control w-full flex">
-              <label htmlFor="selectLabel " className="label">
+              <label htmlFor="gender" className="label">
                 Gender
               </label>
               <select
                 {...register("gender")}
-                defaultValue={initialFormValues?.gender}
-                
                 name="gender"
                 id="gender"
                 className="select select-bordered w-full max-w-xs"
@@ -128,99 +99,87 @@ const BirthDetailsContactDetails = () => {
                 <option disabled value="">
                   Select
                 </option>
-                {console.log('BirthDetailsContactDetails.jsx', details?.gender)}
-                {/* <option selected>Male</option> */}
-                {/* <option >female</option> */}
-                {  
-                  ("male" === details?.gender)?(
-                    <option selected>Male</option>
-                  ):(  <option selected>female</option>)
-                  
-                  }
+                <option value="male">Male</option>
+                <option value="female">Female</option>
               </select>
             </div>
             <div className="form-control w-full">
-              <label htmlFor="lastName" className="label">
+              <label htmlFor="placeOfBirth" className="label">
                 Place of Birth
               </label>
               <select
-                {...register("placeOfbirth")}
-                defaultValue={initialFormValues?.placeOfbirth}
-                name="placeOfbirth"
-                id="placeOfbirth"
+                {...register("placeOfBirth")}
+                name="placeOfBirth"
+                id="placeOfBirth"
                 className="select select-bordered w-full max-w-xs"
               >
-                <option disabled selected>
+                <option disabled value="">
                   Select
                 </option>
-                ¯<option>Indore</option>
-                <option>Mumbai</option>
-                <option>Delhi</option>
-                <option>Banglore</option>
-                <option>Pune</option>
+                <option value="Indore">Indore</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Banglore">Banglore</option>
+                <option value="Pune">Pune</option>
               </select>
             </div>
           </div>
           {/* third sub row */}
           <div className="flex justify-between gap-4 mt-4">
             <div className="form-control w-full">
-              <label htmlFor="firstName" className="label">
+              <label htmlFor="dateOfBirth" className="label">
                 Date of Birth
               </label>
               <input
                 {...register("dateOfBirth")}
-                defaultValue={initialFormValues?.dateOfBirth}
-                type="date"
-                name="dateOfBirth"
-                id="dateOfBirth"
-                className="input border-[1px] border-gray-800 "
-                placeholder="Enter your first name"
-              />
-            </div>
-            <div className="form-control w-full">
-              <label htmlFor="lastName" className="label">
-                Birth Time
-              </label>
-              <input
-                {...register("dateOfBirth")}
-                defaultValue={initialFormValues?.dateOfBirth}
                 type="date"
                 name="dateOfBirth"
                 id="dateOfBirth"
                 className="input border-[1px] border-gray-800"
+                placeholder="Enter your first name"
+              />
+            </div>
+            <div className="form-control w-full">
+              <label htmlFor="birthTime" className="label">
+                Birth Time
+              </label>
+              <input
+                {...register("birthTime")}
+                type="time"
+                name="birthTime"
+                id="birthTime"
+                className="input border-[1px] border-gray-800"
               />
             </div>
           </div>
-          {/* second sub row */}
+          {/* fourth sub row */}
           <div className="flex justify-between gap-4 mt-4">
             <div className="form-control w-full flex">
-              <label htmlFor="selectLabel " className="label">
-                Type
+              <label htmlFor="relation" className="label">
+                Relation
               </label>
               <select
                 {...register("relation")}
-                defaultValue={initialFormValues?.relation}
                 name="relation"
                 id="relation"
                 className="select select-bordered w-full max-w-xs"
               >
-                <option disabled selected>
+                <option disabled value="">
                   Select
                 </option>
-                <option>Self</option>
-                <option>Family</option>
-                <option>Other</option>
+                <option value="self">Self</option>
+                <option value="family">Family</option>
+                <option value="other">Other</option>
               </select>
             </div>
             <div className="form-control w-full">
-              <label htmlFor="lastName" className="label">
+              <label htmlFor="message" className="label">
                 Message
               </label>
               <textarea
-               {...register("message")}
-               defaultValue={initialFormValues?.message}
-             name="message"
-             id="message"
+                {...register("message")}
+                name="message"
+                id="message"
                 rows={1}
                 className="textarea border-[1px] border-gray-700"
               />
@@ -228,7 +187,7 @@ const BirthDetailsContactDetails = () => {
           </div>
         </div>
       </div>
-      {/* fourth row */}
+      {/* fifth row */}
       <div className="p-8">
         <div className="flex gap-4">
           <button className="btn bg-[#5D87FF] text-white">Edit</button>
