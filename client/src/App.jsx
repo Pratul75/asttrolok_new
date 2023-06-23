@@ -5,7 +5,6 @@ import {
   UserProfile,
   LoginPage,
   UserBirthDetails,
-  AstrologerDashboard,
   UserConsultationList,
 } from "./pages";
 import { PATHS } from "./router/paths";

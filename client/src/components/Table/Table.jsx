@@ -61,41 +61,4 @@ Table.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-const ExampleTable = () => {
-  const columns = [
-    {
-      Header: "Name",
-      accessor: "name",
-    },
-    {
-      Header: "Age",
-      accessor: "age",
-    },
-    {
-      Header: "Location",
-      accessor: "location",
-    },
-  ];
-
-  const data = [
-    {
-      name: "John Doe",
-      age: 25,
-      location: "New York",
-    },
-    {
-      name: "Jane Smith",
-      age: 30,
-      location: "London",
-    },
-    {
-      name: "Bob Johnson",
-      age: 35,
-      location: "Paris",
-    },
-  ];
-
-  return <Table columns={columns} data={data} />;
-};
-
-export default ExampleTable;
+export default Table;

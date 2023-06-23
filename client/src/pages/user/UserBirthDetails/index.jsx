@@ -7,6 +7,7 @@ import BirthDetailsSidebar from "./BirthDetailsSidebar";
 import BirthDetailsContactDetails from "./BirthDetailsContactDetails";
 import AddBirthDetailModal from "./AddBirthDetailModal";
 import { useSelector } from "react-redux";
+import { Header } from "../../../components";
 const UserBirthDetails = () => {
   const birthDetailsOfSelectedMember = useSelector(
     (state) => state?.userDetails
@@ -125,19 +126,11 @@ const UserBirthDetails = () => {
     <>
       <div>
         <div className="p-4 shadow-md">
-          <header className="w-full h-auto bg-[#EBF3FE] rounded-lg flex justify-between relative">
-            <div className="px-8 py-16">
-              <h4 className="font-semibold text-2xl">Birth Details</h4>
-              <p className="text-gray-500 font-light">Enter Birth Details</p>
-            </div>
-            <div>
-              <img
-                className="absolute -top-7 right-14"
-                src={BirthDetailsImage}
-                alt=""
-              />
-            </div>
-          </header>
+          <Header
+            bannerImage={BirthDetailsImage}
+            primaryText="Birth Details"
+            secondaryText="Enter Birth Details"
+          />
           {/* secondary header */}
           <div className="w-full p-8 shadow-md rounded-lg mt-16 flex justify-between">
             <div className="relative">
