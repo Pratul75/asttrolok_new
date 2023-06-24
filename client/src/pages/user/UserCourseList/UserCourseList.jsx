@@ -1,5 +1,5 @@
 import UserProfileBanner from "../../../assets/userProfileBanner.png";
-import { Header } from "../../../components";
+import { Header, CourseListCard } from "../../../components";
 const UserCourseList = () => {
   return (
     <div>
@@ -12,7 +12,7 @@ const UserCourseList = () => {
         <h4 className="font-semibold">My Purchases</h4>
         <div className="mt-4">
           <div className="w-full flex flex-wrap bg-teal-400">
-            
+            <CourseListCard />
           </div>
         </div>
       </div>

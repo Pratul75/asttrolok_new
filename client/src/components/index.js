@@ -7,3 +7,4 @@ export { default as Navbar } from "./Navbar";
 export { default as Sidebar } from "./Sidebar";
 export { default as CalendarPicker } from "./DatePicker/DatePicker";
 export { default as RecentTransactionItem } from "./RescentTransactionItem/RecentTransactionItem";
+export { default as CourseListCard } from "./CoursesListCard";
