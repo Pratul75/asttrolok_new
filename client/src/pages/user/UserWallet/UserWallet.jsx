@@ -24,6 +24,7 @@ const UserWallet = () => {
           <div className="flex gap-4 w-full mt-4">
             <div className="p-4 w-1/2 bg-[#1652F0] rounded-lg">
               <h4 className="font-thin text-white">Last Month</h4>
+              import second from './'
               <p className="text-white font-semibold">$42,658</p>
             </div>
             <div className="p-4 w-1/2 bg-[#F5F6FA] rounded-lg">
