@@ -11,7 +11,7 @@ const AppLayout = ({ children }) => {
       <div
         className={`${
           isExpanded ? " md:w-1/4" : "w-32 h-20"
-        } transition-all duration-300`}
+        } transition-all duration-100`}
       >
         <Sidebar />
       </div>

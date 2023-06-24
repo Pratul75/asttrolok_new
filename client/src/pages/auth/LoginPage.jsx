@@ -25,29 +25,30 @@ const LoginPage = () => {
 
   const onSubmit = async (data) => {
     console.log("LOGIN DATA: ", data);
-   try {
-     const res = await axios.post("http://localhost:4000/api/login", { ...data, role: "user" });
-     console.log("RESPONSE: ", res);
-    if (res?.data) {
-      localStorage.setItem(
-        "role",
-        JSON.stringify({ role: res?.data?.data?.role })
-      );
-   
-      if (res?.data?.data?.token) {
-        dispatch(store(res?.data?.data));
+    try {
+      const res = await axios.post("http://localhost:4000/api/login", {
+        ...data,
+        role: "user",
+      });
+      console.log("RESPONSE: ", res);
+      if (res?.data) {
         localStorage.setItem(
-          "token",
-          JSON.stringify({ token: res?.data?.data?.token })
+          "role",
+          JSON.stringify({ role: res?.data?.data?.role })
         );
-      }
-    }
-    navigate(PATHS.userDashboard);
-   } catch (error) {
-    console.log(error);
-   }
 
-   
+        if (res?.data?.data?.token) {
+          dispatch(store(res?.data?.data));
+          localStorage.setItem(
+            "token",
+            JSON.stringify({ token: res?.data?.data?.token })
+          );
+        }
+      }
+      navigate(PATHS.userDashboard);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
