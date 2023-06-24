@@ -11,10 +11,10 @@ const AstrologerAccount = () => {
         <div className="flex flex-col items-start space-y-6">
           <h1 className="text-2xl font-bold">Astrologer Profile</h1>
           <p className="text-xl">Change your profile picture from here</p>
-          <div>
-            <img src={astrologerProfile} />
-            <div>
-              <button className="btn btn-outline btn-error">Upload</button>
+          <div className="space-y-6">
+            <img className="ml-6" src={astrologerProfile} />
+            <div className="space-x-6">
+              <button className=" btn-outline  btn btn-primary">Upload</button>
               <button className="btn btn-outline btn-error">reset</button>
             </div>
             <p>Allowed JPG, GIF or PNG. Max size of 800K</p>
@@ -30,7 +30,6 @@ const AstrologerAccount = () => {
               </label>
               <input placeholder=" Degreee"
                 id="name"
-                placeholder="Mathew Anderson"
                 type="text" />
             </div>
             <div className="flex flex-col">
@@ -39,7 +38,6 @@ const AstrologerAccount = () => {
               </label>
               <input placeholder=" Degreee"
                 id="name"
-                placeholder="Mathew Anderson"
                 type="text" />
             </div>
             <div className="flex flex-col">
@@ -48,19 +46,18 @@ const AstrologerAccount = () => {
               </label>
               <input placeholder=" Degreee"
                 id="name"
-                placeholder="Mathew Anderson"
                 type="text" />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col space-y-24">
+      <div className="flex flex-col ">
         <h1 className="text-2xl font-bold">Services and Specialization</h1>
         <div className="flex flex-col ">
           <label className="text-xl font-bold" htmlFor="Specialization">Specialization</label>
-          <input placeholder=" Degreee" className="border-4" id="Specialization" type="text" />
-          <input placeholder=" Degreee" className="border-4" id="Specialization" type="text" />
+          <input placeholder=" Degreee" className="" id="Specialization" type="text" />
+          <input placeholder=" Degreee" className="" id="Specialization" type="text" />
         </div>
 
         <div>
