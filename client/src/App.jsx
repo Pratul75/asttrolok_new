@@ -53,40 +53,19 @@ const App = () => {
           path={PATHS.userDashboard}
           element={
             <AppLayout>
-              <ProtectedRoute roleRequired={role} paths={PATHS.userDashboard}>
+              <ProtectedRoute roleRequired={loginResponse?.role} paths={PATHS.userDashboard}>
                 <UserDashboard />
               </ProtectedRoute>
             </AppLayout>
           }
         />
-        <Route
-          path={PATHS.astrologerDashboard}
-          element={
-            <AppLayout>
-              <ProtectedRoute
-                roleRequired={role}
-                paths={PATHS.astrologerDashboard}
-              >
-                <astrologerDashboard />
-              </ProtectedRoute>
-            </AppLayout>
-          }
-        />
-        <Route
-          path={PATHS.astrologerProfile}
-          element={
-            <AppLayout>
-             
-                <AstrologerAccount />
-           
-            </AppLayout>
-          }
-        />
+      
+     
         <Route
           path={PATHS.userProfile}
           element={
             <AppLayout>
-              <ProtectedRoute roleRequired={role} paths={PATHS.userProfile}>
+              <ProtectedRoute roleRequired={loginResponse?.role} paths={PATHS.userProfile}>
                 <UserProfile />
               </ProtectedRoute>
             </AppLayout>
@@ -97,7 +76,7 @@ const App = () => {
           path={PATHS.userBirthDetails}
           element={
             <AppLayout>
-              <ProtectedRoute roleRequired={role}>
+              <ProtectedRoute roleRequired={loginResponse?.role} paths={PATHS.userBirthDetails}>
                 <UserBirthDetails />
               </ProtectedRoute>
             </AppLayout>
@@ -109,7 +88,7 @@ const App = () => {
             <AppLayout>
               <ProtectedRoute
                 paths={PATHS.userConsultationList}
-                roleRequired={role}
+                roleRequired={loginResponse?.role}
               >
                 <UserConsultationList />
               </ProtectedRoute>
@@ -120,7 +99,7 @@ const App = () => {
           path={PATHS.userWallet}
           element={
             <AppLayout>
-              <ProtectedRoute paths={PATHS.userWallet} role={role}>
+              <ProtectedRoute paths={PATHS.userWallet} role={loginResponse?.role}>
                 <UserWallet />
               </ProtectedRoute>
             </AppLayout>
@@ -130,7 +109,7 @@ const App = () => {
           path={PATHS.userCourseList}
           element={
             <AppLayout>
-              <ProtectedRoute paths={PATHS.userCourseList} role={role}>
+              <ProtectedRoute paths={PATHS.userCourseList} role={loginResponse?.role}>
                 <UserCourseList />
               </ProtectedRoute>
             </AppLayout>

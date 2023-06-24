@@ -1,17 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
 import SidebarItem from "./SidebarItem";
-import { astrlogerSidebarMapping, sidebarMapping } from "../../mappings";
-
+import { sidebarMapping } from "../../mappings";
 import AstrolokLogo from "../../assets/astrolokLogo.png";
 import AsttrolokSmallLogo from "../../assets/asttrolokSmallLogo.svg";
 import { toggleSidebar } from "../../features/appConfig/AppSlice";
 
 const Sidebar = () => {
   const isExpanded = useSelector((state) => state.appConfig.sidebarOpen);
-
-  const loginResponse = useSelector((state) => state.loginResponse.value);
-  
- 
+  const dispatch = useDispatch();
 
   const handleMouseEnter = () => {
     if (!isExpanded) {
@@ -28,7 +24,7 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={` md:w-full text-white py-4 h-screen overflow-y-auto  ${
+      className={` md:w-full text-white py-4 h-screen ${
         isExpanded ? "w-0" : "-w-[20vw] "
       } transition-all ease-in-out duration-300 border-r-[1px] border-gray-200`}
       onMouseEnter={handleMouseEnter}
@@ -44,11 +40,10 @@ const Sidebar = () => {
       </div>
 
       {/* Sidebar content */}
-      <nav className="overflow-y-auto">
+      <nav>
         <div className="flex flex-col gap-4 px-8 h-full">
-          <ul className="py-2 flex flex-col gap-4 w-full">
-        {  (loginResponse?.role === "user")?( 
-            sidebarMapping.map(({ Icon, text, navlink }) => (
+          <ul className="py-2 flex flex-col gap-4 w-full overflow-y-auto">
+            {sidebarMapping.map(({ Icon, text, navlink }) => (
               <li
                 key={text}
                 className={`${
@@ -62,27 +57,7 @@ const Sidebar = () => {
                   link={navlink}
                 />
               </li>
-            ))
-          ):(
-            astrlogerSidebarMapping.map(({ Icon, text, navlink }) => (
-              <li
-                key={text}
-                className={`${
-                  !isExpanded && "justify-center items-center"
-                } flex  `}
-              >
-                <SidebarItem
-                  Icon={Icon}
-                  text={text}
-                  itemExpanded={isExpanded}
-                  link={navlink}
-                />
-              </li>
-            ))
-          )
-
-}
-           
+            ))}
           </ul>
         </div>
       </nav>
