@@ -9,6 +9,7 @@ import {
   UserWallet,
   UserCourseList,
   UserQuizes,
+  PermissionDenied,
 } from "./pages";
 import { PATHS } from "./router/paths";
 import { useSelector } from "react-redux";
@@ -142,6 +143,7 @@ const App = () => {
             </AppLayout>
           }
         />
+        <Route path="/*" element={<PermissionDenied />} />
       </Routes>
     </div>
   );
