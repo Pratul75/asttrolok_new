@@ -11,6 +11,7 @@ import { API_WRAPPER } from "../../api";
 import { useDispatch } from "react-redux";
 import { store } from "../../features/loginResponse/LoginResponse";
 import axios from "axios";
+import { tryCatch } from "../../api/tryCatch";
 
 // login page
 const LoginPage = () => {
@@ -24,10 +25,9 @@ const LoginPage = () => {
 
   const onSubmit = async (data) => {
     console.log("LOGIN DATA: ", data);
-
-    const res = await axios.post("http:localhost:4000/api/login", { ...data, role: "user" });
-
-    console.log("RESPONSE: ", res);
+   try {
+     const res = await axios.post("http://localhost:4000/api/login", { ...data, role: "user" });
+     console.log("RESPONSE: ", res);
     if (res?.data) {
       localStorage.setItem(
         "role",
@@ -43,6 +43,11 @@ const LoginPage = () => {
       }
     }
     navigate(PATHS.userDashboard);
+   } catch (error) {
+    console.log(error);
+   }
+
+   
   };
 
   return (
