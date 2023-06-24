@@ -8,7 +8,7 @@ import {
   UserConsultationList,
   UserWallet,
   UserCourseList,
-  AstrologerAccount,
+  UserQuizes,
 } from "./pages";
 import { PATHS } from "./router/paths";
 import { useSelector } from "react-redux";
@@ -53,19 +53,24 @@ const App = () => {
           path={PATHS.userDashboard}
           element={
             <AppLayout>
-              <ProtectedRoute roleRequired={loginResponse?.role} paths={PATHS.userDashboard}>
+              <ProtectedRoute
+                roleRequired={loginResponse?.role}
+                paths={PATHS.userDashboard}
+              >
                 <UserDashboard />
               </ProtectedRoute>
             </AppLayout>
           }
         />
-      
-     
+
         <Route
           path={PATHS.userProfile}
           element={
             <AppLayout>
-              <ProtectedRoute roleRequired={loginResponse?.role} paths={PATHS.userProfile}>
+              <ProtectedRoute
+                roleRequired={loginResponse?.role}
+                paths={PATHS.userProfile}
+              >
                 <UserProfile />
               </ProtectedRoute>
             </AppLayout>
@@ -76,7 +81,10 @@ const App = () => {
           path={PATHS.userBirthDetails}
           element={
             <AppLayout>
-              <ProtectedRoute roleRequired={loginResponse?.role} paths={PATHS.userBirthDetails}>
+              <ProtectedRoute
+                roleRequired={loginResponse?.role}
+                paths={PATHS.userBirthDetails}
+              >
                 <UserBirthDetails />
               </ProtectedRoute>
             </AppLayout>
@@ -99,7 +107,10 @@ const App = () => {
           path={PATHS.userWallet}
           element={
             <AppLayout>
-              <ProtectedRoute paths={PATHS.userWallet} role={loginResponse?.role}>
+              <ProtectedRoute
+                paths={PATHS.userWallet}
+                role={loginResponse?.role}
+              >
                 <UserWallet />
               </ProtectedRoute>
             </AppLayout>
@@ -109,8 +120,24 @@ const App = () => {
           path={PATHS.userCourseList}
           element={
             <AppLayout>
-              <ProtectedRoute paths={PATHS.userCourseList} role={loginResponse?.role}>
+              <ProtectedRoute
+                paths={PATHS.userCourseList}
+                role={loginResponse?.role}
+              >
                 <UserCourseList />
+              </ProtectedRoute>
+            </AppLayout>
+          }
+        />
+        <Route
+          path={PATHS.userQuizes}
+          element={
+            <AppLayout>
+              <ProtectedRoute
+                paths={PATHS.userQuizes}
+                rol={loginResponse?.role}
+              >
+                <UserQuizes />
               </ProtectedRoute>
             </AppLayout>
           }

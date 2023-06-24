@@ -1,10 +1,10 @@
+export { default as CourseListCard } from "./CoursesListCard";
 export { default as InfoCard } from "./InfoCard/InfoCard";
-export { default as Dropdown } from "./Dropdown";
 export { default as Placeholder } from "./Placeholder";
-export { default as Header } from "./Header";
+export { default as Dropdown } from "./Dropdown";
 export { default as Table } from "./Table/Table";
-export { default as Navbar } from "./Navbar";
 export { default as Sidebar } from "./Sidebar";
+export { default as Header } from "./Header";
+export { default as Navbar } from "./Navbar";
 export { default as CalendarPicker } from "./DatePicker/DatePicker";
 export { default as RecentTransactionItem } from "./RescentTransactionItem/RecentTransactionItem";
-export { default as CourseListCard } from "./CoursesListCard";

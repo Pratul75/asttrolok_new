@@ -39,38 +39,37 @@ export const sidebarMapping = [
     text: "Quizes",
     navlink: PATHS.userQuizes,
   },
-  {
-    Icon: CertificateIcon,
-    text: "Certificates",
-    navlink: PATHS.userCertificate,
-  },
-  {
-    Icon: FinancialIcon,
-    text: "Financial",
-    navlink: PATHS.userFinancial,
-  },
-  {
-    Icon: SupportIcon,
-    text: "Support",
-    navlink: PATHS.userSupport,
-  },
+  // {
+  //   Icon: CertificateIcon,
+  //   text: "Certificates",
+  //   navlink: PATHS.userCertificate,
+  // },
+  // {
+  //   Icon: FinancialIcon,
+  //   text: "Financial",
+  //   navlink: PATHS.userFinancial,
+  // },
+  // {
+  //   Icon: SupportIcon,
+  //   text: "Support",
+  //   navlink: PATHS.userSupport,
+  // },
   {
     Icon: UserProfileIcon,
     text: "User Profile",
     navlink: PATHS.userProfile,
   },
-  {
-    Icon: UserReportsIcon,
-    text: "User Reports",
-    navlink: PATHS.userReports,
-  },
+  // {
+  //   Icon: UserReportsIcon,
+  //   text: "User Reports",
+  //   navlink: PATHS.userReports,
+  // },
   {
     Icon: UserWalletIcon,
     text: "User Wallet",
     navlink: PATHS.userWallet,
   },
 ];
-
 
 export const astrlogerSidebarMapping = [
   {
@@ -126,7 +125,7 @@ export const astrlogerSidebarMapping = [
   {
     Icon: QuizIcon,
     text: "Quizzes",
-    navlink: PATHS,
+    navlink: PATHS.userQuizes,
   },
   {
     Icon: CertificateIcon,
@@ -153,7 +152,6 @@ export const astrlogerSidebarMapping = [
     text: "User Reports",
     navlink: PATHS.userReports,
   },
-
 ];
 
 // maps the navbar
