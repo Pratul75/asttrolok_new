@@ -7,6 +7,7 @@ import {
   UserBirthDetails,
   UserConsultationList,
   UserWallet,
+  UserCourseList,
 } from "./pages";
 import { PATHS } from "./router/paths";
 import { useSelector } from "react-redux";
@@ -18,6 +19,7 @@ const App = () => {
   const [role, setRole] = useState(
     JSON.parse(localStorage.getItem("role"))?.role
   );
+
   const loginResponse = useSelector((state) => state.loginResponse.value);
 
   const darkMode = useSelector((x) => x.appConfig.darkMode);
@@ -109,6 +111,16 @@ const App = () => {
             <AppLayout>
               <ProtectedRoute paths={PATHS.userWallet} role={role}>
                 <UserWallet />
+              </ProtectedRoute>
+            </AppLayout>
+          }
+        />
+        <Route
+          path={PATHS.userCourseList}
+          element={
+            <AppLayout>
+              <ProtectedRoute paths={PATHS.userCourseList} role={role}>
+                <UserCourseList />
               </ProtectedRoute>
             </AppLayout>
           }

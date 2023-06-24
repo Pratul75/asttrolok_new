@@ -3,7 +3,6 @@ import BirthDetailsImage from "../../../assets/birthDetailsBanner.png";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { birthDetailsUpdateSchema } from "../../../validations";
 import axios from "axios";
-import { FiSearch } from "react-icons/fi";
 import BirthDetailsSidebar from "./BirthDetailsSidebar";
 import BirthDetailsContactDetails from "./BirthDetailsContactDetails";
 const UserBirthDetails = () => {

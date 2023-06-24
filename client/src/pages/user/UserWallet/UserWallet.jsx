@@ -3,6 +3,7 @@ import { Header } from "../../../components";
 import TransactionHistoryChart from "../../../assets/transactionHistoryChart.png";
 import VisaIcon from "../../../assets/visaIcon.png";
 import PayOwnerIcon from "../../../assets/payOwnerIcon.png";
+
 const UserWallet = () => {
   return (
     <div className="p-4">
