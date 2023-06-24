@@ -132,26 +132,26 @@ export const astrologerSidebarMapping = [
     text: "Certificates",
     navlink: PATHS.userCertificate,
   },
-  // {
-  //   Icon: FinancialIcon,
-  //   text: "Financial",
-  //   navlink: PATHS.userFinancial,
-  // },
-  // {
-  //   Icon: SupportIcon,
-  //   text: "Support",
-  //   navlink: PATHS.userSupport,
-  // },
-  // {
-  //   Icon: UserProfileIcon,
-  //   text: "User Profile",
-  //   navlink: PATHS.userProfile,
-  // },
-  // {
-  //   Icon: UserReportsIcon,
-  //   text: "User Reports",
-  //   navlink: PATHS.userReports,
-  // },
+  {
+    Icon: FinancialIcon,
+    text: "Financial",
+    navlink: PATHS.userFinancial,
+  },
+  {
+    Icon: SupportIcon,
+    text: "Support",
+    navlink: PATHS.userSupport,
+  },
+  {
+    Icon: UserProfileIcon,
+    text: "User Profile",
+    navlink: PATHS.userProfile,
+  },
+  {
+    Icon: UserReportsIcon,
+    text: "User Reports",
+    navlink: PATHS.userReports,
+  },
 ];
 
 // maps the navbar
