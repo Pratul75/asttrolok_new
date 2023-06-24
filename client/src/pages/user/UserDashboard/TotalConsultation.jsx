@@ -1,6 +1,6 @@
 import { InfoCard } from "../../../components";
 import { TodayConsultationChart } from "../../../icons";
-
+import { getRandomColor } from "../../../utilities";
 const TotalConsultation = () => {
   return (
     <div className="w-full  md:w-1/2 p-4  shadow-[0px -2px 0px #919EAB  ] rounded-lg border-[.5px] ">
@@ -33,49 +33,49 @@ const TotalConsultation = () => {
           subHeading="Astrology"
           time="11:10 AM"
           icon="VB"
-          color="bg-accent"
+          color={getRandomColor()}
         />
         <InfoCard
           heading="Best Astrologer"
           subHeading="Vanya Ojha"
           time="10:00 AM"
           icon="HR"
-          color="bg-primary"
+          color={getRandomColor()}
         />
         <InfoCard
           heading="Most Commented"
           subHeading="Astrology"
           time="1:30 PM"
           icon="AB"
-          color="bg-info"
+          color={getRandomColor()}
         />
         <InfoCard
           heading="Top Course"
           subHeading="Astrology"
           time="11:10 AM"
           icon="VB"
-          color="bg-accent"
+          color={getRandomColor()}
         />
         <InfoCard
           heading="Best Astrologer"
           subHeading="Vanya Ojha"
           time="10:00 AM"
           icon="HR"
-          color="bg-primary"
+          color={getRandomColor()}
         />
         <InfoCard
           heading="Most Commented"
           subHeading="Astrology"
           time="1:30 PM"
           icon="AB"
-          color="bg-info"
+          color={getRandomColor()}
         />
         <InfoCard
           heading="Best Astrologer"
           subHeading="Vanya Ojha"
           time="10:00 AM"
           icon="HR"
-          color="bg-success"
+          color={getRandomColor()}
         />
 
         <InfoCard
@@ -83,14 +83,14 @@ const TotalConsultation = () => {
           subHeading="Astrology"
           time="1:30 PM"
           icon="AB"
-          color="bg-warning"
+          color={getRandomColor()}
         />
         <InfoCard
           heading="Most Commented"
           subHeading="Astrology"
           time="4:30 PM"
           icon="AB"
-          color="bg-secondary"
+          color={getRandomColor()}
         />
       </div>
     </div>

@@ -10,7 +10,6 @@ import { loginSchema } from "../../validations";
 import { API_WRAPPER } from "../../api";
 import { useDispatch } from "react-redux";
 import { store } from "../../features/loginResponse/LoginResponse";
-import axios from "axios";
 
 // login page
 const LoginPage = () => {
@@ -25,7 +24,7 @@ const LoginPage = () => {
   const onSubmit = async (data) => {
     console.log("LOGIN DATA: ", data);
 
-    const res = await axios.post("http:localhost:4000/api/login", { ...data, role: "user" });
+    const res = await API_WRAPPER.post("/api/login", { ...data, role: "user" });
 
     console.log("RESPONSE: ", res);
     if (res?.data) {
@@ -33,7 +32,7 @@ const LoginPage = () => {
         "role",
         JSON.stringify({ role: res?.data?.data?.role })
       );
-   
+
       if (res?.data?.data?.token) {
         dispatch(store(res?.data?.data));
         localStorage.setItem(
