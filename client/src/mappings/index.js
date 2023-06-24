@@ -168,22 +168,22 @@ export const navbarMapping = [
   },
   {
     type: "link",
-    label: "Sessions",
+    label: "contact Us",
     link: "/user-sessions",
   },
-  {
-    type: "link",
-    label: "Booking List",
-    link: "/user-booking-list",
-  },
-  {
-    type: "link",
-    label: "Upcomming Events",
-    link: "/user-upcoming-events",
-  },
-  {
-    type: "link",
-    label: "Top Astrologers",
-    link: "/user-top-astrologers",
-  },
+  // {
+  //   type: "link",
+  //   label: "Booking List",
+  //   link: "/user-booking-list",
+  // },
+  // {
+  //   type: "link",
+  //   label: "Upcomming Events",
+  //   link: "/user-upcoming-events",
+  // },
+  // {
+  //   type: "link",
+  //   label: "Top Astrologers",
+  //   link: "/user-top-astrologers",
+  // },
 ];
