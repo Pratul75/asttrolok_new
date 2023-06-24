@@ -22,6 +22,10 @@ export const PATHS = {
   astrologerGoLive: "/astrologer-go-live",
   astrologerProfile: "/astrologer-profile",
   astrologerReports: "/astrologer-reports",
+  astrologerBirthDetails: "/astrologer-birth-details",
+  astrologerConsultationList: "/astrologer-consultation-list",
+  astrologerCourseList: "/astrologer-course-list",
+  astrologerRatingAndReviews: "/astrologer-ratings-and-reviews",
 
   // admin dashboard
   adminAstrologerList: "/admin-astrologer-list",

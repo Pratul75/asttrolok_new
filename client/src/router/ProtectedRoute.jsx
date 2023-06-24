@@ -15,15 +15,12 @@ const useAuth = () => {
   if (_user) {
     role = JSON.parse(_user).role;
     if (role === "user") {
-      user = role
+      user = role;
+    } else if (role === "astrologer") {
+      astrologer = role;
+    } else if (role === "admin") {
+      admin = role;
     }
-    else if (role === "astrologer") {
-      astrologer = role
-    }
-    else if (role === "admin") {
-      admin = role
-    }
-
   }
   if (user || astrologer || admin) {
     return {
@@ -39,27 +36,22 @@ const useAuth = () => {
 };
 
 const RouteValidate = (path, role) => {
-
   for (let key in PATHS) {
     if (PATHS[key] === path) {
-
       if (PATHS[key].includes(role)) {
-        return true
+        return true;
       }
     }
   }
 
-  return false
-
-}
-
-
+  return false;
+};
 
 // protected routes
 export const ProtectedRoute = ({ roleRequired, paths, children }) => {
   const { auth, role } = useAuth();
-  console.log( "this is protected ROute");
-  console.log(roleRequired, paths, children,auth);
+  console.log("this is protected ROute");
+  console.log(roleRequired, paths, children, auth);
   // console.log("AUTH: ", auth, "ROLE: ", role);
   // if the role required is there or not
 
@@ -69,15 +61,12 @@ export const ProtectedRoute = ({ roleRequired, paths, children }) => {
       roleRequired === role && RouteValidate(paths, role) ? (
         children
       ) : (
-    
         <Navigate to={PATHS.permissionDenied} />
       )
     ) : (
-  
       <Navigate to={PATHS.login} />
     );
   } else {
- 
     return auth ? children : <Navigate to={PATHS.login} />;
   }
 };

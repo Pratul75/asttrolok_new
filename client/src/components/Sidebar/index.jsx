@@ -1,9 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
 import SidebarItem from "./SidebarItem";
-import { sidebarMapping } from "../../mappings";
+import { userSidebarMapping, astrologerSidebarMapping } from "../../mappings";
 import AstrolokLogo from "../../assets/astrolokLogo.png";
 import AsttrolokSmallLogo from "../../assets/asttrolokSmallLogo.svg";
 import { toggleSidebar } from "../../features/appConfig/AppSlice";
+import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
+import { PATHS } from "../../router/paths";
 
 const Sidebar = () => {
   const isExpanded = useSelector((state) => state.appConfig.sidebarOpen);
@@ -21,6 +24,26 @@ const Sidebar = () => {
       // dispatch(toggleSidebar());
     }
   };
+  // check the user role
+  const conditionalSidebarMapping = () => {
+    const userRole = JSON.parse(localStorage.getItem("role"));
+    const { role } = userRole;
+    console.log("ROLE: ", role);
+    if (role === "user") {
+      console.log("USER IS LOGGED");
+      return userSidebarMapping;
+    }
+    if (role === "astrologer") {
+      console.log("ASTROLOGER IS LOGGED");
+      return astrologerSidebarMapping;
+    } else {
+      return ["nothing found"];
+    }
+  };
+
+  useEffect(() => {
+    conditionalSidebarMapping();
+  }, []);
 
   return (
     <aside
@@ -43,7 +66,7 @@ const Sidebar = () => {
       <nav>
         <div className="flex flex-col gap-4 px-8 h-full">
           <ul className="py-2 flex flex-col gap-4 w-full overflow-y-auto">
-            {sidebarMapping.map(({ Icon, text, navlink }) => (
+            {conditionalSidebarMapping()?.map(({ Icon, text, navlink }) => (
               <li
                 key={text}
                 className={`${

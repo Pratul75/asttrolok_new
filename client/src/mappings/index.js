@@ -13,7 +13,7 @@ import {
 } from "../icons";
 import { PATHS } from "../router/paths";
 // maps the sidebar
-export const sidebarMapping = [
+export const userSidebarMapping = [
   {
     Icon: DashboardIcon,
     text: "Dashboard",
@@ -71,31 +71,31 @@ export const sidebarMapping = [
   },
 ];
 
-export const astrlogerSidebarMapping = [
+export const astrologerSidebarMapping = [
   {
     Icon: DashboardIcon,
     text: "Dashboard",
-    navlink: PATHS.userDashboard,
+    navlink: PATHS.astrologerDashboard,
   },
   {
     Icon: BirthDetailsIcon,
     text: "Birth Details",
-    navlink: PATHS.userBirthDetails,
+    navlink: PATHS.astrologerBirthDetails,
   },
   {
     Icon: ConsultationIcon,
     text: "Astrologer Profile",
-    navlink: PATHS.astrologerProfile,
+    navlink: PATHS.astrologerConsultationList,
   },
-  {
-    Icon: CourseListIcon,
-    text: "Consultation List",
-    navlink: PATHS,
-  },
+  // {
+  //   Icon: CourseListIcon,
+  //   text: "Consultation List",
+  //   navlink: PATHS,
+  // },
   {
     Icon: QuizIcon,
     text: "Courses List",
-    navlink: PATHS,
+    navlink: PATHS.astrologerCourseList,
   },
   {
     Icon: CertificateIcon,
@@ -115,7 +115,7 @@ export const astrlogerSidebarMapping = [
   {
     Icon: UserProfileIcon,
     text: "Rating & Review List",
-    navlink: PATHS,
+    navlink: PATHS.astrologerRatingAndReviews,
   },
   {
     Icon: UserReportsIcon,
@@ -132,26 +132,26 @@ export const astrlogerSidebarMapping = [
     text: "Certificates",
     navlink: PATHS.userCertificate,
   },
-  {
-    Icon: FinancialIcon,
-    text: "Financial",
-    navlink: PATHS.userFinancial,
-  },
-  {
-    Icon: SupportIcon,
-    text: "Support",
-    navlink: PATHS.userSupport,
-  },
-  {
-    Icon: UserProfileIcon,
-    text: "User Profile",
-    navlink: PATHS.userProfile,
-  },
-  {
-    Icon: UserReportsIcon,
-    text: "User Reports",
-    navlink: PATHS.userReports,
-  },
+  // {
+  //   Icon: FinancialIcon,
+  //   text: "Financial",
+  //   navlink: PATHS.userFinancial,
+  // },
+  // {
+  //   Icon: SupportIcon,
+  //   text: "Support",
+  //   navlink: PATHS.userSupport,
+  // },
+  // {
+  //   Icon: UserProfileIcon,
+  //   text: "User Profile",
+  //   navlink: PATHS.userProfile,
+  // },
+  // {
+  //   Icon: UserReportsIcon,
+  //   text: "User Reports",
+  //   navlink: PATHS.userReports,
+  // },
 ];
 
 // maps the navbar
