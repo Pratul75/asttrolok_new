@@ -70,6 +70,89 @@ export const sidebarMapping = [
     navlink: PATHS.userWallet,
   },
 ];
+export const astrlogerSidebarMapping = [
+  {
+    Icon: DashboardIcon,
+    text: "Dashboard",
+    navlink: PATHS.userDashboard,
+  },
+  {
+    Icon: BirthDetailsIcon,
+    text: "Birth Details",
+    navlink: PATHS.userBirthDetails,
+  },
+  {
+    Icon: ConsultationIcon,
+    text: "Astrologer Profile",
+    navlink: PATHS.astrologerProfile,
+  },
+  {
+    Icon: CourseListIcon,
+    text: "Consultation List",
+    navlink: PATHS,
+  },
+  {
+    Icon: QuizIcon,
+    text: "Courses List",
+    navlink: PATHS,
+  },
+  {
+    Icon: CertificateIcon,
+    text: "Available Timings",
+    navlink: PATHS.astrologerAvailablity,
+  },
+  {
+    Icon: FinancialIcon,
+    text: "Charges Amount",
+    navlink: PATHS.astrologerChargeAmount,
+  },
+  {
+    Icon: SupportIcon,
+    text: "Go Live",
+    navlink: PATHS.astrologerGoLive,
+  },
+  {
+    Icon: UserProfileIcon,
+    text: "Rating & Review List",
+    navlink: PATHS,
+  },
+  {
+    Icon: UserReportsIcon,
+    text: "Blogs",
+    navlink: PATHS.astrologerBlog,
+  },
+  {
+    Icon: QuizIcon,
+    text: "Quizzes",
+    navlink: PATHS,
+  },
+  {
+    Icon: CertificateIcon,
+    text: "Certificates",
+    navlink: PATHS.userCertificate,
+  },
+  {
+    Icon: FinancialIcon,
+    text: "Financial",
+    navlink: PATHS.userFinancial,
+  },
+  {
+    Icon: SupportIcon,
+    text: "Support",
+    navlink: PATHS.userSupport,
+  },
+  {
+    Icon: UserProfileIcon,
+    text: "User Profile",
+    navlink: PATHS.userProfile,
+  },
+  {
+    Icon: UserReportsIcon,
+    text: "User Reports",
+    navlink: PATHS.userReports,
+  },
+
+];
 
 // maps the navbar
 export const navbarMapping = [

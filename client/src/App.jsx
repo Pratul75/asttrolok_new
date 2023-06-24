@@ -8,6 +8,7 @@ import {
   UserConsultationList,
   UserWallet,
   UserCourseList,
+  AstrologerAccount,
 } from "./pages";
 import { PATHS } from "./router/paths";
 import { useSelector } from "react-redux";
@@ -68,6 +69,16 @@ const App = () => {
               >
                 <astrologerDashboard />
               </ProtectedRoute>
+            </AppLayout>
+          }
+        />
+        <Route
+          path={PATHS.astrologerProfile}
+          element={
+            <AppLayout>
+             
+                <AstrologerAccount />
+           
             </AppLayout>
           }
         />

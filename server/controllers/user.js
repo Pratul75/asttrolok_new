@@ -54,7 +54,7 @@ class UserController {
   }
 
 newMemberBirthdetailsAdded = async(req,res)=>{
-    const data = req.body
+    const {data} = req.body
   
     data.userId = req.user._id
     const resp = await this.BaseServiceInstance.createNewData(data, UserFamilyMemberDetailModel) 
