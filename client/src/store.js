@@ -3,6 +3,7 @@ import counterReducer from "./features/counter/CounterSlice";
 import appConfigReducer from "./features/appConfig/AppSlice";
 import loginResponseReducer from "./features/loginResponse/LoginResponse";
 import userDetailReducer from "./features/userDetails/UserDetailsSlice";
+import userAllConsultationsReducer from "./features/userAllConsultations/userAllConsultations";
 
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
     count: counterReducer,
     appConfig: appConfigReducer,
     loginResponse:loginResponseReducer,
-    userDetail:userDetailReducer
+    userDetail:userDetailReducer,
+    userConsultations:userAllConsultationsReducer
   },
 });

@@ -2,8 +2,17 @@ import { useEffect, useState } from "react";
 import { FundsChartIcon, SalesBarChart } from "../../../icons";
 import axios from "axios";
 import DashboardBanner from "../../../assets/dashboardBanner.png";
+import { useDispatch, useSelector } from "react-redux";
+import UserConsultationList from "../UserConsultationList/UserConsultationList";
+import { UserConsultations } from "../../../features/userAllConsultations/userAllConsultations";
 const UserDashboardBanner = () => {
   const [consultations, setConsultations] = useState(false);
+    
+
+   const dispatch = useDispatch()
+ 
+   
+
   const getUserConsultations = async () => {
     try {
       const res = await axios.get(
@@ -20,6 +29,7 @@ const UserDashboardBanner = () => {
 
       console.log("allConsultationsOfUser", res);
       if (res?.data?.errorCode === 200) {
+        dispatch(UserConsultations(res?.data?.data))
         setConsultations(res?.data?.data.length);
       }
     } catch (error) {

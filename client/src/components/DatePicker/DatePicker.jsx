@@ -1,13 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { useSelector } from "react-redux";
 
 const CalendarPicker = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [consultationdates, setConsultationDates]  = useState([])
+  const allConsultations = useSelector(
+    (state) => state?.userConsultations?.data
+  );
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
+    console.log(date);
   };
+console.log(selectedDate);
+  const handleConsultations = (allConsultations) => {
+    let arr = [];
+    allConsultations.map((item) => {
+      arr.push(dateConverter(item?.bookingdate));
+    });
+    if(arr.length){
+     
+      setConsultationDates(arr)
+    }
+  };
+console.log(consultationdates);
+  const dateConverter = (dateString) => {
+   
+     const [day, month, year] = dateString.split('/');
+     const formattedDate = new Date(`${month}/${day}/${year}`);
+   
+    
+      return formattedDate;
+     
+  };
+
+  useEffect(() => {
+    if (allConsultations) {
+      handleConsultations(allConsultations);
+    }
+  }, [allConsultations]);
 
   return (
     <div className="flex flex-col justify-center items-center">
