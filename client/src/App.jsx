@@ -9,6 +9,7 @@ import {
   UserWallet,
   UserCourseList,
   UserQuizes,
+  PermissionDenied,
 } from "./pages";
 import AstrologerDashboard from "./pages/astrologer/AstrologerDashboard/index";
 import { PATHS } from "./router/paths";
@@ -158,6 +159,7 @@ const App = () => {
           }
         />
 
+        <Route path="/*" element={<PermissionDenied />} />
       </Routes>
     </div>
   );
