@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useSelector } from "react-redux";
 
 const CalendarPicker = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [consultationdates, setConsultationDates]  = useState([])
+  const [consultationdates, setConsultationDates] = useState([]);
   const allConsultations = useSelector(
     (state) => state?.userConsultations?.data
   );
@@ -14,26 +14,21 @@ const CalendarPicker = () => {
     setSelectedDate(date);
     console.log(date);
   };
-console.log(selectedDate);
+
   const handleConsultations = (allConsultations) => {
     let arr = [];
     allConsultations.map((item) => {
       arr.push(dateConverter(item?.bookingdate));
     });
-    if(arr.length){
-     
-      setConsultationDates(arr)
+    if (arr.length) {
+      setConsultationDates(arr);
     }
   };
-console.log(consultationdates);
+
   const dateConverter = (dateString) => {
-   
-     const [day, month, year] = dateString.split('/');
-     const formattedDate = new Date(`${month}/${day}/${year}`);
-   
-    
-      return formattedDate;
-     
+    const [day, month, year] = dateString.split("/");
+    const formattedDate = new Date(`${month}/${day}/${year}`);
+    return formattedDate;
   };
 
   useEffect(() => {
@@ -42,6 +37,28 @@ console.log(consultationdates);
     }
   }, [allConsultations]);
 
+  const tileClassName = ({ date }) => {
+    const currentDate = new Date(date.toDateString());
+
+    // Check if the current date is in the consultation dates array
+    if (
+      consultationdates.some(
+        (consultationDate) =>
+          new Date(consultationDate.toDateString()).getTime() ===
+          currentDate.getTime()
+      )
+    ) {
+      return "bg-blue-500 text-white rounded-full";
+    }
+
+    // Check if the current date is the selected date
+    if (currentDate.getTime() === selectedDate.getTime()) {
+      return "bg-blue-500 text-white rounded-full";
+    }
+
+    return "";
+  };
+
   return (
     <div className="flex flex-col justify-center items-center">
       <Calendar
@@ -49,11 +66,7 @@ console.log(consultationdates);
         onChange={handleDateChange}
         value={selectedDate}
         calendarType="US"
-        tileClassName={({ date, view }) =>
-          view === "month" && date.getDate() === selectedDate.getDate()
-            ? "bg-blue-500 text-white rounded-full"
-            : ""
-        }
+        tileClassName={tileClassName}
       />
       <p className="mt-4 text-sm text-gray-500">
         Selected Date: {selectedDate.toString()}
