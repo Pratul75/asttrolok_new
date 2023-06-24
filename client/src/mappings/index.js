@@ -70,6 +70,8 @@ export const sidebarMapping = [
     navlink: PATHS.userWallet,
   },
 ];
+
+
 export const astrlogerSidebarMapping = [
   {
     Icon: DashboardIcon,
