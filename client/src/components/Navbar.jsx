@@ -142,47 +142,6 @@ const Navbar = () => {
             </Link>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        <div className="md:hidden">
-          <button className="fixed top-4 right-4 text-gray-500 focus:outline-none">
-            {!isMobileMenuOpen ? (
-              <HiMenu className="w-8" />
-            ) : (
-              <HiX className="w-8" />
-            )}
-          </button>
-          {isMobileMenuOpen && (
-            <div className="bg-white p-4 mt-16">
-              {navbarMapping?.map((item) => {
-                if (item.type === "dropdown") {
-                  return (
-                    <Dropdown
-                      key={item.label}
-                      label={item.label}
-                      itemsList={item.itemsArray}
-                      mobileMenu
-                    />
-                  );
-                } else {
-                  return (
-                    <div
-                      key={item.label}
-                      className="flex justify-center items-center"
-                    >
-                      <Link
-                        to={item.link}
-                        className="btn btn-ghost text-black font-light lowercase"
-                      >
-                        {item.label}
-                      </Link>
-                    </div>
-                  );
-                }
-              })}
-            </div>
-          )}
-        </div>
       </nav>
     </>
   );

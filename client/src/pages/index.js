@@ -6,7 +6,7 @@ export { default as UserCourseList } from "./user/UserCourseList/UserCourseList"
 export { default as UserProfile } from "./user/UserProfile";
 export { default as UseReports } from "./user/UserReports/UserReports";
 export { default as UserWallet } from "./user/UserWallet/UserWallet";
-export { default as UserQuizes } from "./user/UserQuizes";
+export {default as UserQuizes} from "./user/UserQuizes"
 // ASTROLOGER PAGES
 export { default as AstrologerAccount } from "./astrologer/AstrologerAccount";
 export { default as AstrologerAvailablity } from "./astrologer/AstrologerAvailablity";
