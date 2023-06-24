@@ -10,6 +10,7 @@ import {
   UserCourseList,
   UserQuizes,
 } from "./pages";
+import AstrologerDashboard from "./pages/astrologer/AstrologerDashboard/index";
 import { PATHS } from "./router/paths";
 import { useSelector } from "react-redux";
 import { ProtectedRoute } from "./router/ProtectedRoute";
@@ -142,6 +143,21 @@ const App = () => {
             </AppLayout>
           }
         />
+
+        <Route
+          path={PATHS.astrologerDashboard}
+          element={
+            <AppLayout>
+              <ProtectedRoute
+                roleRequired={loginResponse?.role}
+                paths={PATHS.astrologerDashboard}
+              >
+                <AstrologerDashboard />
+              </ProtectedRoute>
+            </AppLayout>
+          }
+        />
+
       </Routes>
     </div>
   );

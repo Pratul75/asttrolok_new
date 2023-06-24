@@ -126,8 +126,9 @@ class AuthService {
         token: token,
         options: options,
         success: true,
-        id: loginPerson._id,
-        role: loginPerson.role,
+        id: loginPerson?._id,
+        role: loginPerson?.role,
+        name: loginPerson?.name
       });
     } else {
       return new ResponseTemp(false, "password is incorrect", false, 404);

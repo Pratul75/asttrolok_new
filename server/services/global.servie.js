@@ -9,7 +9,7 @@ class GlobalService {
     // if params is undefined
     
     if(!params  || (params.length) || (!Object.keys(params))){
-      console.log("Imworking");
+  
       throw new AppError(
         false,
         defaultMessage ? defaultMessage : "No data",

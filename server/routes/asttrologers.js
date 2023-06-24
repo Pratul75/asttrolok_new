@@ -22,6 +22,11 @@ astrologerRoutes.get("/getAvailableTiming", checkLoginOrNot,tryCatch(astroContro
 
 astrologerRoutes.post("/setAvailableTiming",checkLoginOrNot,tryCatch(astroController.setAvailableTiming))
 
+
+astrologerRoutes.get("/getAstrologerAllConsultation",checkLoginOrNot,tryCatch(astroController.getAstrologerAllConsultation))
+
+
+
 // to get all the astrologers
 astrologerRoutes.get("/getAllAstrologers",checkLoginOrNot,tryCatch(astroController.getAllAstrologers))
 

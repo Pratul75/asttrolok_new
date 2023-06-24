@@ -72,21 +72,9 @@ newMemberBirthdetailsAdded = async(req,res)=>{
 
   return res.status(data?.errorCode).json(data);
 };
-  getAstrologerAllConsultation = async (req, res) => {
-    const { astrologerId } = req.query;
 
-    if (
-      await this.globalServiceInstance.checkTheParams(
-        astrologerId,
-        "Please provide astrologerId"
-      )
-    ) {
-      const consultations =
-        await this.astrologerServiceInstance.getAllConsultation(astrologerId);
 
-      return res.status(consultations?.errorCode).json(consultations);
-    }
-  };
+ 
 
   getAllConsultationOfUser = async (req, res) => {
     const consultations = await this.userServiceInstance.getAllConsultation(

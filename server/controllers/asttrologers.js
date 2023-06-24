@@ -222,6 +222,18 @@ updateRatingAndReview = async(req,res)=>{
     }
   }
   
+
+getAstrologerAllConsultation = async (req, res) => {
+    const astrologerId  = req.user._id
+
+  
+      const consultations =
+        await this.astrologerServiceInstance.getAllConsultation(astrologerId);
+
+      return res.status(consultations?.errorCode).json(consultations);
+    
+  };
+
 }
 module.exports = AstrologerController;
   

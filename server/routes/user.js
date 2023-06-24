@@ -36,7 +36,7 @@ userRoutes.post("/newMemberBirthdetailsAdded", checkLoginOrNot,tryCatch(userCont
 
 
 
-userRoutes.get("/getAstrologerAllConsultation", checkLoginOrNot,tryCatch(userController.getAstrologerAllConsultation),errorHandler)
+
 
 userRoutes.post("/bookAstrologerForConsultation", checkLoginOrNot, tryCatch(userController.bookAstrologerForConsultation), errorHandler)
 
