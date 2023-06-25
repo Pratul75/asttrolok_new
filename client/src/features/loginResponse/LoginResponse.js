@@ -12,6 +12,7 @@ export const loginResponse = createSlice({
     store: (state, action) => {
       state.value = action.payload;
     },
+    
   },
 });
 

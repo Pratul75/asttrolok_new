@@ -5,16 +5,17 @@ import { useSelector } from "react-redux";
 const ReverseAuthRoute = ({children}) => {
   const location = useLocation();
   const token = localStorage.getItem("token");
+  const role =  JSON.parse(localStorage.getItem("role"))?.role 
   const loginResponse = useSelector((state) => state.loginResponse.value);
-  
+
   if (location.pathname === "/login" && token) {
-            if(loginResponse?.role === 'user'){
+            if(loginResponse?.role === 'user' || role ==='user'){
               return <Navigate to={PATHS.userDashboard} />;
             }
-            else if(loginResponse?.role === 'astrologer'){
+            else if(loginResponse?.role === 'astrologer' || role === 'astrologer'){
               return <Navigate to={PATHS.astrologerDashboard} />;
             }
-            else if(loginResponse?.role === 'admin'){
+            else if(loginResponse?.role === 'admin' || role === 'admin'){
               return <Navigate to={PATHS.adminDashboard} />;
             }
 
