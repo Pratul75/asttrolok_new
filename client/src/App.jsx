@@ -174,6 +174,19 @@ const App = () => {
           }
         />
         <Route
+          path={PATHS.astrologerDetails}
+          element={
+            <AppLayout>
+              <ProtectedRoute
+                roleRequired={loginResponse?.role}
+                paths={PATHS.astrologerDetails}
+              >
+                <AstrologerDetails />
+              </ProtectedRoute>
+            </AppLayout>
+          }
+        />
+        <Route
           path={PATHS.astrologerRatingAndReviews}
           element={
             <AppLayout>
