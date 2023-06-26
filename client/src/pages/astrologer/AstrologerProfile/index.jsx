@@ -5,6 +5,7 @@ import AstrologerChangePassword from "./AstrologerChangePassword";
 import AstrologerServicesAnsSpecialization from "./AstrologerServicesAndSpecialization.jsx";
 import AstrologerEducation from "./AstrologerEducation";
 import AstrologerExperience from "./AstrologerExperience";
+import AsrtologerAdditionalWork from "./AstrologerAdditionalWork";
 const AstrologerProfile = () => {
   return (
     <div>
@@ -29,9 +30,16 @@ const AstrologerProfile = () => {
           <AstrologerEducation />
           {/* astrologer experience */}
           <AstrologerExperience />
+          {/* astrologer additional work */}
+          <AsrtologerAdditionalWork />
+          <div className="flex justify-end  w-full gap-4 mt-4">
+            <button className="btn btn-info text-white">Save</button>
+            <button className="btn btn-error text-white btn-outline">
+              Cancel
+            </button>
+          </div>
         </div>
       </section>
-      AstrologerProfile
     </div>
   );
 };

@@ -17,7 +17,7 @@ export { default as AstrologerDashboard } from "./astrologer/AstrologerDashboard
 export { default as AstrologerGoLive } from "./astrologer/AstrologerGoLive";
 export { default as AstrologerProfile } from "./astrologer/AstrologerProfile";
 export { default as AstrologerReports } from "./astrologer/AstrologerReports";
-
+export { default as AstrologerRatings } from "./astrologer/AstrologerRatings";
 // ADMIN PAGES
 export { default as AdminAstrologerList } from "./admin/AdminAstrologersList";
 export { default as AdminCms } from "./admin/AdminCms";
