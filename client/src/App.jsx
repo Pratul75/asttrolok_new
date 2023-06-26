@@ -19,6 +19,7 @@ import { useSelector } from "react-redux";
 import { ProtectedRoute } from "./router/ProtectedRoute";
 import ReverseAuthRoute from "./router/ReverseAuthRoute";
 import { useState } from "react";
+import AstrologerDetails from "./pages/astrologer/AstrologerDetails";
 
 const App = () => {
   const [role, setRole] = useState(

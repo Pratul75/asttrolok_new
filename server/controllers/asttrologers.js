@@ -7,6 +7,8 @@ const AstrologerBookingModel = require("../models/Astrologers/AstrologerConsulta
 const Usermodel = require("../models/users/Usermodel");
 const AstrologerService = require("../services/astrologer.service");
 const GlobalService = require("../services/global.servie");
+const BaseService = require("../services/base.service");
+const AstrologerAccountModel = require("../models/Astrologers/AstrologerAccountModel");
 
 
 
@@ -15,6 +17,7 @@ const GlobalService = require("../services/global.servie");
 class AstrologerController {
   astrologerServiceInstance = new AstrologerService();
   globalServiceInstance = new GlobalService();
+  baseServiceInstance  = new BaseService();
 
   getcharges = async (req, res) => {
     // console.log(astrologerServiceInstance);
@@ -41,6 +44,66 @@ class AstrologerController {
     }
   };
  
+
+// ACCOUNT CRUD start
+
+// account details update and create if not there as it does not automatically created when astrologer register unlike astrologerpersonaldetail schema
+accountDetailUpdate = async (req, res) => {
+  try {
+    const {data} = req.body
+  
+    const resp =
+      await this.baseServiceInstance.findOneByAstrologerIdandUpdate(
+        req.user._id,
+        data,
+        AstrologerAccountModel
+      );
+
+
+    if (resp?.success === true) {
+      return res.status(200).json(resp);
+    }
+    else if(resp?.errorCode === 404){
+ 
+      const newAccountDetails = await this.astrologerServiceInstance.createAccountDetailsForAstrologer(req.user._id, data)
+    
+     console.log('asttrologers.js', newAccountDetails);
+      return res.status(newAccountDetails?.errorCode).json(newAccountDetails)
+    } 
+    
+    else {
+      return res.status(resp?.errorCode).json(resp);
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error,
+    });
+  }
+};
+
+// getAccount details
+getAccountDetail = async (req, res) => {
+  try {
+    const resp = await this.baseServiceInstance.findOneByAstrologerId(
+      req.user._id, AstrologerAccountModel
+    );
+    console.log('asttrologers.js', resp);
+    if (resp?.success === true) {
+      return res.status(200).json(resp);
+    } else {
+      return res.status(resp?.errorCode).json(resp);
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error,
+    });
+  }
+};
+
+// ACCOUNT CRUD end
+
   //update personal Detail
   personalDetailUpdate = async (req, res) => {
     try {
@@ -50,15 +113,9 @@ class AstrologerController {
           req.body
         );
       if (resp?.success === true) {
-        return res.status(200).json({
-          success: true,
-          message: resp,
-        });
+        return res.status(200).json(resp);
       } else {
-        return res.status(resp?.errorCode).json({
-          success: false,
-          message: resp,
-        });
+        return res.status(resp?.errorCode).json(resp);
       }
     } catch (error) {
       res.status(500).json({
@@ -68,6 +125,7 @@ class AstrologerController {
     }
   };
 
+
   //get personal Detail this is get route
   getpersonalDetail = async (req, res) => {
     try {
@@ -75,15 +133,9 @@ class AstrologerController {
         req.user._id
       );
       if (resp?.success === true) {
-        return res.status(200).json({
-          success: true,
-          message: resp,
-        });
+        return res.status(200).json(resp);
       } else {
-        return res.status(resp?.errorCode).json({
-          success: false,
-          message: resp,
-        });
+        return res.status(resp?.errorCode).json(resp);
       }
     } catch (error) {
       res.status(500).json({

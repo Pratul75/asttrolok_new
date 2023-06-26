@@ -1,26 +1,31 @@
 const mongoose = require("mongoose");
-const AstrologerAccountModel = require("./AstrologerAccountModel");
+
 
 const AstrologerPersonalDetailModelSchema = new mongoose.Schema(
   {
-    name: {
+    firstName: {
       type: String,
-      require: true,
+     required: true,
+      min: 2,
+      max: 25,
+    },
+    lastName: {
+      type: String,
+     required: true,
       min: 2,
       max: 25,
     },
     gender: {
       type: String,
-      require: true,
     },
     email: {
       type: String,
-      require: true,
+     required: true,
       unique: true,
     },
     password: {
       type: String,
-      require: true,
+     required: true,
       min: 6,
     },
     mobile: {
@@ -36,7 +41,7 @@ const AstrologerPersonalDetailModelSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      default: "admin",
+      default: "astrologer",
     },
     internationalBookCharges: {
       type: Number,
@@ -47,17 +52,14 @@ const AstrologerPersonalDetailModelSchema = new mongoose.Schema(
     },
     organization: {
       type: String,
-      require: true,
       default: "Asttrolok",
     },
     address: {
       type: String,
-      require: true,
     },
     areaofInterest: [
       {
         type: String,
-        require: true,
       },
     ],
     videoType: {
@@ -74,7 +76,6 @@ const AstrologerPersonalDetailModelSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// add the properties of AstrologerAccountModel to AstrologerSchema
-AstrologerPersonalDetailModelSchema.add(AstrologerAccountModel.schema);
+
 
 module.exports = mongoose.model("AstrologerPersonalDetailModelSchema", AstrologerPersonalDetailModelSchema);

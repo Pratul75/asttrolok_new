@@ -14,9 +14,20 @@ const astroController = new AstrologerController;
 astrologerRoutes.get("/getcharges",checkLoginOrNot,tryCatch(astroController.getcharges))
 
 
+
+// astrologer Profile CRUD start
 astrologerRoutes.post("/personalDetail", checkLoginOrNot, tryCatch(astroController.personalDetailUpdate))
 
 astrologerRoutes.get("/getpersonalDetail", checkLoginOrNot,tryCatch(astroController.getpersonalDetail))
+// astrologer Profile CRUD end
+
+
+// astrologer Account CRUD start
+astrologerRoutes.post("/UpdateAccountDetails", checkLoginOrNot, tryCatch(astroController.accountDetailUpdate))
+
+astrologerRoutes.get("/getAccountDetails", checkLoginOrNot, tryCatch(astroController.getAccountDetail))
+
+
 
 astrologerRoutes.get("/getAvailableTiming", checkLoginOrNot,tryCatch(astroController.getAvailableTiming))
 
@@ -53,4 +64,3 @@ astrologerRoutes.post("/updateStatusRatingAndReviews", checkLoginOrNot, tryCatch
 
 
 module.exports = astrologerRoutes;
-

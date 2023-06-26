@@ -1,9 +1,15 @@
 // AstrologerAccountModel.js
 const mongoose = require("mongoose");
+const AstrologerPersonalDetailModel = require("./AstrologerPersonalDetailModel");
 
 // we creating this schema as we have more details than astrologermodel schema sir told this could be use somewhere else 
 
 const AstrologerAccountSchema = new mongoose.Schema({
+
+    AstrologerId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: AstrologerPersonalDetailModel // use the model name as a string for the ref option
+      },
 
     biography: {
         type: String,

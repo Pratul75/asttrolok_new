@@ -69,6 +69,23 @@ export const profileUpdateSchema = () => {
   });
 };
 
+export const astrologerdetailUpdateSchema = () => {
+  return yup.object({
+    firstName: yup.string(),
+    lastName: yup.string(),
+    mobile: yup.number(),
+    experience: yup.number(),
+    email: yup.string().email(),
+    organization: yup.string(),
+    areaOfInterest: yup.string(),
+    gender: yup.string(),
+    videoType: yup.string(),
+    ReviewVideo: yup.string(),
+    address: yup.string(),
+  });
+};
+
+
 export const changePasswordSchema = () => {
   return yup.object({
     currentPassword: yup.string(),
@@ -104,10 +121,10 @@ export const birthDetailsUpdateSchema = () => {
       .min(3, "lastName must contain atleast 3 characters ")
       .required("lastName is required"),
     gender: yup.string("gender must be a string"),
-    birthDate:yup.string("birthDate must be a string"),
-    placeOfbirth:yup.string("placeOFBirth must be a string"),
-    birthTime:yup.string("birthTime must be a string"),
-    message:yup.string("message must be a string"),
-    relation:yup.string("relation must be a string"),
+    birthDate: yup.string("birthDate must be a string"),
+    placeOfbirth: yup.string("placeOFBirth must be a string"),
+    birthTime: yup.string("birthTime must be a string"),
+    message: yup.string("message must be a string"),
+    relation: yup.string("relation must be a string"),
   });
 };
