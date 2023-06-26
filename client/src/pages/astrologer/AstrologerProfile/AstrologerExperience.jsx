@@ -2,16 +2,16 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 
 const AstrologerExperience = () => {
   return (
-    <div className="p-4 shadow-md w-full font-semibold">
+    <div className="p-4 shadow-md max-w-full font-semibold">
       <h4 className="font-semibold">Experience</h4>
-      <div className="flex justify-between items-center gap-4">
-        <div className="form-control">
+      <div className="flex  flex-wrap items-center gap-4">
+        <div className="form-control flex-grow">
           <label className="label">
-            <span className="label-text">Orgalisation Name</span>
+            <span className="label-text">Organization Name</span>
           </label>
           <input className="input input-bordered" type="" name="" id="" />
         </div>
-        <div className="form-control flex flex-col w-[6rem]">
+        <div className="form-control flex flex-col">
           <label className="label">
             <span className="label-text">From</span>
           </label>
@@ -39,7 +39,7 @@ const AstrologerExperience = () => {
             </div>
           </div>
         </div>
-        <div className="form-control flex flex-col w-[6rem]">
+        <div className="form-control flex flex-col">
           <label className="label">
             <span className="label-text">To</span>
           </label>
@@ -67,19 +67,24 @@ const AstrologerExperience = () => {
             </div>
           </div>
         </div>
-        <div className="form-control">
+        <div className="form-control flex-grow">
           <label className="label">
             <span className="label-text">Designation</span>
           </label>
-          <input className="input input-bordered" type="" name="" id="" />
+          <input
+            placeholder="Enter your Designation"
+            className="input input-bordered"
+            type=""
+            name=""
+            id=""
+          />
         </div>
-        <button className="btn btn-square mt-8 bg-[#5D87FF] text-white">
+        <button className="btn btn-square bg-[#5D87FF] text-white mt-8">
           <RiDeleteBin6Line />
         </button>
-        <div className="mt-8"></div>
       </div>
-      <div className="flex justify-end">
-        <button className="btn bg-[#5D87FF] text-white mt-4">Add More</button>
+      <div className="flex justify-end mt-4">
+        <button className="btn bg-[#5D87FF] text-white">Add More</button>
       </div>
     </div>
   );

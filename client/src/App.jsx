@@ -11,6 +11,7 @@ import {
   UserQuizes,
   PermissionDenied,
   AstrologerProfile,
+  AstrologerRatings,
 } from "./pages";
 import AstrologerDashboard from "./pages/astrologer/AstrologerDashboard/index";
 import { PATHS } from "./router/paths";
@@ -24,11 +25,8 @@ const App = () => {
   const [role, setRole] = useState(
     JSON.parse(localStorage.getItem("role"))?.role
   );
-
   const loginResponse = useSelector((state) => state.loginResponse.value);
-
   const darkMode = useSelector((x) => x.appConfig.darkMode);
-  console.log("ASasdasddd", loginResponse);
   return (
     <div
       data-theme={`${darkMode ? "dark" : "light"}`}
@@ -176,14 +174,14 @@ const App = () => {
           }
         />
         <Route
-          path={PATHS.astrologerDetails}
+          path={PATHS.astrologerRatingAndReviews}
           element={
             <AppLayout>
               <ProtectedRoute
                 roleRequired={loginResponse?.role}
-                paths={PATHS.astrologerDetails}
+                path={PATHS.astrologerRatingAndReviews}
               >
-                <AstrologerDetails />
+                <AstrologerRatings />
               </ProtectedRoute>
             </AppLayout>
           }
