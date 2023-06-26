@@ -57,7 +57,7 @@ const ChangePassword = () => {
 
   return (
     <div className="p-4 shadow-lg rounded-lg w-1/2 h-auto bg-base-100">
-      <h4 className="text-xl">Change Password</h4>
+      <h4 className="text-xl">About me</h4>
       <p className="text-sm text-gray-400">
         To change your password please confirm here
       </p>
@@ -68,7 +68,7 @@ const ChangePassword = () => {
           <div className="form-control w-full">
             <p className="text-rose-600">{errorhandler?.message}</p>
             <label htmlFor="currentPassword" className="label">
-              <span className="label-text">Current Password</span>
+              <span className="label-text">Name</span>
             </label>
             <input
               className="input input-sm border  border-3 border-gray-400"
@@ -83,7 +83,7 @@ const ChangePassword = () => {
           {/* new password */}
           <div className="form-control w-full">
             <label htmlFor="newPassword" className="label">
-              <span className="label-text">New Password</span>
+              <span className="label-text">Email</span>
             </label>
             <input
               className="input input-sm border  border-3 border-gray-400"
@@ -99,7 +99,7 @@ const ChangePassword = () => {
           {/* confirm password */}
           <div className="form-control w-full">
             <label htmlFor="confirmPassword" className="label">
-              <span className="label-text">Confirm Password</span>
+              <span className="label-text">Biography</span>
             </label>
             <input
               className="input input-sm border  border-3 border-gray-400"

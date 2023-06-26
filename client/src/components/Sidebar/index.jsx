@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   const conditionalSidebarMapping = () => {
     const userRole = JSON.parse(localStorage.getItem("role"));
-    const  role  = userRole?.role;
+    const role = userRole?.role;
     console.log("ROLE: ", role);
     if (role === "user") {
       console.log("USER IS LOGGED");

@@ -10,6 +10,7 @@ import {
   UserCourseList,
   UserQuizes,
   PermissionDenied,
+  AstrologerProfile,
 } from "./pages";
 import AstrologerDashboard from "./pages/astrologer/AstrologerDashboard/index";
 import { PATHS } from "./router/paths";
@@ -32,6 +33,7 @@ const App = () => {
       data-theme={`${darkMode ? "dark" : "light"}`}
       className="font-plus-jakarta-sans"
     >
+      {/* user */}
       <Routes>
         <Route
           path={PATHS.userBirthDetails}
@@ -145,6 +147,7 @@ const App = () => {
           }
         />
 
+        {/* astrologer  */}
         <Route
           path={PATHS.astrologerDashboard}
           element={
@@ -154,6 +157,19 @@ const App = () => {
                 paths={PATHS.astrologerDashboard}
               >
                 <AstrologerDashboard />
+              </ProtectedRoute>
+            </AppLayout>
+          }
+        />
+        <Route
+          path={PATHS.astrologerProfile}
+          element={
+            <AppLayout>
+              <ProtectedRoute
+                roleRequired={loginResponse?.role}
+                paths={PATHS.astrologerProfile}
+              >
+                <AstrologerProfile />
               </ProtectedRoute>
             </AppLayout>
           }

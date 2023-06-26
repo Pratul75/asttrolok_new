@@ -10,6 +10,7 @@ import {
   FinancialIcon,
   SupportIcon,
   UserWalletIcon,
+  AstrologerProfileIcon,
 } from "../icons";
 import { PATHS } from "../router/paths";
 // maps the sidebar
@@ -83,15 +84,10 @@ export const astrologerSidebarMapping = [
     navlink: PATHS.astrologerBirthDetails,
   },
   {
-    Icon: ConsultationIcon,
+    Icon: AstrologerProfileIcon,
     text: "Astrologer Profile",
-    navlink: PATHS.astrologerConsultationList,
+    navlink: PATHS.astrologerProfile,
   },
-  // {
-  //   Icon: CourseListIcon,
-  //   text: "Consultation List",
-  //   navlink: PATHS,
-  // },
   {
     Icon: QuizIcon,
     text: "Courses List",
