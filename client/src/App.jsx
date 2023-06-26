@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 import { ProtectedRoute } from "./router/ProtectedRoute";
 import ReverseAuthRoute from "./router/ReverseAuthRoute";
 import { useState } from "react";
+import AstrologerDetails from "./pages/astrologer/AstrologerDetails";
 
 const App = () => {
   const [role, setRole] = useState(
@@ -170,6 +171,19 @@ const App = () => {
                 paths={PATHS.astrologerProfile}
               >
                 <AstrologerProfile />
+              </ProtectedRoute>
+            </AppLayout>
+          }
+        />
+        <Route
+          path={PATHS.astrologerDetails}
+          element={
+            <AppLayout>
+              <ProtectedRoute
+                roleRequired={loginResponse?.role}
+                paths={PATHS.astrologerDetails}
+              >
+                <AstrologerDetails />
               </ProtectedRoute>
             </AppLayout>
           }

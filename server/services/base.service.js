@@ -54,9 +54,22 @@ class BaseService {
     if (!data) {
       return new ResponseTemp(false, "not found", false, 404);
     } else {
-      return new ResponseTemp(true, " successful ", false, 200);
+      return new ResponseTemp(true, " successful ", false, 200,data);
     }
   }
+  async findOneByAstrologerIdandUpdate(AstrologerId,data,model){
+
+    const resp = await model.findOneAndUpdate({AstrologerId} ,data,{ returnOriginal: false});
+     
+    if (!resp) {
+
+      return new ResponseTemp(false, "not found", false, 404);
+    } else {
+      return new ResponseTemp(true, " successful ", false, 200,resp);
+    }
+  }
+  
+
 
   async findById(id, model) {
 

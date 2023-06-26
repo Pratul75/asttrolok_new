@@ -1,3 +1,4 @@
+const AstrologerAccountModel = require("../models/Astrologers/AstrologerAccountModel");
 const AstrologerConsultation = require("../models/Astrologers/AstrologerConsultation");
 const AstrologerPersonalDetailModel = require("../models/Astrologers/AstrologerPersonalDetailModel");
 const AvailableTiming = require("../models/Astrologers/AvailableTiming");
@@ -29,8 +30,9 @@ class AstrologerService {
         };
       } else {
         const astroDetails =
-          await AstrologerPersonalDetailModel.findByIdAndUpdate(id, data);
+          await AstrologerPersonalDetailModel.findByIdAndUpdate(id, data,{ returnOriginal: false});
         if (!astroDetails) {
+          
           return {
             success: false,
             errorCode: 404,
@@ -49,6 +51,20 @@ class AstrologerService {
         error: error?.message,
       };
     }
+  }
+  
+  async createAccountDetailsForAstrologer(AstrologerId,data){
+    
+     const resp = await AstrologerAccountModel.create({
+      AstrologerId, data
+     })
+    //  console.log('astrologer.service.js', resp);
+     if(resp){
+      return new ResponseTemp(true,"new AccountDetails created", false, 200,resp)
+     }
+     else{
+      return new ResponseTemp(false,"new AccountDetails not created", false, 400)
+     }
   }
 
   async findAstrologerById(id) {

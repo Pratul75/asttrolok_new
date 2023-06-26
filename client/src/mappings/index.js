@@ -88,6 +88,13 @@ export const astrologerSidebarMapping = [
     text: "Astrologer Profile",
     navlink: PATHS.astrologerProfile,
   },
+  
+  {
+    Icon: AstrologerProfileIcon,
+    text: "Astrologer Details",
+    navlink: PATHS.astrologerDetails,
+  },
+
   {
     Icon: QuizIcon,
     text: "Courses List",
