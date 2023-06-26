@@ -1,5 +1,5 @@
 import AstrologerRatingsBanner from "../../../assets/astrologerProfileBanner.png";
-import { Header, ReviewCard, Ratings } from "../../../components";
+import { Header, ReviewCard } from "../../../components";
 
 const AstrologerRatings = () => {
   return (
@@ -28,6 +28,16 @@ const AstrologerRatings = () => {
           alias, sequi itaque, totam dicta quos, omnis fuga tempore doloremque
           quibusdam rem ducimus odit dolorum facilis ullam delectus sapiente
           unde?"
+        />
+        <ReviewCard
+          name="Random User"
+          rating={4}
+          review="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto alias, sequi itaque, totam dicta quos, omnis fuga tempore doloremque
+          quibusdam rem ducimus odit dolorum facilis ullam delectus sapiente
+          unde? sequi itaque, totam dicta quos, omnis fuga tempore doloremque
+          quibusdam rem ducimus odit dolorum facilis ullam delectus sapiente
+          unde?ratione
+          "
         />
         <ReviewCard
           name="Random User"

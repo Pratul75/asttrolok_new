@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Avatar = ({ initials }) => {
+const Avatar = ({ initials, background, size }) => {
   return (
     <div className="avatar placeholder">
       <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
