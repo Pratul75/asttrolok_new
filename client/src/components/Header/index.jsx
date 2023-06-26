@@ -1,8 +1,14 @@
 import PropTypes from "prop-types";
-
+import { useSelector } from "react-redux";
 const Header = ({ bannerImage, primaryText, secondaryText }) => {
+  const darkMode = useSelector((x) => x.appConfig.darkMode);
+  console.log("DARK MODE: ", darkMode);
   return (
-    <header className="w-full h-auto bg-[#EBF3FE] rounded-lg flex justify-between relative">
+    <header
+      className={`${
+        !darkMode ? "bg-[#EBF3FE]" : "bg-[#24272a]"
+      } w-full h-auto rounded-lg flex justify-between relative`}
+    >
       <div className="px-8 py-16">
         <h4 className="font-semibold text-2xl">{primaryText}</h4>
         <p className="text-gray-500 font-light">{secondaryText}</p>
