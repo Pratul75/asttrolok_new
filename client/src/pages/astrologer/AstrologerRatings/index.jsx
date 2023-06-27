@@ -1,7 +1,28 @@
+import { useEffect } from "react";
+import { API_WRAPPER } from "../../../api";
 import AstrologerRatingsBanner from "../../../assets/astrologerProfileBanner.png";
 import { Header, ReviewCard } from "../../../components";
 
 const AstrologerRatings = () => {
+
+  const fetchUserRatings =async ()=>{
+    try {
+      const data = await API_WRAPPER.get(`api/astrologer/ratingsReviewByAstrologer`)
+        if(data){
+          console.log('AstrologerAccount.jsx', data);
+        }
+    } catch (error) {
+      console.log('AstrologerAccount.jsx',"error", error);
+    }
+  }
+
+  useEffect(()=>{
+    fetchUserRatings();
+  },[])
+
+
+
+
   return (
     <div>
       <Header

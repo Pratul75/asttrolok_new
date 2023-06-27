@@ -67,7 +67,7 @@ accountDetailUpdate = async (req, res) => {
  
       const newAccountDetails = await this.astrologerServiceInstance.createAccountDetailsForAstrologer(req.user._id, data)
     
-     console.log('asttrologers.js', newAccountDetails);
+  
       return res.status(newAccountDetails?.errorCode).json(newAccountDetails)
     } 
     
@@ -88,7 +88,7 @@ getAccountDetail = async (req, res) => {
     const resp = await this.baseServiceInstance.findOneByAstrologerId(
       req.user._id, AstrologerAccountModel
     );
-    console.log('asttrologers.js', resp);
+  
     if (resp?.success === true) {
       return res.status(200).json(resp);
     } else {

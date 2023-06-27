@@ -405,7 +405,7 @@ class AstrologerService {
   }
 
   async getRatingReviewByAstrologer(astrologerId) {
-    const alreadyRatingAndReview = await ratingsReview.find({ astrologerId });
+    const alreadyRatingAndReview = await ratingsReview.find({ astrologerId }).populate('userId', 'firstName lastName');
 
     if (alreadyRatingAndReview.length) {
       return new ResponseTemp(

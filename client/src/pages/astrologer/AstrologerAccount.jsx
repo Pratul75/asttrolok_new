@@ -3,7 +3,7 @@ import astrologerProfile from "../../assets/astrologerProfile.png";
 const AstrologerAccount = () => {
 
 
-
+  
 
   return (
     <div className="space-y-20">
@@ -42,6 +42,7 @@ const AstrologerAccount = () => {
               
                 type="text" />
             </div>
+            
             <div className="flex flex-col">
               <label className="text-xl font-bold" htmlFor="name">
                 Biography
